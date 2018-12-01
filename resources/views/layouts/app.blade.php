@@ -1,307 +1,161 @@
 <!DOCTYPE html>
-<!--[if IE 8]>
-<html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]>
-<html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
-
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <title>InfyOm Metronic Template</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
-    
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
-          type="text/css"/>
+    <meta charset="UTF-8">
+    <title>InfyOm Generator</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <link href="path-to-metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet"
-          type="text/css"/>
-    <!-- END GLOBAL MANDATORY STYLES -->
-    
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="path-to-metronic/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css"
-          rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
-    <!-- END PAGE LEVEL PLUGINS -->
-    
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="path-to-metronic/assets/global/css/components.min.css" rel="stylesheet" id="style_components"
-          type="text/css"/>
-    <link href="path-to-metronic/assets/global/css/plugins.min.css"" rel="stylesheet" type="text/css"/>
-    <!-- END THEME GLOBAL STYLES -->
-    
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="path-to-metronic/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
-    <link href="path-to-metronic/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css"
-          id="style_color"/>
-    <link href="path-to-metronic/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css"/>
-    <!-- END THEME LAYOUT STYLES -->
-    
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/skins/_all-skins.min.css">
+
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
-<!-- END HEAD -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
+<body class="skin-blue sidebar-mini">
 @if (!Auth::guest())
-<!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner ">
-    
-        <!-- BEGIN LOGO -->
-        <div class="page-logo">
-            <a href="index.html">
-                <img src="path-to-metronic/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/>
+    <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <b>InfyOm</b>
             </a>
-            <div class="menu-toggler sidebar-toggler"></div>
-        </div>
-        <!-- END LOGO -->
-        
-        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-           data-target=".navbar-collapse"> </a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        
-        <!-- BEGIN TOP NAVIGATION MENU -->
-        <div class="top-menu">
-            <ul class="nav navbar-nav pull-right">
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                <li class="dropdown dropdown-user">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                       data-close-others="true">
-                        <img alt="" class="img-circle"
-                             src="http://infyom.com/images/logo/blue_logo_150x150.jpg"/>
-                        @if (Auth::guest())
-                            <span class="username username-hide-on-mobile">  InfyOm</span>
-                        @else
-                            <span class="username username-hide-on-mobile"> {!! Auth::user()->name !!}</span>
-                            <i class="fa fa-angle-down"></i>
-                        @endif
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-default">
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{!! url('/logout') !!}">
-                                <i class="icon-key"></i> Log Out </a>
+
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                     class="user-image" alt="User Image"/>
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">
+                                      @if (Auth::guest())
+                                        InfyOm
+                                    @else
+                                    {!! Auth::user()->name !!}
+                                    @endif
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                         class="img-circle" alt="User Image"/>
+                                    <p>
+                                        @if (Auth::guest())
+                                            InfyOm
+                                        @else
+                                            {!! Auth::user()->name !!}
+                                        @endif
+                                        <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
-                </li>
-                <!-- END USER LOGIN DROPDOWN -->
-            </ul>
-        </div>
-        <!-- END TOP NAVIGATION MENU -->
-    </div>
-    <!-- END HEADER INNER -->
-</div>
-<!-- END HEADER -->
-<!-- BEGIN HEADER & CONTENT DIVIDER -->
-<div class="clearfix"></div>
-<!-- END HEADER & CONTENT DIVIDER -->
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-    <!-- BEGIN SIDEBAR -->
-    @include('layouts.sidebar')
-    <!-- BEGIN CONTENT -->
-    <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
-        <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-
-            <!-- BEGIN PAGE BAR -->
-
-            <div class="page-toolbar">
-                <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
-                     data-placement="bottom" data-original-title="Change dashboard date range">
                 </div>
-            </div>
+            </nav>
+        </header>
 
-            <!-- END PAGE BAR -->
-
-            <!-- END PAGE HEADER-->
-
-            <div class="row">
-                <div class="col-lg-12">
-                    @yield('content')
-                </div>
-            </div>
-
+        <!-- Left side column. contains the logo and sidebar -->
+        @include('layouts.sidebar')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @yield('content')
         </div>
-        <!-- END CONTENT BODY -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer" style="max-height: 100px;text-align: center">
+            <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
+        </footer>
+
     </div>
-    <!-- END CONTENT -->
-</div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
 @else
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
 
-<!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner ">
-        <!-- BEGIN LOGO -->
-        <div class="page-logo">
-            <a href="index.html">
-                <img src="path-to-metronic/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/> </a>
-            <div class="menu-toggler sidebar-toggler"></div>
-        </div>
-        <!-- END LOGO -->
-        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-           data-target=".navbar-collapse"> </a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN TOP NAVIGATION MENU -->
-        <div class="top-menu">
-            <ul class="nav navbar-nav pull-right">
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                <li class="dropdown dropdown-user">
-                    <a href="{!! url('/login') !!}" class="dropdown-toggle" data-hover="dropdown"
-                       data-close-others="true">
-                        <span class="username ">  login</span></a>
-                </li>
-                <li class="dropdown dropdown-user">
-                    <a href="{!! url('/register') !!}" class="dropdown-toggle" data-hover="dropdown"
-                       data-close-others="true">
-                        <span class="username"> Register</span></a>
-                </li>
-            </ul>
-        </div>
-        <!-- END TOP NAVIGATION MENU -->
-    </div>
-    <!-- END HEADER INNER -->
-</div>
-<!-- END HEADER -->
-<!-- BEGIN HEADER & CONTENT DIVIDER -->
-<div class="clearfix"></div>
-<!-- END HEADER & CONTENT DIVIDER -->
-<!-- BEGIN CONTAINER -->
-<div class="page-container">
-    <!-- BEGIN SIDEBAR -->
-    @include('layouts.sidebar')
-            <!-- END SIDEBAR -->
-    <!-- BEGIN CONTENT -->
-    <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
-        <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN PAGE BAR -->
-            <div class="page-toolbar">
-                <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body"
-                     data-placement="bottom" data-original-title="Change dashboard date range">
-                </div>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{!! url('/') !!}">
+                    InfyOm Generator
+                </a>
             </div>
-            <!-- END PAGE BAR -->
 
-            <!-- END PAGE HEADER-->
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{!! url('/home') !!}">Home</a></li>
+                </ul>
 
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{!! url('/login') !!}">Login</a></li>
+                        <li><a href="{!! url('/register') !!}">Register</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     @yield('content')
                 </div>
             </div>
-
         </div>
-        <!-- END CONTENT BODY -->
     </div>
-    <!-- END CONTENT -->
-</div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-@endif
+    @endif
 
-<div class="page-footer">
-    <div class="page-footer-inner"> 2016 &copy; Generator by InfyOm
-    </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
-</div>
-<!-- END FOOTER -->
+    <!-- jQuery 2.1.4 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-<!--[if lt IE 9]>
-<script src="path-to-metronic/assets/global/plugins/respond.min.js')!!}></script>
-<script src=" path-to-metronic/assets/global/plugins/excanvas.min.js')!!}></script>
-<![endif]-->
+    <!-- AdminLTE App -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/js/app.min.js"></script>
 
-<!-- BEGIN CORE PLUGINS -->
-<script src="path-to-metronic/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
+    <!-- Datatables -->
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="path-to-metronic/assets/global/plugins/moment.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/serial.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/pie.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/radar.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/themes/light.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/themes/patterns.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amcharts/themes/chalk.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/ammap/ammap.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/amcharts/amstockcharts/amstock.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-
-<!-- BEGIN THEME GLOBAL SCRIPTS -->
-<script src="path-to-metronic/assets/global/scripts/app.min.js" type="text/javascript"></script>
-<!-- END THEME GLOBAL SCRIPTS -->
-
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="path-to-metronic/assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-
-<!-- BEGIN THEME LAYOUT SCRIPTS -->
-<script src="path-to-metronic/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
-<script src="path-to-metronic/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-@yield('scripts')
-<!-- Datatables -->
-
-<!-- END THEME LAYOUT SCRIPTS -->
+    @yield('scripts')
 </body>
 </html>

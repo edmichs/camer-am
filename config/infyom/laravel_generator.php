@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'templates'         => 'metronic-templates',
+    'templates'         => 'adminlte-templates',
 
 
 
