@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "15c0341be2b5b3d72e995e965a00d042",
+    "content-hash": "4923b5f71abc5bce81ed2a37e79142b2",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -663,17 +663,17 @@
             "time": "2018-02-07T20:20:57+00:00"
         },
         {
-            "name": "infyomlabs/adminlte-templates",
-            "version": "5.7.x-dev",
+            "name": "infyomlabs/generator-builder",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/InfyOmLabs/adminlte-templates.git",
-                "reference": "b05d9fbfb05d3316df15f7c76370af6e6f29eece"
+                "url": "https://github.com/InfyOmLabs/generator-builder.git",
+                "reference": "acd07ef38668920fef1fda1d6d1d62dadbef4efb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/adminlte-templates/zipball/b05d9fbfb05d3316df15f7c76370af6e6f29eece",
-                "reference": "b05d9fbfb05d3316df15f7c76370af6e6f29eece",
+                "url": "https://api.github.com/repos/InfyOmLabs/generator-builder/zipball/acd07ef38668920fef1fda1d6d1d62dadbef4efb",
+                "reference": "acd07ef38668920fef1fda1d6d1d62dadbef4efb",
                 "shasum": ""
             },
             "require": {
@@ -681,16 +681,9 @@
                 "php": ">=5.5.9"
             },
             "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "\\InfyOm\\AdminLTETemplates\\AdminLTETemplatesServiceProvider"
-                    ]
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "InfyOm\\AdminLTETemplates\\": "src/"
+                    "InfyOm\\GeneratorBuilder\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -703,16 +696,18 @@
                     "email": "me@mitul.me"
                 }
             ],
-            "description": "AdminLTE templates for InfyOm Laravel Generator",
+            "description": "InfyOm Laravel Generator GUI Builder",
             "keywords": [
-                "AdminLTE",
-                "bootstrap",
+                "api",
+                "builder",
+                "crud",
                 "generator",
-                "infyom",
+                "gui",
+                "interface",
                 "laravel",
-                "templates"
+                "view"
             ],
-            "time": "2018-06-05T18:07:35+00:00"
+            "time": "2017-10-12T02:36:15+00:00"
         },
         {
             "name": "infyomlabs/laravel-generator",
@@ -779,6 +774,51 @@
                 "view"
             ],
             "time": "2018-11-18T06:17:02+00:00"
+        },
+        {
+            "name": "infyomlabs/metronic-templates",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/metronic-templates.git",
+                "reference": "7676b4253c86898c8ae0d8dbd724c920e64f327e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/metronic-templates/zipball/7676b4253c86898c8ae0d8dbd724c920e64f327e",
+                "reference": "7676b4253c86898c8ae0d8dbd724c920e64f327e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\MetronicTemplates\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Metronic theme templates for InfyOm Laravel Generator",
+            "keywords": [
+                "bootstrap",
+                "generator",
+                "infyom",
+                "laravel",
+                "metronic",
+                "templates"
+            ],
+            "time": "2017-07-30T07:10:58+00:00"
         },
         {
             "name": "infyomlabs/swagger-generator",
@@ -4973,9 +5013,10 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "infyomlabs/laravel-generator": 20,
-        "infyomlabs/adminlte-templates": 20,
+        "infyomlabs/metronic-templates": 20,
         "infyomlabs/swagger-generator": 20,
-        "jlapp/swaggervel": 20
+        "jlapp/swaggervel": 20,
+        "infyomlabs/generator-builder": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
