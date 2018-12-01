@@ -1,31 +1,52 @@
 <?php
 
-/**
- * Created by Reliese Model.
- * Date: Sat, 01 Dec 2018 05:09:17 +0000.
- */
-
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Affection
- * 
- * @property int $ID
- * @property string $Code
- * @property string $Description
- *
  * @package App\Models
+ * @version December 1, 2018, 5:51 am UTC
+ *
+ * @property string code
+ * @property string description
  */
-class Affection extends Eloquent
+class Affection extends Model
 {
-	protected $table = 'affection';
-	protected $primaryKey = 'ID';
-	public $timestamps = false;
+    use SoftDeletes;
 
-	protected $fillable = [
-		'Code',
-		'Description'
-	];
+    public $table = 'affections';
+    
+
+    protected $dates = ['deleted_at'];
+
+
+    public $fillable = [
+        'code',
+        'description'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'code' => 'string',
+        'description' => 'string'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'code' => 'nullable',
+        'description' => 'nullable'
+    ];
+
+    
 }
