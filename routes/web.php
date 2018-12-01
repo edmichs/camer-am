@@ -29,3 +29,7 @@ Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\
 Route::resource('affections', 'AffectionController');
 
 Route::resource('affections', 'AffectionController');
+
+Route::resource('affections', 'AffectionController');
+
+Route::resource('affections', 'AffectionController');
