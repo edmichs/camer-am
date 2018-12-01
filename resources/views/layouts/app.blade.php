@@ -187,18 +187,18 @@
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
+                                    <p><br>&nbsp;</p>
+                                    {{--<div class="pull-right">--}}
 
-                                    <div class="pull-right">
-
-                                        <a href="{!! url('/logout') !!}" class="btn btn-default btn-app"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-power-off"></i>
-                                            Sign out
-                                        </a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </div>
+                                        {{--<a href="{!! url('/logout') !!}" class="btn btn-default btn-app"--}}
+                                           {{--onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
+                                            {{--<i class="fa fa-power-off"></i>--}}
+                                            {{--Sign out--}}
+                                        {{--</a>--}}
+                                        {{--<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">--}}
+                                            {{--{{ csrf_field() }}--}}
+                                        {{--</form>--}}
+                                    {{--</div>--}}
                                 </li>
                             </ul>
                         </li>
@@ -216,7 +216,8 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2016 <a href="#">Kamitbrains</a>.</strong> All rights reserved.
+            <strong>Copyright © 2018 <a href="#">SOGAR AM</a>.</strong> All rights reserved.
+            <br><small>made with love by Kamitbrains</small>
         </footer>
 
     </div>

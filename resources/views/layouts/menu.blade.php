@@ -9,7 +9,7 @@
     </a>
     <ul class="treeview-menu">
 
-        <li class="{{ Request::is('*affections*') ? 'active' : '' }}">
+        <li class="{{ Request::is('affections') ? 'active' : '' }}">
             <a href="{!! route('affections.index') !!}"><i class="fa fa-edit"></i><span>Affections</span></a>
         </li>
     </ul>
