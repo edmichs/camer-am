@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="portlet light bordered">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">Affections</span>
-            </div>
-            <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('affections.create') !!}">Add New</a>
-            </h1>
-        </div>
+    <section class="content-header">
+        <h1 class="pull-left">Affections</h1>
+        <h1 class="pull-right">
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('affections.create') !!}">Add New</a>
+        </h1>
+    </section>
+    <div class="content">
+        <div class="clearfix"></div>
+
         @include('flash::message')
+
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('affections.table')
+                    @include('affections.table')
             </div>
         </div>
- </div>
+    </div>
 @endsection
 

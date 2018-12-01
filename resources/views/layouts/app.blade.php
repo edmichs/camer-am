@@ -13,6 +13,14 @@
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Material Design -->
+    {{--<link rel="stylesheet" href="/plugins/material-admin-lte/dist/css/bootstrap-material-design.min.css">--}}
+    {{--<link rel="stylesheet" href="/plugins/material-admin-lte/dist/css/ripples.min.css">--}}
+    {{--<link rel="stylesheet" href="/plugins/material-admin-lte/dist/css/MaterialAdminLTE.min.css">--}}
+    <!-- AdminLTE Material Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    {{--<link rel="stylesheet" href="/plugins/material-admin-lte/dist/css/skins/all-md-skins.min.css">--}}
 </head>
 
 <body class="skin-blue sidebar-mini">

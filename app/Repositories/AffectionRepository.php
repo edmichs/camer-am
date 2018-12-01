@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AffectionRepository
  * @package App\Repositories
- * @version December 1, 2018, 6:07 am UTC
+ * @version December 1, 2018, 7:13 am UTC
  *
  * @method Affection findWithoutFail($id, $columns = ['*'])
  * @method Affection find($id, $columns = ['*'])

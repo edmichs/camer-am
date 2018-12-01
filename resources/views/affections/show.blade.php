@@ -1,21 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-     <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-equalizer font-red-sunglo"></i>
-                    <span class="caption-subject font-red-sunglo bold uppercase">Affection</span>
-                </div>
-            </div>
-            <div>
-                @include('metronic-templates::common.errors')
-            </div>
-            <div class="portlet-body form">
+    <section class="content-header">
+        <h1>
+            Affection
+        </h1>
+    </section>
+    <div class="content">
+        <div class="box box-primary">
+            <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                   @include('affections.show_fields')
-                   <a href="{!! route('affections.index') !!}" class="btn btn-default">Back</a>
+                    @include('affections.show_fields')
+                    <a href="{!! route('affections.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>
+    </div>
 @endsection

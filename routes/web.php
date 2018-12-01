@@ -33,3 +33,7 @@ Route::resource('affections', 'AffectionController');
 Route::resource('affections', 'AffectionController');
 
 Route::resource('affections', 'AffectionController');
+
+Route::resource('affections', 'AffectionController');
+
+Route::resource('affections', 'AffectionController');

@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
- <div class="portlet light bordered">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">Affection</span>
+    <section class="content-header">
+        <h1>
+            Affection
+        </h1>
+    </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
+
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'affections.store']) !!}
+
+                        @include('affections.fields')
+
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
-        <div>
-            @include('metronic-templates::common.errors')
-        </div>
-        <div class="portlet-body form">
-            <div class="row">
-                {!! Form::open(['route' => 'affections.store']) !!}
-
-                    @include('affections.fields')
-
-                 {!! Form::close() !!}
-            </div>
-        </div>
-  </div>
+    </div>
 @endsection
