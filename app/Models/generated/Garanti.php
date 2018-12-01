@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 01 Dec 2018 05:09:17 +0000.
+ * Date: Sat, 01 Dec 2018 04:57:50 +0000.
  */
 
 namespace App\Models;
@@ -10,17 +10,19 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Affection
+ * Class Garanti
  * 
  * @property int $ID
  * @property string $Code
  * @property string $Description
+ * 
+ * @property \Illuminate\Database\Eloquent\Collection $decomptes
  *
  * @package App\Models
  */
-class Affection extends Eloquent
+class Garanti extends Eloquent
 {
-	protected $table = 'affection';
+	protected $table = 'garanti';
 	protected $primaryKey = 'ID';
 	public $timestamps = false;
 
@@ -28,4 +30,9 @@ class Affection extends Eloquent
 		'Code',
 		'Description'
 	];
+
+	public function decomptes()
+	{
+		return $this->hasMany(\App\Models\Decompte::class, 'GarantiID');
+	}
 }

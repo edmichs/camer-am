@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 01 Dec 2018 05:09:17 +0000.
+ * Date: Sat, 01 Dec 2018 04:57:50 +0000.
  */
 
 namespace App\Models;
@@ -10,11 +10,10 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Succursale
+ * Class Souscripteur
  * 
  * @property int $ID
- * @property int $SouscripteurID
- * @property int $Statut
+ * @property string $Statut
  * @property string $Nom
  * @property string $Raison_social
  * @property string $Activite
@@ -25,26 +24,21 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $Localisation_geo
  * @property int $Nombre_total_assure
  * 
- * @property \App\Models\Souscripteur $souscripteur
- * @property \Illuminate\Database\Eloquent\Collection $assures
- * @property \Illuminate\Database\Eloquent\Collection $police
+ * @property \Illuminate\Database\Eloquent\Collection $succursales
  *
  * @package App\Models
  */
-class Succursale extends Eloquent
+class Souscripteur extends Eloquent
 {
-	protected $table = 'succursale';
+	protected $table = 'souscripteur';
 	protected $primaryKey = 'ID';
 	public $timestamps = false;
 
 	protected $casts = [
-		'SouscripteurID' => 'int',
-		'Statut' => 'int',
 		'Nombre_total_assure' => 'int'
 	];
 
 	protected $fillable = [
-		'SouscripteurID',
 		'Statut',
 		'Nom',
 		'Raison_social',
@@ -57,18 +51,8 @@ class Succursale extends Eloquent
 		'Nombre_total_assure'
 	];
 
-	public function souscripteur()
+	public function succursales()
 	{
-		return $this->belongsTo(\App\Models\Souscripteur::class, 'SouscripteurID');
-	}
-
-	public function assures()
-	{
-		return $this->hasMany(\App\Models\Assure::class, 'SuccursaleID');
-	}
-
-	public function police()
-	{
-		return $this->hasMany(\App\Models\Police::class, 'SuccursaleID');
+		return $this->hasMany(\App\Models\Succursale::class, 'SouscripteurID');
 	}
 }

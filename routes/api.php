@@ -39,3 +39,5 @@ Route::resource('affections', 'AffectionAPIController');
 Route::resource('affections', 'AffectionAPIController');
 
 Route::resource('affections', 'AffectionAPIController');
+
+Route::resource('affections', 'AffectionAPIController');
