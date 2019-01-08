@@ -65,6 +65,8 @@
                     <div class="box-header">
                         <h3 class="box-title">Liste des souscripteur</h3><br>
                         <a href="{{route('add_souscripteur_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouveau Souscripteur</a>
+                        <a href="{{route('souscripteur_list_stream_pdf')}}" class="btn btn-success"><i class="fa fa-plus"></i>Open pdf</a>
+                        <a href="{{route('souscripteur_list_download_pdf')}}" class="btn btn-success"><i class="fa fa-plus"></i>Direct download pdf</a>
                         @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
@@ -77,7 +79,7 @@
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Code Soci&eacute;t&eacute;</th>
                                 <th>Activit&eacute;</th>
@@ -150,7 +152,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th>Code Soci&eacute;t&eacute;</th>
                                 <th>Activit&eacute;</th>
@@ -183,7 +185,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Nouvelle Surccusale...</h4>
                     </div>
                     <div class="modal-body">

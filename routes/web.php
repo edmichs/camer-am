@@ -53,6 +53,16 @@ Route::get('souscripteur/list',[
 	'as'=>'souscripteur_list_path',
 	'uses'=>'SouscripteurController@index',
 ]);
+//
+Route::get('souscripteur/list/download_pdf',[
+	'as'=>'souscripteur_list_download_pdf',
+	'uses'=>'SouscripteurController@download_pdf',
+]);
+//
+Route::get('souscripteur/list/stream_pdf',[
+	'as'=>'souscripteur_list_stream_pdf',
+	'uses'=>'SouscripteurController@stream_pdf',
+]);
 
 //valide form add
 Route::post('souscripteur/add',[
@@ -185,7 +195,7 @@ Route::get('exercice/show/{id}',[
 ]);
 
 /*
- * Assuré & incorporation route
+ * Assurï¿½ & incorporation route
  */
 Route::get('assure/list',[
     'as' => 'list_assure_path',
