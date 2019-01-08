@@ -10,8 +10,9 @@ namespace App\Repositories;
 
 
 use App\Models\Affection;
+use Prettus\Repository\Eloquent\BaseRepository;
 
-class AffectionRepository
+class AffectionRepository extends BaseRepository
 {
     public static function getAll()
     {
@@ -31,5 +32,15 @@ class AffectionRepository
         }else return Affection::create([
             'Description' => $description
         ]);
+    }
+
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return Affection::class;
     }
 }

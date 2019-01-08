@@ -11,8 +11,9 @@ namespace App\Repositories;
 
 use App\Models\Exercice;
 use Illuminate\Http\Request;
+use Prettus\Repository\Eloquent\BaseRepository;
 
-class ExerciceRepository
+class ExerciceRepository extends BaseRepository
 {
     public static function getExerciceEnCours()
     {
@@ -40,5 +41,15 @@ class ExerciceRepository
     public static function show($id)
     {
         return Exercice::find($id);
+    }
+
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return Exercice::class;
     }
 }
