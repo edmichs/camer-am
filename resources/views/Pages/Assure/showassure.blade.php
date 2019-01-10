@@ -89,6 +89,9 @@
 
                                         </div>
                                         <!-- Profile Image -->
+                                        <div class="row">
+                                            <a class="btn btn-info" target="_blank" href="{{ route('assure.print', $assure) }}"><i class="fa fa-print"></i> Imprimer</a>
+                                        </div>
                                     </div>
                                     <div class="col-md-9">
                                         <div class="name-wrapper col-md-6 form-inline">

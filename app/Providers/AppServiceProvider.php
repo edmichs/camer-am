@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        \PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
     }
 
     /**

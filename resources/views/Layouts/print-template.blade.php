@@ -14,6 +14,8 @@
       .page-break {
         page-break-after: always;
       }
+
+      @include('Layouts.bluma-min-css')
     </style>
     @yield('css')
   </head>

@@ -34,7 +34,6 @@
             border-color: #00a65a !important;
         }
     </style>
-    </style>
 
 @endsection
 
@@ -134,7 +133,10 @@
                                         <select class="selectpicker form-control" onchange="val()" name="PoliceID" id="PoliceID" data-show-subtext="true" data-live-search="true">
                                             <option value=" ">-- selectionner une police --</option>
                                             @foreach($polices as $police)
-                                            <option data-subtext="{{$police->succursale->Nom}}" value="{{$police->ID}}">{{$police->Numero_police}}</option>
+                                                @php
+                                                    $succursale = $police->succursale;
+                                                @endphp
+                                            <option data-subtext="{{$succursale ? $succursale->Nom : ""}}" value="{{$police->ID}}">{{$police->Numero_police}}</option>
                                             @endforeach
                                         </select>
                                     </div>

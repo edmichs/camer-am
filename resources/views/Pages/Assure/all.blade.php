@@ -91,7 +91,7 @@
                             <tbody>
                             @foreach($assures as $assure)
                                 <tr>
-                                    <td>{{$assure->succursale->Nom}}</td>
+                                    <td>{{$assure->succursale()->exists() ? $assure->succursale->Nom : ''}}</td>
                                     <td>{{$assure->Matricule}}</td>
                                     <td>{{$assure->code_famille->Code}}</td>
                                     <td>{{$assure->type_employe->Libelle}}</td>
@@ -155,7 +155,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
@@ -182,7 +182,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">
@@ -263,7 +263,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Nouvelle Surccusale...</h4>
                     </div>
                     <div class="modal-body">

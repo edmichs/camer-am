@@ -20,6 +20,7 @@ use App\Repositories\PoliceRepository;
 use App\Repositories\PrestationRepository;
 use App\Repositories\SurccusaleRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 use DB;
 
@@ -131,6 +132,28 @@ class BpcController extends Controller
         $bpc = BpcRepository::show($id);
         if($bpc){
             return view('Pages.Bpc.show',compact('bpc'));
+        }
+        return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
+    }
+
+    /**
+     * Print pdf of the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id)
+    {
+        $bpc = BpcRepository::show($id);
+        if($bpc){
+//            return view('Pages.Bpc.print',compact('bpc'));
+
+            $pdf = App::make('dompdf.wrapper');
+
+            $pdf->loadView('Pages.Bpc.print', compact('bpc') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+            return $pdf->stream();
         }
         return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
     }

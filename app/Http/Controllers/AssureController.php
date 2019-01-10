@@ -14,6 +14,7 @@ use App\Repositories\SurccusaleRepository;
 use App\Repositories\TypeRepository;
 use App\Repositories\UploadRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AssureController extends Controller
 {
@@ -75,6 +76,26 @@ class AssureController extends Controller
         $exercice = ExerciceRepository::getExerciceEnCours();
         $assure = AssureRepository::show($id);
         return view('Pages.Assure.showassure',compact('assure','exercice'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id)
+    {
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $assure = AssureRepository::show($id);
+
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('Pages.Assure.print', compact('assure','exercice') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+        return $pdf->stream();
     }
 
     /**

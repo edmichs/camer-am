@@ -62,6 +62,7 @@ Route::get('souscripteur/list/download_pdf',[
 Route::get('souscripteur/list/stream_pdf',[
 	'as'=>'souscripteur_list_stream_pdf',
 	'uses'=>'SouscripteurController@stream_pdf',
+	'uses'=>'SouscripteurController@stream_pdf',
 ]);
 
 //valide form add
@@ -209,6 +210,12 @@ Route::get('assure/show/{id}',[
     'as' => 'show_assure_path/{id}',
     'uses' =>'AssureController@show'
 ]);
+
+Route::get('assure/{id}/print',[
+    'as' => 'assure.print',
+    'uses' =>'AssureController@printer'
+]);
+
 Route::get('assure/update/{id}',[
     'as' => 'update_assure_path/{id}',
     'uses' =>'AssureController@edit'
@@ -341,6 +348,11 @@ Route::get('bpc/list',[
 Route::get('bpc/show/{id}',[
    'as' => 'show_bpc_path/{id}',
    'uses' => 'BpcController@show'
+]);
+
+Route::get('bpc/{id}/print',[
+   'as' => 'bpc.print',
+   'uses' => 'BpcController@printer'
 ]);
 Route::get('bpc/update/{id}',[
    'as' => 'update_bpc_path/{id}',

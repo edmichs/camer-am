@@ -77,7 +77,7 @@
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Numero BPC</th>
                                 <th>Exercice</th>
                                 <th>Nom Assur&eacute;</th>
@@ -93,17 +93,24 @@
                             </thead>
                             <tbody>
                                 @foreach($bpcs as $bpc)
+
+                                    @php
+                                        $police = $bpc->police;
+                                        $assure = $bpc->assure;
+                                        $affection = $bpc->affection;
+                                        $medecin_conseil = $bpc->medecin_conseil;
+                                    @endphp
                                     <tr>
                                         <td>{{$bpc->Numero_bpc}}</td>
                                         <td>{{date("Y", strtotime($bpc->exercice->Date_debut))}}</td>
 
-                                        <td>{{$bpc->assure->Nom}}</td>
-                                        <td>{{$bpc->assure->Matricule}}</td>
-                                        <td>{{$bpc->police->Numero_police}}</td>
-                                        <td>{{$bpc->police->succursale->Nom}}</td>
-                                        <td>{{$bpc->affection->Description}}</td>
-                                        <td>{{$bpc->assure->Plafond}}  </td>
-                                        <td>{{$bpc->assure->Taux_couverture}}  </td>
+                                        <td>{{$assure ? $assure->Nom : ""}}</td>
+                                        <td>{{$assure ? $assure->Matricule : ""}}</td>
+                                        <td>{{$police ? $police->Numero_police : ""}}</td>
+                                        <td>{{$police ? ($police->succursale()->exists() ? $police->succursale->Nom: "") : ""}}</td>
+                                        <td>{{$affection ? $affection->Description : ""}}</td>
+                                        <td>{{$assure ? $assure->Plafond : ""}}  </td>
+                                        <td>{{$assure ? $assure->Taux_couverture : ""}}  </td>
                                         <td>{{$bpc->medecin_conseil->Noms}}</td>
                                         <td>
                                             <a href='{{url("bpc/show/{$bpc->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
@@ -129,7 +136,7 @@
                             <tfoot>
                             <tr>
 
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Numero BPC</th>
                                 <th>Exercice</th>
                                 <th>Nom Assur&eacute;</th>
@@ -162,11 +169,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>
@@ -189,7 +196,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">
