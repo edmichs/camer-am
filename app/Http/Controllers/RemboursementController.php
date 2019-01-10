@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Police;
+use App\Models\Remboursement;
 use App\Repositories\ExerciceRepository;
 use App\Repositories\PoliceRepository;
 use App\Repositories\RemboursementRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 
 class RemboursementController extends Controller
@@ -55,7 +57,7 @@ class RemboursementController extends Controller
     $valeur= '<table id="example1" class="table table-bordered table-striped dataTable">
                                         <thead>
                                         <tr>
-                                            <!--th>N°</th-->
+                                            <!--th>Nï¿½</th-->
                                             <th>N&deg; decompte</th>
                                             <th width="12%">N&deg; facture</th>
                                             <th>B&eacute;n&eacute;ficiaire</th>
@@ -102,6 +104,29 @@ class RemboursementController extends Controller
     public function show($id)
     {
         //
+    }
+
+    /**
+     * Print pdf of the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id = null)
+    {
+        // TODO recuperer le remboursement par l'id et corriger la route dans web
+        $reboursement = new Remboursement;
+        if($reboursement){
+//            return view('Pages.Remboursement.print',compact('reboursement'));
+
+            $pdf = App::make('dompdf.wrapper');
+
+            $pdf->loadView('Pages.Remboursement.print', compact('reboursement') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+            return $pdf->stream();
+        }
+        return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
     }
 
     /**

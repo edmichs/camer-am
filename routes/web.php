@@ -395,6 +395,11 @@ Route::get('remboursement/validation',[
     'as'=>'add_remboursement_path',
     'uses'=>'RemboursementController@create'
 ]);
+
+Route::get('remboursement/print',[
+    'as'=>'remboursement.print',
+    'uses'=>'RemboursementController@printer'
+]);
 Route::get('remboursement/list',[
     'as'=>'list_remboursement_path',
     'uses'=>'RemboursementController@index'

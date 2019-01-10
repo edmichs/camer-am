@@ -29,7 +29,7 @@
                                 <div><b>Exercice fiscal: </b><span>xxxxxx</span></div>
                             </td>
                             <td>
-                                <div><b>Numéro Police: </b><span>xxxxxxxxxxxxxxxxxxxx</span> </div>
+                                <div><b>Police Maladie pour Hysacam Edéa </b> </div>
                                 <div>
                                     <b>Date effet: </b>: <span>xxxxxx</span>
                                     <b>Date échéance: </b><span>xxxxxx</span>
