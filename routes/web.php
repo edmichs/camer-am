@@ -370,6 +370,10 @@ Route::get('decompte/add',[
    'as'=>'add_decompte_path',
    'uses'=>'DecompteController@create'
 ]);
+Route::get('decompte/print',[
+   'as'=>'decompte.print',
+   'uses'=>'DecompteController@printer'
+]);
 Route::post('decompte/add',[
    'as'=>'add_decompte_path',
    'uses'=>'DecompteController@store'

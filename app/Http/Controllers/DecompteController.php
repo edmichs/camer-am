@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Assure;
 use App\Models\BaremePrestation;
+use App\Models\Decompte;
 use App\Models\Police;
 use App\Models\Prestation;
 use App\Repositories\AffectionRepository;
@@ -18,6 +19,7 @@ use App\Repositories\PrestationRepository;
 use App\Repositories\SurccusaleRepository;
 use App\Repositories\ZoneGeoRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class DecompteController extends Controller
 {
@@ -104,7 +106,7 @@ class DecompteController extends Controller
         $valeur= '<table id="example1" class="table table-bordered table-striped dataTable">
                                         <thead>
                                         <tr>
-                                            <!--th>N°</th-->
+                                            <!--th>Nï¿½</th-->
                                             <th>Code Prestation</th>
                                             <th width="12%">Lib&eacute;ll&eacute; prestation</th>
                                             <th>Plafond</th>
@@ -160,6 +162,28 @@ class DecompteController extends Controller
     public function show($id)
     {
         //
+    }
+
+    /**
+     * Print the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id=null)
+    {
+        // TODO recuperer le remboursement par l'id et corriger la route dans web
+        $decompte = new Decompte();
+        if($decompte){
+//            return view('Pages.Decompte.print',compact('decompte'));
+
+            $pdf = App::make('dompdf.wrapper');
+
+            $pdf->loadView('Pages.Decompte.print', compact('decompte') );
+
+            return $pdf->stream();
+        }
+        return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
     }
 
     /**
