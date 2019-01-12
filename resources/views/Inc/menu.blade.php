@@ -275,7 +275,7 @@
                         <ul class="treeview-menu">
                             <li class="#">
                                 <a href="#">
-                                    <i class="fa fa-plus"></i> <span>Nombre d'assur�s / Souscripteur</span>
+                                    <i class="fa fa-plus"></i> <span>Nombre d'assur�s / Souscripteur</span>
                                 </a>
                             </li>
 
@@ -288,6 +288,31 @@
                     </li>
 
 
+
+                </ul>
+            </li>
+          <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-share"></i> <span>Options avancées</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-cogs"></i> Sauvegarde
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="">
+                                <a href="{{route('sauvegarde.bd')}}">
+                                    <i class="fa fa-cog"></i> <span>Base de données</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </li>

@@ -449,3 +449,13 @@ Route::get('/home', [
     'as' => 'accueil_path',
     'uses' => 'AccueilController@index'
 ]);
+
+
+Route::get('/backup/db', [
+    'as' => 'sauvegarde.bd',
+    'uses' => 'BackupController@save_bd'
+]);
+Route::post('/backup/db', [
+    'as' => 'sauvegarde.bd.create',
+    'uses' => 'BackupController@create_bd_backup'
+]);
