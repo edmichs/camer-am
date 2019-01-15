@@ -25,7 +25,7 @@ class AssureController extends Controller
     public function index()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-       $assures = AssureRepository::getAll();
+       $assures = AssureRepository::getByExercice($exercice->ID);
         return view('Pages.Assure.all',compact('assures','exercice'));
     }
 
@@ -40,7 +40,7 @@ class AssureController extends Controller
         $surccusales = SurccusaleRepository::getAll();
         $exercice = ExerciceRepository::getExerciceEnCours();
         $typeemployes = TypeRepository::getAll();
-        $polices = PoliceRepository::getAll();
+        $polices = PoliceRepository::getByExercice($exercice->ID);
         return view('Pages.Assure.add',compact('familles','surccusales','exercice','typeemployes','polices'));
     }
 
@@ -52,7 +52,7 @@ class AssureController extends Controller
      */
     public function store(Request $request)
     {
-
+        UploadRepository::upload($request);
         if(AssureRepository::store($request)){
             return redirect(route('list_assure_path'));
         }
@@ -88,7 +88,7 @@ class AssureController extends Controller
         $familles = CodeFamilleRepository::getAll();
         $exercice = ExerciceRepository::getExerciceEnCours();
         $typeemployes = TypeRepository::getAll();
-        $polices = PoliceRepository::getAll();
+        $polices = PoliceRepository::getByExercice($exercice->ID);
         $assure = AssureRepository::show($id);
         if($assure){
             return view('Pages.Assure.edit',compact('assure','familles','exercice','typeemployes','polices'));
@@ -123,5 +123,26 @@ class AssureController extends Controller
            return redirect(route('list_assure_path'));
        }
         return redirect()->back()->with(['message' =>'delete assure failed']);
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id)
+    {
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $assure = AssureRepository::show($id);
+
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('Pages.Assure.print', compact('assure','exercice') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+        return $pdf->stream();
     }
 }

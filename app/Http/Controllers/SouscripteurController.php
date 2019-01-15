@@ -26,6 +26,45 @@ class SouscripteurController extends Controller
     }
 
     /**
+     * Download pdf a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function download_pdf()
+    {
+
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $souscripteurs = Souscripteur::all();
+
+        dd(compact('souscripteurs', 'exercice'));
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('Pages.Souscripteur.printall', compact('souscripteurs','exercice') );
+
+        return $pdf->download('Souscripteur_liste.pdf');
+    }
+
+    /**
+     * Display pdf a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stream_pdf()
+    {
+
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $souscripteurs = Souscripteur::all();
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->loadView('Pages.Souscripteur.printall', compact('souscripteurs','exercice') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+        return $pdf->stream();
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

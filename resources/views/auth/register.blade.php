@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('matricule') ? ' has-error' : '' }}">
-                            <label for="matricule" class="col-md-4 control-label">Matricule</label>
+                            <label for="matricule" class="col-md-4 control-label">Identifiant de l'utilisateur</label>
 
                             <div class="col-md-6">
                                 <input id="matricule" type="text" class="form-control" name="matricule" value="{{ old('matricule') }}" required >

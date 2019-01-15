@@ -29,7 +29,7 @@ class BonusMalusController extends Controller
     public function create()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-        $assures = AssureRepository::getAll();
+        $assures = AssureRepository::getByExercice($exercice->ID);
         return view('Pages.Bonus.add',compact('exercice','assures'));
     }
 

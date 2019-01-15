@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6">
                                         <label for="Garanti">Type Garanti</label>
-                                        <select name="GarantiID" class="form-control" id="GarantiID">
+                                        <select name="GarantiID" class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="GarantiID">
                                             <option value=" ">--selectioner le type de garanti --</option>
                                             @foreach($garanties as $garanti)
                                                 <option value="{{$garanti->ID}}">{{$garanti->Description}}</option>
@@ -53,10 +53,10 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="affection">Categorie affection</label>
-                                        <select name="AffectionID" class="form-control" id="AffectionID">
+                                        <select name="AffectionID" class=" selectpicker form-control" data-show-subtext="true" data-live-search="true" id="AffectionID">
                                             <option value=" ">--selectioner la cat&eacute;gorie affection --</option>
                                             @foreach($affections as $affection)
-                                                <option value="{{$affection->ID}}">{{$affection->Description}}</option>
+                                                <option  value="{{$affection->ID}}">{{$affection->Description}}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -83,8 +83,11 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="profile-img">
-
+                                                @if($assure->Avatar)
                                                 <img src="/img/{{$assure->Avatar}}" width="250px" height="250px" class="img-responsive" alt="{{$assure->Avatar}}"/>
+                                                @else
+                                                <img src="/img/default.png" width="250px" height="250px" class="img-responsive" alt="{{$assure->Avatar}}"/>
+                                            @endif
                                                 <br>
 
                                         </div>
@@ -158,7 +161,7 @@
                                                             </div> <div class="col-md-4">
                                                                 <address>
                                                                     <strong>Plafond</strong><br>
-                                                                    {{$assure->Plafond}}
+                                                                    {{$assure->Plafond}} XFA
 
                                                                 </address>
                                                             </div>
@@ -171,13 +174,13 @@
                                                             <div class="col-md-4">
                                                                 <address>
                                                                     <strong>En cours consommation</strong><br>
-                                                                    {{$assure->Encour_conso}} %
+                                                                    {{$assure->Encour_conso}} XFA
                                                                 </address>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <address>
                                                                     <strong>Solde</strong><br>
-                                                                    {{$assure->Solde}}
+                                                                    {{$assure->Solde}} XFA
                                                                 </address>
                                                             </div>
 

@@ -169,7 +169,11 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <script src="{{ asset('js/jspdf.min.js') }}"></script>
     <!-- Page script -->
+    <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{asset('js/html2canvas.js')}}"></script>
+
 
     <script type="text/javascript">
 

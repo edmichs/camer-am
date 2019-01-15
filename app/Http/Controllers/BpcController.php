@@ -33,7 +33,7 @@ class BpcController extends Controller
     public function index()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-       $bpcs = BpcRepository::getAll();
+       $bpcs = BpcRepository::getByExercice($exercice->ID);
         return view('Pages.Bpc.all',compact('bpcs','exercice'));
     }
 
@@ -46,8 +46,8 @@ class BpcController extends Controller
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
         $prestations = CategoriePrestationRepository::getAll();
-        $polices = PoliceRepository::getAll();
-        $assures = AssureRepository::getAll();
+        $polices = PoliceRepository::getByExercice($exercice->ID);
+        $assures = AssureRepository::getByExercice($exercice->ID);
         $affections = AffectionRepository::getAll();
         $centresantes = CentreSanteRepository::getAll();
         $medecins = MedecinConseilRepository::getAll();
@@ -90,9 +90,10 @@ class BpcController extends Controller
                 array_push($array,$assure);
                 return $array;
             }
-            if($request->has('validation')){
+            if($request->has('print')){
 
-
+                BpcRepository::printPdf();
+                return "impression reussie";
             }
 
 
@@ -135,6 +136,27 @@ class BpcController extends Controller
         return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
     }
 
+    /**
+     * Print pdf of the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id)
+    {
+        $bpc = BpcRepository::show($id);
+        if($bpc){
+//            return view('Pages.Bpc.print',compact('bpc'));
+
+            $pdf = App::make('dompdf.wrapper');
+
+            $pdf->loadView('Pages.Bpc.print', compact('bpc') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+            return $pdf->stream();
+        }
+        return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
+    }
     /**
      * Show the form for editing the specified resource.
      *

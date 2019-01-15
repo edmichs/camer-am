@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Models\Assure;
+use App\Models\Bpc;
 use Illuminate\Http\Request;
 
 class AssureRepository
@@ -18,6 +19,7 @@ class AssureRepository
     {
         return Assure::all();
     }
+
 
     public static function getBySurccusale($id)
     {
@@ -43,7 +45,10 @@ class AssureRepository
                 'Taux_couverture' => $request->input('Taux_couverture'),
                 'Plafond' => $request->input('Plafond'),
                 'Encour_conso' => $request->input('Encour_conso'),
-                'Solde' => $request->input('Solde')
+                'Solde' => $request->input('Solde'),
+                'Avatar' => $request->input('Avatar'),
+                'Date_incorporation' => $request->input('Date_incorporation'),
+                'Montant_prime' => $request->input('Montant_prime')
             ]);
     }
 
@@ -79,6 +84,7 @@ class AssureRepository
 
     public static function destroy($id)
     {
+        Bpc::whereAssureid($id)->delete();
         return Assure::find($id)->delete();
     }
 

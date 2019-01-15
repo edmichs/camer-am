@@ -94,7 +94,11 @@
                                     <td>{{$assure->succursale->Nom}}</td>
                                     <td>{{$assure->Matricule}}</td>
                                     <td>{{$assure->code_famille->Code}}</td>
+                                    @if($assure->Type_EmployeID)
                                     <td>{{$assure->type_employe->Libelle}}</td>
+                                    @else
+                                        <td></td>
+                                    @endif
                                     <td>{{$assure->Nom}}</td>
                                     <td>{{$assure->Nationalite}}</td>
                                     <td>{{$assure->Taux_couverture}}</td>

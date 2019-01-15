@@ -58,7 +58,7 @@ class DecompteRepository
         ]);
     }
 
-    public static function getByDecompte($exerciceID)
+    public static function getByExercice($exerciceID)
     {
         return Decompte::whereExerciceid($exerciceID)->get();
     }

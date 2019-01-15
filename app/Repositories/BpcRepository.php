@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Models\Bpc;
 use Illuminate\Http\Request;
+use PDF;
 
 class BpcRepository
 {
@@ -67,4 +68,10 @@ class BpcRepository
         return Bpc::whereExerciceid($exerciceID)->get();
     }
 
+    public static function printPdf()
+    {
+
+        $pdf = PDF::loadView('home');
+        return $pdf->download('bpc.pdf');
+    }
 }

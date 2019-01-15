@@ -157,23 +157,23 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">x</span></button>
                         <h4 class="modal-title">Cl&ocirc;ture de l&apos;exercice en cours</h4>
                     </div>
                     <div class="modal-body">
                         <p> Souhaitez-vous Cloturer l'exercice en cours ??? </p>
                         {{ csrf_field() }}
-                        <input type="text" name="suppr" id="suppr">
+                        <input type="text" hidden name="suppr" id="suppr">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fermer</button>
-                        <button type="button" id="supprimer" class="btn btn-primary">Valider</button>
+                        <button type="submit" id="supprimer" class="btn btn-primary">Cloturer</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
             </form>
             <script>
-                $('#supprimer').on('click', function (e) {
+                $('#').on('click', function (e) {
                     var formObj = $("#form-suppr");
                     var formURL = formObj.attr("action");
                     var formData = new FormData($("#form-suppr")[0]);

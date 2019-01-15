@@ -36,7 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $Date_incorporation
  * @property string $Discriminator
  * @property int $AssureID
- * @property int $Montant_prime
+ * @property float $Montant_prime
  *
  * @property \App\Models\CodeFamille $code_famille
  * @property \App\Models\Succursale $succursale
@@ -69,6 +69,7 @@ class Assure extends Model
 		'Taux_couverture' => 'float',
 		'Plafond' => 'float',
 		'Encour_conso' => 'float',
+		'Montant_prime' => 'float',
 		'Solde' => 'float',
 		'AssureID' => 'int'
 	];

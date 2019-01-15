@@ -26,10 +26,10 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="SuccursaleID">Souscripteur/Surccusale</label>
-                        <select name="SuccursaleID" id="SuccursaleID" class="form-control">
+                        <select name="SuccursaleID"  class=" selectpicker form-control" data-show-subtext="true"  id="SuccursaleID" data-live-search="true">
                             <option value=" ">--select succursale --</option>
                             @foreach($surccusales as $surccusale)
-                                <option value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
+                                <option value="{{$surccusale->ID}}"  data-subtext="{{$surccusale->Raison_social}}">{{$surccusale->Nom}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -38,16 +38,16 @@
                     <div class="form-group">
                         <label for="ExerciceID">Exrecice</label>
                         <select name="ExerciceID" id="ExerciceID" class="form-control">
-                                <option value="{{$exercice->ID}}">{{date("d/M/Y", strtotime($exercice->Date_debut))}} - {{date("d/M/Y", strtotime($exercice->Date_fin))}}</option>
+                                <option value="{{$exercice->ID}}">{{date("Y", strtotime($exercice->Date_debut))}}</option>
                         </select>
                     </div>
                 </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="Code_familleID">Code Famille</label>
-                                <select name="Code_familleID" id="Code_familleID" class="form-control">
+                                <select name="Code_familleID" class=" selectpicker form-control" data-show-subtext="true"  id="Code_familleID" data-live-search="true">
                                     @foreach($familles as $famille)
-                                        <option value="{{$famille->ID}}">{{$famille->Code}}</option>
+                                        <option data-subtext="{{$famille->Code}}" value="{{$famille->ID}}">{{$famille->Libelle}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -110,6 +110,12 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <label for="Date_incorporation">Date Incorporation</label>
+                                <input type="date" class="form-control" id="Date_incorporation" name="Date_incorporation" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
                                 <label for="Observation">Observation</label>
                                 <textarea type="text" class="form-control" id="Observation" name="Observation" placeholder="Observation"></textarea>
                             </div>
@@ -117,9 +123,9 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="PoliceID">Numero Police</label>
-                                <select name="PoliceID" class="form-control" id="PoliceID">
+                                <select name="PoliceID" class="selectpicker form-control"  data-show-subtext="true" data-live-search="true" id="PoliceID">
                                     @foreach($polices as $police)
-                                        <option value="{{$police->ID}}">{{$police->Numero_police}}</option>
+                                        <option value="{{$police->ID}}" data-subtext="{{$police->Description}}">{{$police->Numero_police}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -131,6 +137,11 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="Montant_prime">Montant Prime</label>
+                                <input type="number" class="form-control" id="Montant_prime" placeholder="Montant_prime" name="Montant_prime">
+                            </div>
+                        </div><div class="col-lg-6">
                             <div class="form-group">
                                 <label for="Plafond">Plafond</label>
                                 <input type="number" class="form-control" id="Plafond" placeholder="Plafond" name="Plafond">

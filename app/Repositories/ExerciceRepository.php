@@ -11,7 +11,11 @@ namespace App\Repositories;
 
 use App\Models\Exercice;
 use Illuminate\Http\Request;
-
+use App\Repositories\PoliceRepository;
+use App\Repositories\DecompteRepository;
+use App\Repositories\BpcRepository;
+use App\Repositories\AssureRepository;
+use App\Repositories\IncorporationRepository;
 class ExerciceRepository
 {
     public static function getExerciceEnCours()
@@ -40,5 +44,30 @@ class ExerciceRepository
     public static function show($id)
     {
         return Exercice::find($id);
+    }
+
+    public static function getSuccursale($id)
+    {
+        return PoliceRepository::getByExercice($id);
+    }
+    public static function getDecompte($id)
+    {
+        return DecompteRepository::getByExercice($id);
+    }
+    public static function getBpc($id)
+    {
+        return BpcRepository::getByExercice($id);
+    }
+    public static function getAssure($id)
+    {
+        return AssureRepository::getByExercice($id);
+    }
+    public static function getIncorporate($id)
+    {
+        return AssureRepository::getByExercice($id);
+    }
+    public static function getRemboursement($id)
+    {
+        return RemboursementRepository::getByExercice($id);
     }
 }

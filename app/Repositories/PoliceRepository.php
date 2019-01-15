@@ -56,6 +56,6 @@ class PoliceRepository
 
     public static function getByExercice($exerciceID)
     {
-        return Police::whereEexerciceid($exerciceID)->get();
+        return Police::whereExerciceid($exerciceID)->get();
     }
 }

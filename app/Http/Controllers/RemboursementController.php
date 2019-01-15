@@ -116,6 +116,29 @@ class RemboursementController extends Controller
     }
 
     /**
+     * Print pdf of the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function printer($id = null)
+    {
+        // TODO recuperer le remboursement par l'id et corriger la route dans web
+        $reboursement = new Remboursement;
+        if($reboursement){
+//            return view('Pages.Remboursement.print',compact('reboursement'));
+
+            $pdf = App::make('dompdf.wrapper');
+
+            $pdf->loadView('Pages.Remboursement.print', compact('reboursement') );
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+            return $pdf->stream();
+        }
+        return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

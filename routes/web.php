@@ -16,7 +16,7 @@ Route::get('send', 'mailController@send');
 // start login routes
 Route::get('/', [
 	'as' => 'login_path',
-	'uses' => 'LoginController@getForm'
+	'uses' => 'AccueilController@index'
 ]);
 
 
@@ -182,6 +182,30 @@ Route::post('exercice/lock',[
 Route::get('exercice/show/{id}',[
 	'as'=>'show_excercice_path/{id}',
 	'uses'=>'ExerciceController@show'
+]);
+Route::get('exercice/succursale/{id}',[
+	'as'=>'succursale_excercice_path/{id}',
+	'uses'=>'ExerciceController@getSuccursale'
+]);
+Route::get('exercice/assure/{id}',[
+	'as'=>'assure_excercice_path/{id}',
+	'uses'=>'ExerciceController@getAssure'
+]);
+Route::get('exercice/incorporate/{id}',[
+	'as'=>'incorporate_excercice_path/{id}',
+	'uses'=>'ExerciceController@getIncorporate'
+]);
+Route::get('exercice/bpc/{id}',[
+	'as'=>'bpc_excercice_path/{id}',
+	'uses'=>'ExerciceController@getBpc'
+]);
+Route::get('exercice/decompte/{id}',[
+	'as'=>'decompte_excercice_path/{id}',
+	'uses'=>'ExerciceController@getDecompte'
+]);
+Route::get('exercice/remboursement/{id}',[
+	'as'=>'remboursement_excercice_path/{id}',
+	'uses'=>'ExerciceController@getRemboursement'
 ]);
 
 /*
@@ -416,5 +440,5 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [
     'as' => 'accueil_path',
-    'uses' => 'AccueilController@index'
+    'uses' => 'HomeController@index'
 ]);

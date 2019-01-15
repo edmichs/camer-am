@@ -18,4 +18,10 @@ class CategoriePrestationRepository
         return CategoriePrestation::all();
     }
 
+    public static function getByExercice($exerciceID)
+    {
+
+
+    }
+
 }

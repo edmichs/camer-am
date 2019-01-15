@@ -13,7 +13,7 @@ class AccueilController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect(route('login'));
     }
 
     /**

@@ -31,17 +31,17 @@
                         </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{route('add_souscripteur_path')}}"><i class="fa fa-circle-o"></i>Nouveau
+                            <li><a href="{{route('add_souscripteur_path')}}"><i class="fa fa-plus"></i>Nouveau
                                     Souscripteur</a></li>
                             <li >
-                                <a href="{{route('souscripteur_list_path')}}"><i class="pull-right-container"></i>Liste
+                                <a href="{{route('souscripteur_list_path')}}"><i class="fa fa-list"></i>Liste
                                 </a>
 
                             </li>
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-circle-o"></i> Surccusale
+                        <a href="#"><i class="fa fa-building-o"></i> Surccusale
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -102,7 +102,7 @@
                     </li>
                     <li class="treeview">
 
-                        <a href="#"><i class="fa fa-circle-o"></i> Polices
+                        <a href="#"><i class="fa fa-qq"></i> Polices
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -119,7 +119,7 @@
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-circle-o"></i> Prestataire
+                        <a href="#"><i class="fa fa-server"></i> Prestataire
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
