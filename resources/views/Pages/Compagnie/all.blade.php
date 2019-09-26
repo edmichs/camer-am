@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Compagnies
+            Liste
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -63,9 +63,11 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des compagnies</h3><br>
-                        <a href="{{route('compagnie_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouvelle compagnie</a>
-                        @if(session('message'))
+
+                        <a href="{{route('compagnie_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle compagnie</a>
+                        <a href="{{route('compagnie_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer la liste</a>
+
+                    @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
                             </div>
@@ -74,10 +76,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Code Soci&eacute;t&eacute;</th>
                                 <th>Adresse</th>
@@ -119,7 +122,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Code Soci&eacute;t&eacute;</th>
                                 <th>Adresse</th>
@@ -130,6 +133,8 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
+                      
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -144,11 +149,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>
@@ -171,7 +176,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">

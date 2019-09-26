@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bpc;
+use App\Models\CategorieAssure;
 use App\Models\CategoriePrestation;
 use App\Models\Extrait_prestation;
 use App\Models\ExtraitBpc;
@@ -20,7 +21,9 @@ use App\Repositories\PoliceRepository;
 use App\Repositories\PrestationRepository;
 use App\Repositories\SurccusaleRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
+use PDF;
 use DB;
 
 class BpcController extends Controller
@@ -81,8 +84,11 @@ class BpcController extends Controller
             if($request->has('changeNom')){
                 $array = array();
                 $assure = AssureRepository::show($request->input('Nom'));
+                $array1 = array();
+                $categorie_assure = CategorieAssure::whereTypeemployeid($assure->TypeEmployeID)->wherePoliceid($assure->PoliceID)->first();
+                array_push($array1,$categorie_assure);
                 array_push($array,$assure);
-                return $array;
+                return array_merge($array,$array1);
             }
             if($request->has('changeMedecin')){
                 $array = array();
@@ -90,15 +96,44 @@ class BpcController extends Controller
                 array_push($array,$assure);
                 return $array;
             }
-            if($request->has('print')){
+            if($request->has('savePrint')){
 
-                BpcRepository::printPdf();
-                return "impression reussie";
+                DB::beginTransaction();
+                try{
+                    $this->store($request);
+                    $this->printerPdf();
+                    $msg = "enregistrement et impression reussi";
+                    DB::commit();
+                    return $msg;
+                }catch(\Exception $e){
+                    $msg = "echec de l'enregistrement".$e->getMessage();
+                    DB::RollBack();
+                    return $msg;
+                }
             }
+            if($request->has('print')){
+                DB::beginTransaction();
+                try{
+                    $bpc = BpcRepository::storeFromForm($request);
 
+                    foreach(Input::get('optradio') as $presta){
+                        if($presta != 0){
+                            Extrait_prestation::create([
+                                'BpcID' => $bpc->ID,
+                                'PrestationID' => $presta
+                            ]);
+                        }
+                    }
+                    DB::commit();
+                    $prestations = CategoriePrestationRepository::getAll();
+                    $affections = AffectionRepository::getAll();
+                    return view('Print.bpc', compact('bpc','prestations','affections'));
+                }catch (\Exception $e){
+                    DB::Rollback();
+                    return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
 
-
-
+                }
+            }
         }
         DB::beginTransaction();
         try{
@@ -144,18 +179,51 @@ class BpcController extends Controller
      */
     public function printer($id)
     {
+
+
         $bpc = BpcRepository::show($id);
+
         if($bpc){
-//            return view('Pages.Bpc.print',compact('bpc'));
 
-            $pdf = App::make('dompdf.wrapper');
-
-            $pdf->loadView('Pages.Bpc.print', compact('bpc') );
-//        dd(compact('souscripteurs', 'exercice', 'pdf'));
-
-            return $pdf->stream();
+            $prestations = CategoriePrestationRepository::getAll();
+            $affections = AffectionRepository::getAll();
+        return  view('Print.bpc', compact('bpc','prestations','affections'));
         }
         return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
+    }
+    public function printerPdf()
+    {
+//            return view('Pages.Bpc.print',compact('bpc'));
+           // $pdf = App::make('dompdf.wrapper');
+          //  $pdf->loadView('Pages.Bpc.print');
+//        dd(compact('souscripteurs', 'exercice', 'pdf'));
+
+        $pdf = PDF::loadView('Pages.Bpc.print');
+          return $pdf->download('bpc.pdf');
+        //return $pdf->download('bpc.pdf');
+
+
+    }
+
+    public function saveAndPrint(Request $request)
+    {
+        if($request->ajax()){
+            if($request->has("save")){
+                DB::beginTransaction();
+                try{
+                    $this->store($request);
+                    $this->printerPdf();
+                    $msg = "enregistrement et impression reussi";
+                    DB::commit();
+                    return $msg;
+                }catch(\Exception $e){
+                    $msg = "echec de l'enregistrement".$e->getMessage();
+                    DB::RollBack();
+                    return $msg;
+                }
+            }
+        }
+
     }
     /**
      * Show the form for editing the specified resource.
@@ -197,5 +265,39 @@ class BpcController extends Controller
             return redirect(route('list_bpc_path'));
         }
         return redirect()->back()->with(['message'=>'delete failed']);
+    }
+
+    public function printe()
+    {
+        $prestations = CategoriePrestationRepository::getAll();
+        $affections = AffectionRepository::getAll();
+        return view('Print.bpc', compact('prestations','affections'));
+    }
+
+    public function printBpc(Request $request)
+    {
+        DB::beginTransaction();
+        try{
+            $bpc = BpcRepository::storeFromForm($request);
+
+            foreach(Input::get('optradio') as $presta){
+                if($presta != 0){
+                    Extrait_prestation::create([
+                        'BpcID' => $bpc->ID,
+                        'PrestationID' => $presta
+                    ]);
+                }
+            }
+            DB::commit();
+            $prestations = CategoriePrestationRepository::getAll();
+            $affections = AffectionRepository::getAll();
+            return view('Print.bpc', compact('bpc','prestations','affections'));
+        }catch (\Exception $e){
+            DB::Rollback();
+            return redirect()->back()->with(['message' => 'Les informations entr&eacute;es ne sont pas correct']);
+
+        }
+
+
     }
 }

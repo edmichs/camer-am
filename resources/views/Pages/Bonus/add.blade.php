@@ -45,9 +45,9 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="EtablissementID">Matricule</label>
-                                        <select name="EtablissementID" id="EtablissementID" class="form-control">
+                                        <select name="EtablissementID" id="EtablissementID" data-show-subtext="true" data-live-search="true" class=" selectpicker form-control">
                                             @foreach($assures as $assure)
-                                                <option value="{{$assure->ID}}">{{$assure->Matricule}}</option>
+                                                <option data-subtext="{{$assure->Nom}}" value="{{$assure->ID}}">{{$assure->Matricule}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -57,16 +57,16 @@
                                         <input type="date" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="Date_evenement">Montant Malus</label>
+                                        <label for="Date_evenement">Montant Malus en XFA (A ne remplir uniquement s&apos;il s&apos;agit d&apos;un malus)</label>
                                         <input type="number" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="Date_evenement">Montant Bonus</label>
+                                        <label for="Date_evenement">Montant Bonus en XFA (A ne remplir uniquement s&apos;il s&apos;agit d&apos;un bonus)</label>
                                         <input type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

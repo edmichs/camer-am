@@ -228,7 +228,7 @@ a:focus {
 
 .page-header {
     margin: 10px 0 20px 0;
-    font-size: 22px
+    font-size: 16px
 }
 
 .page-header>small {
@@ -6594,7 +6594,19 @@ table.text-center th {
     }
     .invoice-col {
         float: left;
-        width: 33.3333333%
+        width: 50%;
+    }
+    .invoice-col-4 {
+        float: left;
+        width: 33.3333333%;
+    }
+    .invoice-col-3 {
+        float: left;
+        width: 25%;
+    }
+    .invoice-col-2 {
+        float: left;
+        width: 16.666667%;
     }
     .table-responsive {
         overflow: auto

@@ -24,15 +24,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('matricule') ? ' has-error' : '' }}">
-                            <label for="matricule" class="col-md-4 control-label">Identifiant de l'utilisateur</label>
+                        <div class="form-group{{ $errors->has('identifiant') ? ' has-error' : '' }}">
+                            <label for="identifiant" class="col-md-4 control-label">Identifiant de l'utilisateur</label>
 
                             <div class="col-md-6">
-                                <input id="matricule" type="text" class="form-control" name="matricule" value="{{ old('matricule') }}" required >
+                                <input id="identifiant" type="text" class="form-control" name="identifiant" value="{{ old('identifiant') }}" required >
 
-                                @if ($errors->has('matricule'))
+                                @if ($errors->has('identifiant'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('matricule') }}</strong>
+                                        <strong>{{ $errors->first('identifiant') }}</strong>
                                     </span>
                                 @endif
                             </div>

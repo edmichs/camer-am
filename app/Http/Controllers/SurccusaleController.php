@@ -119,4 +119,10 @@ class SurccusaleController extends Controller
         }
         return redirect()->back()->with(['message' => 'destroy failed']);
     }
+
+    public function printAll()
+    {
+        $surccusales = Succursale::all();
+        return view('Print.surccursale', compact('surccusales'));
+    }
 }

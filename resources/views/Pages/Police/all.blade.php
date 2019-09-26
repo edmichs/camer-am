@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Polices
+            Liste
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -63,9 +63,11 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des Police</h3><br>
-                        <a href="{{route('add_police_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouvelle Police</a>
-                        @if(session('message'))
+
+                        <a href="{{route('add_police_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle Police</a>
+                        <a href="{{route('print_police_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
+
+                    @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
                             </div>
@@ -74,10 +76,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                    <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Exercice</th>
                                 <th>Succursale</th>
                                 <th width="12%">Compagnie d'assurance</th>
@@ -86,8 +89,8 @@
                                 <th>Date emission</th>
                                 <th>Date Effet</th>
                                 <th>Date Ech&eacute;ance</th>
-                                <th>Frais Accessoires</th>
-                                <th>Prime Total</th>
+                                <th>Frais Accessoires (en XFA)</th>
+                                <th>Prime Total (en XFA)</th>
 
                                 <th width="12%">Options</th>
                             </tr>
@@ -96,16 +99,16 @@
                             @foreach($polices as $police)
                                 <tr>
                                     <!--td>{{ $loop->iteration }}</td-->
-                                    <td>{{date("d/M/Y", strtotime($police->exercice->Date_debut))}} - {{date("d/M/Y", strtotime($police->exercice->Date_fin))}}</td>
+                                    <td>{{date("Y", strtotime($police->exercice->Date_debut))}} </td>
                                     <td>{{ $police->succursale->Nom}}</td>
                                     <td>{{ $police->etablissement->Nom}}</td>
                                     <td>{{ $police->Numero_police }}</td>
-                                    <td>{{ $police->Date_souscription}}</td>
-                                    <td>{{ $police->Date_emission}}</td>
-                                    <td>{{ $police->Date_effet}}</td>
-                                    <td>{{ $police->Date_echeance}}</td>
-                                    <td>{{ $police->Accessoires}} XFA</td>
-                                    <td>{{ $police->Prime_total}} XFA</td>
+                                    <td>{{date("d-m-Y", strtotime($police->Date_souscription))}} </td>
+                                    <td>{{date("d-m-Y", strtotime($police->Date_emission))}}</td>
+                                    <td>{{date("d-m-Y", strtotime( $police->Date_effet))}}</td>
+                                    <td>{{date("d-m-Y", strtotime( $police->Date_echeance))}}</td>
+                                    <td>{{ $police->Accessoires}} </td>
+                                    <td>{{ $police->Prime_total}} </td>
 
                                     <td >
                                         <a href='{{url("police/show/{$police->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
@@ -127,25 +130,9 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
 
-                                <!--th>N°</th-->
-                                <th>Exercice</th>
-                                <th>Succursale</th>
-                                <th width="12%">Compagnie d'assurance</th>
-                                <th >Numero Police</th>
-                                <th>Date souscription</th>
-                                <th>Data emission</th>
-                                <th>Date Effet</th>
-                                <th>Date Ech&eacute;ance</th>
-                                <th>Frais Accessoires</th>
-                                <th>Prime Total</th>
-
-                                <th width="12%">Options</th>
-                            </tr>
-                            </tfoot>
                         </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -164,11 +151,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>
@@ -191,7 +178,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">

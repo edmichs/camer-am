@@ -59,4 +59,9 @@ class Souscripteur extends Model
 	{
 		return $this->hasMany(\App\Models\Succursale::class, 'SouscripteurID');
 	}
+
+	public function automobile()
+	{
+		return $this->hasMany(\App\Models\Souscripteur::class, 'souscripteur_id');
+	}
 }

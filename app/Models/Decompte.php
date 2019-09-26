@@ -83,6 +83,7 @@ class Decompte extends Model
 		'zonegeoID',
 		'AssureID',
 		'GarantiID',
+		'AffectionID',
 		'ExerciceID',
 		'PrestationID',
 		'PoliceID',
@@ -112,6 +113,10 @@ class Decompte extends Model
 	{
 		return $this->belongsTo(\App\Models\Garanti::class, 'GarantiID');
 	}
+	public function affection()
+	{
+		return $this->belongsTo(\App\Models\Affection::class, 'AffectionID');
+	}
 
 	public function assure()
 	{
@@ -120,7 +125,7 @@ class Decompte extends Model
 
 	public function prestation()
 	{
-		return $this->belongsTo(\App\Models\Prestation::class, 'PrestationID');
+		return $this->belongsTo(\App\Models\CategoriePrestation::class, 'PrestationID');
 	}
 
 	public function police()

@@ -7,7 +7,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Nouveau Centre de sant&eacute;
+            Ajout
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -26,9 +26,7 @@
 
                 <div class="col-md-12">
                     <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Nouvel Centre de sant&eacute;</h3>
-                        </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-md-12">
@@ -61,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

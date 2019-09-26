@@ -23,4 +23,9 @@ class BonusRepository
     {
         return BonusMalus::create($request->all());
     }
+
+    public static function getByExercice($exerciceID)
+    {
+        return BonusMalus::whereExerciceid($exerciceID)->get();
+    }
 }

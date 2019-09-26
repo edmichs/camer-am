@@ -58,4 +58,26 @@ class PoliceRepository
     {
         return Police::whereExerciceid($exerciceID)->get();
     }
+    public static function getByLastExercice($exerciceID)
+    {
+        return Police::whereExerciceid($exerciceID)->get();
+    }
+    public static function getBySuccursale($succursaleID,$exerciceID)
+    {
+        return Police::whereSuccursaleid($succursaleID)->whereExerciceid($exerciceID)->first();
+    }
+
+    public static function create(Request $request, $exerciceID, $succursaleID)
+    {
+        //dd($exerciceID);
+        return Police::create([
+           'Numero_police' => $request->input("Numero_police"),
+           'Date_emission' => $request->input("Date_emission"),
+           'Date_effet' => $request->input("Date_effet"),
+           'Date_echeance' => $request->input("Date_echeance"),
+           'ExerciceID' => $exerciceID,
+           'SuccursaleID' => $succursaleID,
+           'EtablissementID' => $request->input("EtablissementID"),
+        ]);
+    }
 }

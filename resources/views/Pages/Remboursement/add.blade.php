@@ -23,7 +23,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Validation Remboursements
+             Remboursements
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -68,7 +68,7 @@
                                             contentType: false,
                                             processData:false,
                                             success: function(data){
-                                                 alert(data);
+
                                                 console.log(data);
                                                 if(data == 0){
                                                     message('<h4> Aucun remboursement en cour pour cette police! </h4>', 'alert-success pull-lg-right');
@@ -195,10 +195,10 @@
                                         <button class="btn btn-success form-control"  type="submit" name="action">Imprimer BPC vierge</button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-info form-control"  type="submit" name="action">Enregistrer sans Imprimer</button>
+                                        <button class="btn btn-info form-control"  type="submit" name="action">Soumettre sans Imprimer</button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-primary form-control"  type="submit" name="action">Enregistrer et Imprimer</button>
+                                        <button class="btn btn-primary form-control"  type="submit" name="action">Soumettre et Imprimer</button>
                                     </div>
                                 </div>
                             </div>

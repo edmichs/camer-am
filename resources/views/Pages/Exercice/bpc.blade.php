@@ -73,54 +73,57 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped dataTable">
-                            <thead>
-                            <tr>
-                                <th>Numero BPC</th>
-                                <th>Exercice</th>
-                                <th>Nom Assur&eacute;</th>
-                                <th >Matricule</th>
-                                <th >Numero Police</th>
-                                <th>Succurasale</th>
-                                <th>Affection (Maladie)</th>
-                                <th>Plafond Remboursement (en XFA)</th>
-                                <th>Hauteur couverture (en %)</th>
-                                <th>Medecin Conseil</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($bpcs as $bpc)
+                        <div class="table-responsive">  
+                            <table id="example1" class="table table-bordered table-striped dataTable">
+                                <thead>
                                 <tr>
-                                    <td>{{$bpc->Numero_bpc}}</td>
-                                    <td>{{date("Y", strtotime($bpc->exercice->Date_debut))}}</td>
+                                    <th>Numero BPC</th>
+                                    <th>Exercice</th>
+                                    <th>Nom Assur&eacute;</th>
+                                    <th >Matricule</th>
+                                    <th >Numero Police</th>
+                                    <th>Succurasale</th>
+                                    <th>Affection (Maladie)</th>
+                                    <th>Plafond Remboursement (en XFA)</th>
+                                    <th>Hauteur couverture (en %)</th>
+                                    <th>Medecin Conseil</th>
 
-                                    <td>{{$bpc->assure->Nom}}</td>
-                                    <td>{{$bpc->assure->Matricule}}</td>
-                                    <td>{{$bpc->police->Numero_police}}</td>
-                                    <td>{{$bpc->police->succursale->Nom}}</td>
-                                    <td>{{$bpc->affection->Description}}</td>
-                                    <td>{{$bpc->assure->Plafond}}  </td>
-                                    <td>{{$bpc->assure->Taux_couverture}}  </td>
-                                    <td>{{$bpc->medecin_conseil->Noms}}</td>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Numero BPC</th>
-                                <th>Exercice</th>
-                                <th>Nom Assur&eacute;</th>
-                                <th >Matricule</th>
-                                <th >Numero Police</th>
-                                <th>Succurasale</th>
-                                <th>Affection (Maladie)</th>
-                                <th>Plafond Remboursement (en XFA)</th>
-                                <th>Hauteur couverture (en %)</th>
-                                <th>Medecin Conseil</th>
-                            </tr>
-                            </tfoot>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($bpcs as $bpc)
+                                    <tr>
+                                        <td>{{$bpc->Numero_bpc}}</td>
+                                        <td>{{date("Y", strtotime($bpc->exercice->Date_debut))}}</td>
+
+                                        <td>{{$bpc->assure->Nom}}</td>
+                                        <td>{{$bpc->assure->Matricule}}</td>
+                                        <td>{{$bpc->police->Numero_police}}</td>
+                                        <td>{{$bpc->police->succursale->Nom}}</td>
+                                        <td>{{$bpc->affection->Description}}</td>
+                                        <td>{{$bpc->assure->Plafond}}  </td>
+                                        <td>{{$bpc->assure->Taux_couverture}}  </td>
+                                        <td>{{$bpc->medecin_conseil->Noms}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Numero BPC</th>
+                                    <th>Exercice</th>
+                                    <th>Nom Assur&eacute;</th>
+                                    <th >Matricule</th>
+                                    <th >Numero Police</th>
+                                    <th>Succurasale</th>
+                                    <th>Affection (Maladie)</th>
+                                    <th>Plafond Remboursement (en XFA)</th>
+                                    <th>Hauteur couverture (en %)</th>
+                                    <th>Medecin Conseil</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                      
                     </div>
                 </div>
                 <!-- /.box-body -->

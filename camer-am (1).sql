@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 17, 2018 at 02:17 PM
+-- Generation Time: Mar 26, 2019 at 10:39 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 7.0.8
 
@@ -40,7 +40,8 @@ CREATE TABLE `affection` (
 --
 
 INSERT INTO `affection` (`ID`, `Code`, `Description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'DAF', 'ceci est une description', '2018-12-02 13:19:23', '2018-12-02 13:19:23', '2018-12-02 14:19:23');
+(11, 'M0010', 'ACCES PALUSTRE', '2018-12-26 11:36:04', '2018-12-26 11:36:04', '2018-12-26 11:36:04'),
+(12, 'M0020', 'GRIPPE', '2018-12-26 11:36:04', '2018-12-26 11:36:04', '2018-12-26 11:36:04');
 
 -- --------------------------------------------------------
 
@@ -51,10 +52,10 @@ INSERT INTO `affection` (`ID`, `Code`, `Description`, `created_at`, `updated_at`
 CREATE TABLE `assure` (
   `ID` int(10) NOT NULL,
   `RemboursementsID` int(10) DEFAULT NULL,
-  `PoliceID` int(10) NOT NULL,
+  `PoliceID` int(10) DEFAULT NULL,
   `SuccursaleID` int(10) NOT NULL,
-  `Code_familleID` int(10) NOT NULL,
-  `Type_EmployeID` int(10) NOT NULL,
+  `Code_familleID` int(10) DEFAULT NULL,
+  `Type_EmployeID` int(10) DEFAULT NULL,
   `ExerciceID` int(10) NOT NULL,
   `Matricule` varchar(255) DEFAULT NULL,
   `Nom` varchar(255) DEFAULT NULL,
@@ -68,10 +69,10 @@ CREATE TABLE `assure` (
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `Fct_employe` varchar(255) DEFAULT NULL,
   `Observation` varchar(255) DEFAULT NULL,
-  `Taux_couverture` float NOT NULL DEFAULT '0',
-  `Plafond` float NOT NULL DEFAULT '0',
-  `Encour_conso` float NOT NULL DEFAULT '0',
-  `Solde` float NOT NULL DEFAULT '0',
+  `Taux_couverture` float DEFAULT '0',
+  `Plafond` float DEFAULT '0',
+  `Encour_conso` float DEFAULT '0',
+  `Solde` float DEFAULT '0',
   `Nationalite` varchar(255) DEFAULT NULL,
   `Date_incorporation` date DEFAULT NULL,
   `Discriminator` varchar(255) DEFAULT NULL,
@@ -84,11 +85,24 @@ CREATE TABLE `assure` (
 --
 
 INSERT INTO `assure` (`ID`, `RemboursementsID`, `PoliceID`, `SuccursaleID`, `Code_familleID`, `Type_EmployeID`, `ExerciceID`, `Matricule`, `Nom`, `Avatar`, `Lieu_naiss`, `Datenaiss`, `Situa_marital`, `Type`, `created_at`, `updated_at`, `deleted_at`, `Fct_employe`, `Observation`, `Taux_couverture`, `Plafond`, `Encour_conso`, `Solde`, `Nationalite`, `Date_incorporation`, `Discriminator`, `AssureID`, `Montant_prime`) VALUES
-(2, NULL, 2, 5, 1, 1, 1, 'Matricule', 'Nom', NULL, 'Lieu_naiss', '2018-12-13', 1, NULL, '2018-12-13 15:03:10', '2018-12-13 15:03:10', '2018-12-13 15:03:10', 'Fct_employe', 'Observation', 0, 1, 0, 0, 'Nationalite', NULL, NULL, NULL, NULL),
-(3, NULL, 2, 5, 1, 1, 1, 'Matricule', 'Nom', 'IMG_0789.JPG', 'Lieu_naiss', '2018-12-13', 1, NULL, '2018-12-13 15:14:46', '2018-12-13 15:14:46', '2018-12-13 15:14:46', 'Fct_employe', 'Observation', 1, 0, 1, 0, 'Nationalite', NULL, NULL, NULL, NULL),
-(4, NULL, 2, 5, 1, 1, 1, 'Matricule', 'Nom', 'IMG_0789.JPG', 'Lieu_naiss', '2018-12-13', 1, NULL, '2018-12-13 20:34:47', '2018-12-13 20:34:47', '2018-12-13 20:34:47', 'Fct_employe', 'Observation', 0, 0, 0, 1, 'Nationalite', NULL, NULL, NULL, NULL),
-(5, NULL, 2, 6, 1, 1, 1, 'Matricule', 'Nom complet', NULL, 'Douala', '2018-12-14', 1, NULL, '2018-12-14 13:42:07', '2018-12-14 13:42:07', '2018-12-14 13:42:07', 'Fct_employe', NULL, 80, 1000000, 1000000, 0, 'Nationalite', NULL, NULL, NULL, NULL),
-(6, NULL, 2, 5, 1, 1, 1, 'Matricule', 'Nom', 'IMG_1519.JPG', 'Lieu_naiss', '2018-12-14', 1, NULL, '2018-12-14 13:50:57', '2018-12-14 13:50:57', '2018-12-14 13:50:57', 'Fct_employe', 'tres bon', 10000000, 10000000, 0, 10000000, 'Nationalite', NULL, NULL, NULL, NULL);
+(6, NULL, 4, 7, 1, 4, 2, 'C3329', 'GOUNE TIEDEM HERMANN', NULL, 'NKONGSAMBA', '1988-01-18', 1, NULL, '2019-01-04 13:30:07', '2019-01-04 13:30:07', '2019-01-04 13:30:07', 'MECANICIEN', NULL, 80, 300000, 0, 0, 'Camerounaise', '2015-10-11', NULL, NULL, 15000),
+(7, NULL, 4, 7, 4, NULL, 2, 'C3329', 'ZOO CHRISTIANE EPSE GOUNE TIEDEM', NULL, NULL, '1993-02-25', 1, NULL, '2019-01-04 14:01:31', '2019-01-04 14:01:31', '2019-01-04 14:01:31', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2017-05-18', NULL, NULL, 15000),
+(8, NULL, 4, 7, 8, NULL, 2, 'C3329', 'GOUNE STEPHANIE NOELLE', NULL, 'DOUALA', '2018-06-11', 2, NULL, '2019-01-04 14:07:00', '2019-01-04 14:07:00', '2019-01-04 14:07:00', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2018-07-15', NULL, NULL, 10000),
+(9, NULL, 4, 7, 1, 4, 2, 'C5204', 'EYINGA CHRISTIAN', NULL, 'DOUALA', '1993-08-19', 2, NULL, '2019-01-04 14:13:07', '2019-01-04 14:13:07', '2019-01-04 14:13:07', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2015-11-10', NULL, NULL, 25000),
+(10, NULL, 4, 7, 1, 4, 2, 'C4424', 'BITOMO BELINGA DENIS CIDOUANE', NULL, NULL, '1987-03-07', 1, NULL, '2019-01-04 14:16:48', '2019-01-04 14:16:48', '2019-01-04 14:16:48', 'CHAUFFEUR', NULL, 80, 200000, 0, 0, 'Camerounaise', '2013-07-29', NULL, NULL, 25000),
+(11, NULL, 4, 8, 1, 4, 2, 'C3885', 'DIBOA KINGUE ENAMA ERIC', NULL, NULL, '1985-11-01', 1, NULL, '2019-01-04 14:22:25', '2019-01-04 14:22:25', '2019-01-04 14:22:25', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2014-05-29', NULL, NULL, 30000),
+(12, NULL, 5, 8, 1, 4, 2, 'C1101', 'YONGA BITECK GABIN THIERRY', NULL, 'BAFIA', '1972-11-26', 1, NULL, '2019-01-04 14:37:16', '2019-01-04 14:37:16', '2019-01-04 14:37:16', 'CHAUFFEUR INSTRUCTEUR', NULL, 80, 300000, 0, 0, 'Camerounaise', '1999-03-21', NULL, NULL, 15000),
+(13, NULL, 5, 8, 4, NULL, 2, 'C1101', 'TIETSIA CELINE EPSE YONGA', NULL, 'NKONGSAMBA', '1980-09-28', 1, NULL, '2019-01-04 14:39:19', '2019-01-04 14:39:19', '2019-01-04 14:39:19', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2005-11-07', NULL, NULL, 15000),
+(14, NULL, 5, 8, 1, 4, 2, 'C2784', 'TOUNDE CYRILLE VALERY', NULL, 'DOUALA', '1998-02-09', 1, NULL, '2019-01-04 14:41:50', '2019-01-04 14:41:50', '2019-01-04 14:41:50', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2004-10-11', NULL, NULL, 30000),
+(24, NULL, 4, 7, 1, 4, 4, 'C3329', 'GOUNE TIEDEM HERMANN', NULL, 'NKONGSAMBA', '1988-01-18', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'MECANICIEN', NULL, 80, 300000, 0, 0, 'Camerounaise', '2015-10-11', NULL, NULL, 15000),
+(25, NULL, 4, 7, 4, NULL, 4, 'C3329', 'ZOO CHRISTIANE EPSE GOUNE TIEDEM', NULL, NULL, '1993-02-25', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2017-05-18', NULL, NULL, 15000),
+(26, NULL, 4, 7, 8, NULL, 4, 'C3329', 'GOUNE STEPHANIE NOELLE', NULL, 'DOUALA', '2018-06-11', 2, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2018-07-15', NULL, NULL, 10000),
+(27, NULL, 4, 7, 1, 4, 4, 'C5204', 'EYINGA CHRISTIAN', NULL, 'DOUALA', '1993-08-19', 2, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2015-11-10', NULL, NULL, 25000),
+(28, NULL, 4, 7, 1, 4, 4, 'C4424', 'BITOMO BELINGA DENIS CIDOUANE', NULL, NULL, '1987-03-07', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'CHAUFFEUR', NULL, 80, 200000, 0, 0, 'Camerounaise', '2013-07-29', NULL, NULL, 25000),
+(29, NULL, 4, 8, 1, 4, 4, 'C3885', 'DIBOA KINGUE ENAMA ERIC', NULL, NULL, '1985-11-01', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2014-05-29', NULL, NULL, 30000),
+(30, NULL, 5, 8, 1, 4, 4, 'C1101', 'YONGA BITECK GABIN THIERRY', NULL, 'BAFIA', '1972-11-26', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'CHAUFFEUR INSTRUCTEUR', NULL, 80, 300000, 0, 0, 'Camerounaise', '1999-03-21', NULL, NULL, 15000),
+(31, NULL, 5, 8, 4, NULL, 4, 'C1101', 'TIETSIA CELINE EPSE YONGA', NULL, 'NKONGSAMBA', '1980-09-28', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', NULL, NULL, 80, NULL, 0, 0, 'Camerounaise', '2005-11-07', NULL, NULL, 15000),
+(32, NULL, 5, 8, 1, 4, 4, 'C2784', 'TOUNDE CYRILLE VALERY', NULL, 'DOUALA', '1998-02-09', 1, NULL, '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41', 'AGENT PROPRETE', NULL, 80, 200000, 0, 0, 'Camerounaise', '2004-10-11', NULL, NULL, 30000);
 
 -- --------------------------------------------------------
 
@@ -108,6 +122,14 @@ CREATE TABLE `bareme_prestation` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bareme_prestation`
+--
+
+INSERT INTO `bareme_prestation` (`ID`, `zonegeoID`, `PoliceID`, `Type_EmployeID`, `PrestationID`, `Base_remboursement`, `Taux_rembrousement`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 7, 4, 1, '6000', 80, '2019-01-30 05:06:49', '2019-01-30 05:06:49', '2019-01-30 05:06:49'),
+(2, 1, 8, 4, 1, '7000', 80, '2019-01-30 05:14:24', '2019-01-30 05:14:24', '2019-01-30 05:14:24');
 
 -- --------------------------------------------------------
 
@@ -140,12 +162,47 @@ CREATE TABLE `bpc` (
   `AssureID` int(10) NOT NULL,
   `Numero_bpc` varchar(255) DEFAULT NULL,
   `Formation_sanitaire` varchar(255) DEFAULT NULL,
-  `Plafond_remboursement` float NOT NULL,
-  `Taux_couverture` float NOT NULL,
+  `Centre_santeID` int(10) NOT NULL,
+  `Medecin_conseilID` int(10) NOT NULL,
+  `AffectionID` int(10) NOT NULL,
+  `Date_declaration` date DEFAULT NULL,
+  `Date_sinistre` date DEFAULT NULL,
+  `PoliceID` int(10) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bpc`
+--
+
+INSERT INTO `bpc` (`ID`, `ExerciceID`, `AssureID`, `Numero_bpc`, `Formation_sanitaire`, `Centre_santeID`, `Medecin_conseilID`, `AffectionID`, `Date_declaration`, `Date_sinistre`, `PoliceID`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 2, 14, 'BPC1640', NULL, 11, 18, 11, '2019-01-02', '2019-01-02', 5, '2019-01-16 10:27:33', '2019-01-16 10:27:33', '2019-01-16 10:27:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorie_assures`
+--
+
+CREATE TABLE `categorie_assures` (
+  `id` int(11) NOT NULL,
+  `policeId` int(11) NOT NULL,
+  `typeEmployeId` int(11) NOT NULL,
+  `plafond` float NOT NULL,
+  `montant_prime` float NOT NULL,
+  `exerciceId` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categorie_assures`
+--
+
+INSERT INTO `categorie_assures` (`id`, `policeId`, `typeEmployeId`, `plafond`, `montant_prime`, `exerciceId`, `created_at`, `updated_at`) VALUES
+(1, 7, 1, 1000000, 50000, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -195,6 +252,13 @@ CREATE TABLE `centre_sante` (
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `centre_sante`
+--
+
+INSERT INTO `centre_sante` (`ID`, `Code`, `Nom`, `Telephone`, `Adresse`, `Email`, `Nom_contact`, `Ville`, `Quartier`, `Pays`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(11, 'LQ', 'HOPITAL LAQUINTINIE', '243506800', 'DOUALA', NULL, NULL, 'DOUALA\r\n', ' AKWA', 'CAMEROUN', '2018-12-26 12:09:51', '2018-12-26 12:09:51', '2018-12-26 12:09:51');
+
 -- --------------------------------------------------------
 
 --
@@ -236,29 +300,30 @@ INSERT INTO `code_famille` (`ID`, `Code`, `Libelle`, `created_at`, `updated_at`,
 
 CREATE TABLE `decompte` (
   `ID` int(10) NOT NULL,
-  `RejetID` int(10) NOT NULL,
-  `BpcID` int(10) NOT NULL,
-  `zonegeoID` int(10) NOT NULL,
-  `AssureID` int(10) NOT NULL,
-  `GarantiID` int(10) NOT NULL,
-  `ExerciceID` int(10) NOT NULL,
-  `PrestationID` int(10) NOT NULL,
-  `PoliceID` int(10) NOT NULL,
-  `Nombre_piece` float NOT NULL,
+  `RejetID` int(10) DEFAULT NULL,
+  `BpcID` int(10) DEFAULT NULL,
+  `zonegeoID` int(10) DEFAULT NULL,
+  `AssureID` int(10) DEFAULT NULL,
+  `GarantiID` int(10) DEFAULT NULL,
+  `ExerciceID` int(10) DEFAULT NULL,
+  `PrestationID` int(10) DEFAULT NULL,
+  `PoliceID` int(10) DEFAULT NULL,
+  `Nombre_piece` float DEFAULT NULL,
   `Date_jour` date DEFAULT NULL,
   `Numero_facture` varchar(255) DEFAULT NULL,
   `Beneficiare` varchar(255) DEFAULT NULL,
   `Date_declaration` date DEFAULT NULL,
   `Date_surveillance` date DEFAULT NULL,
-  `Taux_remboursement` float NOT NULL,
-  `Montant_facture` float NOT NULL,
+  `Taux_remboursement` float DEFAULT NULL,
+  `Montant_facture` float DEFAULT NULL,
   `Numero_decompte` varchar(255) DEFAULT NULL,
-  `Plafond_garanti` float NOT NULL,
+  `Plafond_garanti` float DEFAULT NULL,
   `Date_traitement` date DEFAULT NULL,
   `Nom_medecin` varchar(255) DEFAULT NULL,
   `Mode_paiement` varchar(255) DEFAULT NULL,
   `Validation_paiement` varchar(255) DEFAULT NULL,
   `Reference_paiement` varchar(255) DEFAULT NULL,
+  `Description_soins` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
@@ -267,37 +332,68 @@ CREATE TABLE `decompte` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `decompte_prestation`
+--
+
+CREATE TABLE `decompte_prestation` (
+  `ID` int(11) NOT NULL,
+  `Libelle_prestation` varchar(255) DEFAULT NULL,
+  `Code_prestation` varchar(255) DEFAULT NULL,
+  `Plafond` float DEFAULT NULL,
+  `Unite` float DEFAULT NULL,
+  `Taux` float DEFAULT NULL,
+  `Montant_declare` float DEFAULT NULL,
+  `Montant_retenu` float DEFAULT NULL,
+  `Montant_payer` float DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `Rejet` tinyint(1) DEFAULT NULL,
+  `Motif_rejet` varchar(255) DEFAULT NULL,
+  `Numero_decompte` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `decompte_prestation`
+--
+
+INSERT INTO `decompte_prestation` (`ID`, `Libelle_prestation`, `Code_prestation`, `Plafond`, `Unite`, `Taux`, `Montant_declare`, `Montant_retenu`, `Montant_payer`, `created_at`, `updated_at`, `deleted_at`, `Rejet`, `Motif_rejet`, `Numero_decompte`) VALUES
+(13, 'Auxilliaire Médécin Infirmier', '3', 750, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 0, NULL, 'DECOMPTE12371'),
+(14, 'Pétite Chirugie', '2', 750, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 0, NULL, 'DECOMPTE12371'),
+(15, 'Consultation Urgence JF', 'CDJF', 10000, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, NULL, NULL, 'DECOMPTE13984'),
+(16, 'Consultation Professionelle', 'CP', 15000, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 1, 'irrecevable', 'DECOMPTE11418'),
+(17, 'Auxilliaire Médécin Infirmier', 'AMI', 750, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 1, 'irrecevable', 'DECOMPTE11584'),
+(18, 'Consultation Urgence JF', 'CDJF', 10000, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 0, NULL, 'DECOMPTE15171'),
+(19, 'Consultation Urgence JF', 'CDJF', 10000, 43, 43, 4666, 6788, 7677, NULL, NULL, NULL, 1, 'irrecevable', 'DECOMPTE15171'),
+(20, 'Consultation Urgence JF', 'CDJF', 10000, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 0, NULL, 'DEC18641'),
+(23, 'Hospitalisation', 'J', 6000, 67, 80, 10000, 10000, 10000, NULL, NULL, NULL, 1, NULL, 'DEC17982');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `etablissement`
 --
 
 CREATE TABLE `etablissement` (
-  `ID` int(10) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `Raison_social` varchar(100) DEFAULT NULL,
   `Nom` varchar(255) DEFAULT NULL,
   `Adresse` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
-  `Telephone` varchar(255) DEFAULT NULL,
+  `Telephone` varchar(100) DEFAULT NULL,
   `Nom_contact` varchar(255) DEFAULT NULL,
-  `Telephone_contact` varchar(255) DEFAULT NULL,
-  `Localisation` varchar(255) DEFAULT NULL,
-  `Bp` varchar(255) DEFAULT NULL,
-  `Pays` varchar(255) DEFAULT NULL,
-  `Ville` varchar(255) DEFAULT NULL,
-  `Contribuable` varchar(255) DEFAULT NULL,
-  `Logo` varchar(255) DEFAULT NULL,
-  `Nom_dg` varchar(255) DEFAULT NULL,
-  `Raison_social` varchar(255) DEFAULT NULL,
-  `Nombre_employe` int(10) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `etablissement`
 --
 
-INSERT INTO `etablissement` (`ID`, `Nom`, `Adresse`, `Email`, `Telephone`, `Nom_contact`, `Telephone_contact`, `Localisation`, `Bp`, `Pays`, `Ville`, `Contribuable`, `Logo`, `Nom_dg`, `Raison_social`, `Nombre_employe`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 'AXA Assurance', '546 Akwa Douala', 'contact@axa.com', '243678925', 'TCHOKOUANI Edy Michel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'GRTU', NULL, '2018-12-13 09:01:14', '2018-12-13 09:01:14', '2018-12-13 09:01:14');
+INSERT INTO `etablissement` (`ID`, `Raison_social`, `Nom`, `Adresse`, `Email`, `Telephone`, `Nom_contact`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'SAAR', 'SAAR', 'BP XXXX DOUALA', 'info@saar.com', '655555555', 'LABINDA JEANNE', '2018-12-27 20:12:36', '2018-12-27 20:12:36', '2018-12-27 20:12:36'),
+(3, 'AREA', 'AREA', 'BP YYY AKWA DOUALA', 'contact@area.com', '699999999', 'NGUIMEA PAUL', '2018-12-27 20:14:01', '2018-12-27 20:14:01', '2018-12-27 20:14:01');
 
 -- --------------------------------------------------------
 
@@ -310,7 +406,7 @@ CREATE TABLE `exercice` (
   `Date_debut` date DEFAULT NULL,
   `Date_fin` date DEFAULT NULL,
   `Cloture` tinyint(1) NOT NULL,
-  `Date_cloture` date DEFAULT NULL,
+  `Date_cloture` varchar(100) DEFAULT NULL,
   `Code` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -322,7 +418,9 @@ CREATE TABLE `exercice` (
 --
 
 INSERT INTO `exercice` (`ID`, `Date_debut`, `Date_fin`, `Cloture`, `Date_cloture`, `Code`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '2018-01-01', '2018-12-31', 0, NULL, NULL, '2018-12-05 15:28:51', '2018-12-05 15:28:51', '2018-12-05 15:28:51');
+(1, '2018-01-01', '2018-12-31', 1, '2019-01-02', NULL, '2018-12-05 15:28:51', '2018-12-05 15:28:51', '2018-12-05 15:28:51'),
+(2, '2019-01-01', '2019-12-31', 1, '2019-01-21 00:00:00', NULL, '2019-01-04 12:29:01', '2019-01-04 12:29:01', '2019-01-04 12:29:01'),
+(4, '2020-01-01', '2020-12-31', 0, NULL, NULL, '2019-01-21 12:46:12', '2019-01-21 12:46:12', '2019-01-21 12:46:12');
 
 -- --------------------------------------------------------
 
@@ -332,15 +430,53 @@ INSERT INTO `exercice` (`ID`, `Date_debut`, `Date_fin`, `Cloture`, `Date_cloture
 
 CREATE TABLE `extrait_bpc` (
   `ID` int(10) NOT NULL,
-  `PrestationID` int(10) NOT NULL,
   `Medecin_conseilID` int(10) NOT NULL,
   `AssureID` int(10) NOT NULL,
   `BpcID` int(10) NOT NULL,
-  `Centre_santeID` int(10) NOT NULL,
+  `Centre_santeID` int(11) NOT NULL,
+  `AffectionID` int(10) NOT NULL,
+  `PoliceID` int(10) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extrait_decompte`
+--
+
+CREATE TABLE `extrait_decompte` (
+  `ID` int(11) NOT NULL,
+  `AffectionID` int(10) NOT NULL,
+  `Description_soins` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extrait_prestation`
+--
+
+CREATE TABLE `extrait_prestation` (
+  `ID` int(11) NOT NULL,
+  `PrestationID` int(10) NOT NULL,
+  `bpcID` int(10) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `extrait_prestation`
+--
+
+INSERT INTO `extrait_prestation` (`ID`, `PrestationID`, `bpcID`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2019-01-16 10:27:33', '2019-01-16 10:27:33', '2019-01-16 10:27:33');
 
 -- --------------------------------------------------------
 
@@ -377,7 +513,7 @@ INSERT INTO `garanti` (`ID`, `Code`, `Description`, `created_at`, `updated_at`, 
 
 CREATE TABLE `incorporation` (
   `ID` int(10) NOT NULL,
-  `PoliceID` int(10) NOT NULL,
+  `PoliceID` int(10) DEFAULT NULL,
   `SuccursaleID` int(10) NOT NULL,
   `Code_familleID` int(10) NOT NULL,
   `Type_EmployeID` int(10) NOT NULL,
@@ -393,10 +529,22 @@ CREATE TABLE `incorporation` (
   `Observation` varchar(255) DEFAULT NULL,
   `Nationalite` varchar(255) DEFAULT NULL,
   `Date_incorporation` date DEFAULT NULL,
+  `Montant_prime` float DEFAULT NULL,
+  `Taux_couverture` float DEFAULT NULL,
+  `Plafond` float DEFAULT NULL,
+  `Encour_conso` float DEFAULT NULL,
+  `Solde` float DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `incorporation`
+--
+
+INSERT INTO `incorporation` (`ID`, `PoliceID`, `SuccursaleID`, `Code_familleID`, `Type_EmployeID`, `ExerciceID`, `Matricule`, `Nom`, `Avatar`, `Lieu_naiss`, `Datenaiss`, `Situa_marital`, `Type`, `Fct_employe`, `Observation`, `Nationalite`, `Date_incorporation`, `Montant_prime`, `Taux_couverture`, `Plafond`, `Encour_conso`, `Solde`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, NULL, 7, 1, 1, 4, '2553HJB', 'TCHOKOUANI Edy Michel', NULL, 'DOUALA', '2000-04-12', 1, NULL, 'Directeur Département Informatiques', 'Cadres tres competent', 'Camerounaise', '2019-01-01', 30000, 100, 10000000, 0, 1500000, '2019-03-20 04:59:43', '2019-03-20 04:59:43', '2019-03-20 04:59:43');
 
 -- --------------------------------------------------------
 
@@ -431,6 +579,14 @@ CREATE TABLE `medecin_conseil` (
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `medecin_conseil`
+--
+
+INSERT INTO `medecin_conseil` (`ID`, `Noms`, `Telephone`, `Email`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(18, 'DR MAPUT', '692222333', 'maput@yahoo.fr', '2018-12-26 12:00:24', '2018-12-26 12:00:24', '2018-12-26 12:00:24'),
+(19, 'DR  JOVIX', '677333444', 'jpalin@gmail.com', '2018-12-26 12:00:24', '2018-12-26 12:00:24', '2018-12-26 12:00:24');
+
 -- --------------------------------------------------------
 
 --
@@ -447,10 +603,11 @@ CREATE TABLE `police` (
   `Date_effet` date DEFAULT NULL,
   `Date_echeance` date DEFAULT NULL,
   `Prime_total` float DEFAULT NULL,
-  `Accessoires` varchar(255) DEFAULT NULL,
-  `Prime_nette` float DEFAULT NULL,
-  `Plafond_garanti` float DEFAULT NULL,
-  `Numero_police` varchar(255) DEFAULT NULL,
+  `Accessoires` varchar(255) DEFAULT '0',
+  `Prime_nette` float DEFAULT '0',
+  `Plafond_garanti` float DEFAULT '0',
+  `Description` varchar(255) DEFAULT NULL,
+  `Numero_police` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
@@ -460,8 +617,11 @@ CREATE TABLE `police` (
 -- Dumping data for table `police`
 --
 
-INSERT INTO `police` (`ID`, `EtablissementID`, `SuccursaleID`, `ExerciceID`, `Date_souscription`, `Date_emission`, `Date_effet`, `Date_echeance`, `Prime_total`, `Accessoires`, `Prime_nette`, `Plafond_garanti`, `Numero_police`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 2, 5, 1, '2018-12-15', '2018-12-10', '2019-01-01', '2020-01-01', 10000000, '2000000', 8000000, 3000000, 'GDT346JY', '2018-12-13 10:57:02', '2018-12-13 10:57:02', '2018-12-13 10:57:02');
+INSERT INTO `police` (`ID`, `EtablissementID`, `SuccursaleID`, `ExerciceID`, `Date_souscription`, `Date_emission`, `Date_effet`, `Date_echeance`, `Prime_total`, `Accessoires`, `Prime_nette`, `Plafond_garanti`, `Description`, `Numero_police`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 2, 7, 1, '2018-12-27', '2018-12-27', '2019-01-01', '2019-12-31', 16615000, '1615000', 15000000, NULL, NULL, '2111101236', '2018-12-28 10:45:50', '2018-12-28 10:45:50', '2018-12-28 10:45:50'),
+(5, 3, 8, 1, '2019-01-01', '2019-01-01', '2019-01-01', '2019-12-31', 8250000, '750000', 7500000, NULL, 'POLICE MALADIE SECA', '2311071222', '2018-12-28 10:57:04', '2018-12-28 10:57:04', '2018-12-28 10:57:04'),
+(7, 2, 7, 4, '2018-12-27', '2018-12-27', '2019-01-01', '2019-12-31', 16615000, '1615000', 15000000, 0, NULL, '2111101236', '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41'),
+(8, 3, 8, 4, '2019-01-01', '2019-01-01', '2019-01-01', '2019-12-31', 8250000, '750000', 7500000, 0, NULL, '2311071222', '2019-01-07 07:30:41', '2019-01-07 07:30:41', '2019-01-07 07:30:41');
 
 -- --------------------------------------------------------
 
@@ -474,6 +634,7 @@ CREATE TABLE `prestation` (
   `Categorie_PrestationID` int(10) NOT NULL,
   `Code_prestation` varchar(255) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
+  `Plafond` float DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
@@ -483,24 +644,24 @@ CREATE TABLE `prestation` (
 -- Dumping data for table `prestation`
 --
 
-INSERT INTO `prestation` (`ID`, `Categorie_PrestationID`, `Code_prestation`, `Description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'J', 'Hospitalisation', '2018-12-11 16:03:09', '2018-12-11 16:03:09', '2018-12-11 16:03:09'),
-(2, 1, 'PC', 'Pétite Chirugie', '2018-12-11 16:03:09', '2018-12-11 16:03:09', '2018-12-11 16:03:09'),
-(3, 1, 'AMI', 'Auxilliaire Médécin Infirmier', '2018-12-11 16:04:49', '2018-12-11 16:04:49', '2018-12-11 16:04:49'),
-(4, 2, 'C', 'Consultation générale', '2018-12-11 16:04:49', '2018-12-11 16:04:49', '2018-12-11 16:04:49'),
-(5, 2, 'CS', 'Consultation Spéciale', '2018-12-11 16:05:41', '2018-12-11 16:05:41', '2018-12-11 16:05:41'),
-(6, 2, 'CS', 'Consultation Professionelle', '2018-12-11 16:05:41', '2018-12-11 16:05:41', '2018-12-11 16:05:41'),
-(7, 2, 'CDJF', 'Consultation Urgence JF', '2018-12-11 16:06:44', '2018-12-11 16:06:44', '2018-12-11 16:06:44'),
-(8, 2, 'CSDN', 'Consultation Urgence DN', '2018-12-11 16:06:44', '2018-12-11 16:06:44', '2018-12-11 16:06:44'),
-(9, 2, 'CPDN', 'Consultation Urgence DN', '2018-12-11 16:07:53', '2018-12-11 16:07:53', '2018-12-11 16:07:53'),
-(10, 3, 'L', 'Lunettes', '2018-12-11 16:07:53', '2018-12-11 16:07:53', '2018-12-11 16:07:53'),
-(11, 3, 'SI', 'Soins Dentaires', '2018-12-11 16:08:38', '2018-12-11 16:08:38', '2018-12-11 16:08:38'),
-(12, 3, 'K', 'Imagerie-Echographie', '2018-12-11 16:08:38', '2018-12-11 16:08:38', '2018-12-11 16:08:38'),
-(13, 4, 'B', 'Analyses Biologiques', '2018-12-11 16:09:52', '2018-12-11 16:09:52', '2018-12-11 16:09:52'),
-(14, 5, 'PHA', 'Frais post & pré-natal', '2018-12-11 16:09:52', '2018-12-11 16:09:52', '2018-12-11 16:09:52'),
-(15, 5, 'ACN', 'Accouchement S', '2018-12-11 16:10:38', '2018-12-11 16:10:38', '2018-12-11 16:10:38'),
-(16, 5, 'ACG', 'Accouchement M', '2018-12-11 16:10:38', '2018-12-11 16:10:38', '2018-12-11 16:10:38'),
-(17, 5, 'ACC', 'Accouchement C', '2018-12-11 16:10:54', '2018-12-11 16:10:54', '2018-12-11 16:10:54');
+INSERT INTO `prestation` (`ID`, `Categorie_PrestationID`, `Code_prestation`, `Description`, `Plafond`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'J', 'Hospitalisation', 6000, '2018-12-11 16:03:09', '2018-12-11 16:03:09', '2018-12-11 16:03:09'),
+(2, 1, 'PC', 'Pétite Chirugie', 750, '2018-12-11 16:03:09', '2018-12-11 16:03:09', '2018-12-11 16:03:09'),
+(3, 1, 'AMI', 'Auxilliaire Médécin Infirmier', 750, '2018-12-11 16:04:49', '2018-12-11 16:04:49', '2018-12-11 16:04:49'),
+(4, 2, 'C', 'Consultation générale', 10000, '2018-12-11 16:04:49', '2018-12-11 16:04:49', '2018-12-11 16:04:49'),
+(5, 2, 'CS', 'Consultation Spéciale', 15000, '2018-12-11 16:05:41', '2018-12-11 16:05:41', '2018-12-11 16:05:41'),
+(6, 2, 'CP', 'Consultation Professionelle', 15000, '2018-12-11 16:05:41', '2018-12-11 16:05:41', '2018-12-11 16:05:41'),
+(7, 2, 'CDJF', 'Consultation Urgence JF', 10000, '2018-12-11 16:06:44', '2018-12-11 16:06:44', '2018-12-11 16:06:44'),
+(8, 2, 'CSDN', 'Consultation Urgence DN', 15000, '2018-12-11 16:06:44', '2018-12-11 16:06:44', '2018-12-11 16:06:44'),
+(9, 2, 'CPDN', 'Consultation Urgence DN', 30000, '2018-12-11 16:07:53', '2018-12-11 16:07:53', '2018-12-11 16:07:53'),
+(10, 3, 'L', 'Lunettes', 1, '2018-12-11 16:07:53', '2018-12-11 16:07:53', '2018-12-11 16:07:53'),
+(11, 3, 'SI', 'Soins Dentaires', 1, '2018-12-11 16:08:38', '2018-12-11 16:08:38', '2018-12-11 16:08:38'),
+(12, 3, 'K', 'Imagerie-Echographie', 1000, '2018-12-11 16:08:38', '2018-12-11 16:08:38', '2018-12-11 16:08:38'),
+(13, 4, 'B', 'Analyses Biologiques', 180, '2018-12-11 16:09:52', '2018-12-11 16:09:52', '2018-12-11 16:09:52'),
+(14, 5, 'PHA', 'Frais post & pré-natal', NULL, '2018-12-11 16:09:52', '2018-12-11 16:09:52', '2018-12-11 16:09:52'),
+(15, 5, 'ACN', 'Accouchement S', 60000, '2018-12-11 16:10:38', '2018-12-11 16:10:38', '2018-12-11 16:10:38'),
+(16, 5, 'ACG', 'Accouchement M', 100000, '2018-12-11 16:10:38', '2018-12-11 16:10:38', '2018-12-11 16:10:38'),
+(17, 5, 'ACC', 'Accouchement C', NULL, '2018-12-11 16:10:54', '2018-12-11 16:10:54', '2018-12-11 16:10:54');
 
 -- --------------------------------------------------------
 
@@ -570,9 +731,10 @@ CREATE TABLE `souscripteur` (
 --
 
 INSERT INTO `souscripteur` (`ID`, `statut`, `nom`, `raison_social`, `activite`, `adresse`, `telephone`, `email`, `nom_contact`, `localisation_geo`, `nombre_total_assure`, `ville`, `pays`, `created_at`, `updated_at`, `deleted_at`, `_token`) VALUES
-(7, 'Societe', 'nom', 'raison_social', 'activite', 'adresse', '12324343', NULL, 'nom_contact', NULL, NULL, 'ville', 'pays', '2018-12-04 04:40:51', '2018-12-04 04:40:51', '2018-12-04 04:40:51', ''),
-(15, 'Societe', 'Hysacam', '23GTZRF', 'Nettoyage et Salubrité au cameroun', 'Kotto Douala', '242893765', NULL, 'Tamkoua Ghislain', NULL, NULL, 'Douala', 'Cameroun', '2018-12-07 13:11:47', '2018-12-07 13:11:47', '2018-12-07 13:11:47', ''),
-(16, 'Societe', 'ALUCAM', 'GDT3847H', 'Société camerounaise d\'aluminium', '647 Edea Cameroun', '234567890', NULL, 'Tchokouani Edy Michel', NULL, NULL, 'Edea', 'Cameroun', '2018-12-12 12:07:08', '2018-12-12 12:07:08', '2018-12-12 12:07:08', '');
+(17, 'Societe', 'HYSACAM', NULL, 'HYGIENE ET SALUBRITE', 'BP 407 DLA BASSA', '677 777 777', 'contact@hys.com', 'BLAISE NONO', NULL, 300, NULL, NULL, '2018-12-26 17:23:23', '2018-12-26 17:23:23', '2018-12-26 17:23:23', ''),
+(18, 'Societe', 'SECA', NULL, 'RAMASSAGE ORDURES', 'BP 15355 DLA', '699 888 777', 'contact@seca.com', 'PASCAL ELA', NULL, 70, NULL, NULL, '2018-12-26 17:23:23', '2018-12-26 17:23:23', '2018-12-26 17:23:23', ''),
+(19, 'Association', 'ASSOCIATION JEUNES SAWA', NULL, 'CULTURE & LOISIRS', 'BP 150 DEIDO  DLA', '698 181 322', NULL, 'EDIMO LAURENT', NULL, 10, NULL, NULL, '2018-12-26 17:25:07', '2018-12-26 17:25:07', '2018-12-26 17:25:07', ''),
+(20, 'Particulier', 'PANKA JOSUE', NULL, NULL, 'CITE SIC DLA', '699 281 347', NULL, 'PANKA JOSUE', NULL, 1, NULL, NULL, '2018-12-26 17:25:07', '2018-12-26 17:25:07', '2018-12-26 17:25:07', '');
 
 -- --------------------------------------------------------
 
@@ -605,8 +767,8 @@ CREATE TABLE `succursale` (
 --
 
 INSERT INTO `succursale` (`ID`, `SouscripteurID`, `Statut`, `Nom`, `Raison_social`, `Activite`, `Adresse`, `Telephone`, `Email`, `Nom_contact`, `Localisation_geo`, `Nombre_total_assure`, `Ville`, `Pays`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 15, 'Societe', 'Hysacam', '23GTZRF', 'Nettoyage et Salubrité au cameroun', '232 Genie Militaire Douala', '242893765', NULL, 'Tamkoua Ghislain', NULL, NULL, 'Douala', 'Cameroun', '2018-12-07 13:11:47', '2018-12-07 13:11:47', '2018-12-07 13:11:47'),
-(6, 16, 'Societe', 'ALUCAM', 'GDT3847H', 'Société camerounaise d\'aluminium', '647 Edea Cameroun', '234567890', NULL, 'Tchokouani Edy Michel', NULL, NULL, NULL, NULL, '2018-12-12 12:07:08', '2018-12-12 12:07:08', '2018-12-12 12:07:08');
+(7, 17, 'Societe', 'HYSACAM DOUALA', '10010', 'HYGIENE ET SALUBRITE', 'DOUALA NYLON', '243507200', NULL, 'ETAME JOEL', NULL, 200, 'Douala', 'Cameroun', '2018-12-26 17:28:13', '2018-12-26 17:28:13', '2018-12-26 17:28:13'),
+(8, 18, 'Societe', 'SECA DOUALA', '10020', 'RAMASSAGE DES ORDURES', 'DOUALA AKWA', '242376148', NULL, 'BIPANTOU MAURICE', NULL, 70, 'Douala', 'Cameroun', '2018-12-26 17:30:33', '2018-12-26 17:30:33', '2018-12-26 17:30:33');
 
 -- --------------------------------------------------------
 
@@ -632,6 +794,34 @@ INSERT INTO `type_employe` (`ID`, `Libelle`, `created_at`, `updated_at`, `delete
 (3, 'Agent de Maitrise', '2018-12-08 04:32:20', '2018-12-08 04:32:20', '2018-12-08 04:32:20'),
 (4, 'Autres Employés', '2018-12-08 04:32:20', '2018-12-08 04:32:20', '2018-12-08 04:32:20'),
 (5, 'Etrangers/Expatriés', '2018-12-08 04:32:45', '2018-12-08 04:32:45', '2018-12-08 04:32:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `role_id` int(10) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `identifiant` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `remember_token` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `identifiant`, `password`, `avatar`, `token`, `remember_token`, `created_at`, `updated_at`) VALUES
+(5, NULL, 'Tchokouani Edy Michel', 'admin@admin.com', 'admin', '$2y$10$.6DCodQiTiM9j9nuWTMDvuOkvgBjo75Fi/TVg6GGjXAh6Whg1YLie', NULL, NULL, NULL, '2019-01-14 19:19:16', '2019-01-14 19:19:16'),
+(6, NULL, 'test', 'test@admin.com', 'test', '$2y$10$MQFtyhC4jsWy/RpSm4qc8.36mQSYSvJ2ZORECurdGNmqh9/8q8dTG', NULL, NULL, NULL, '2019-01-21 10:12:37', '2019-01-21 10:12:37');
 
 -- --------------------------------------------------------
 
@@ -706,7 +896,20 @@ ALTER TABLE `bonus_malus`
 ALTER TABLE `bpc`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `FKBpc875653` (`AssureID`),
-  ADD KEY `FKBpc29632` (`ExerciceID`);
+  ADD KEY `FKBpc29632` (`ExerciceID`),
+  ADD KEY `Centre_santeID` (`Centre_santeID`),
+  ADD KEY `Medecin_conseilID` (`Medecin_conseilID`),
+  ADD KEY `AffectionID` (`AffectionID`),
+  ADD KEY `PoliceID` (`PoliceID`);
+
+--
+-- Indexes for table `categorie_assures`
+--
+ALTER TABLE `categorie_assures`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `policeId` (`policeId`),
+  ADD KEY `typeEmployeId` (`typeEmployeId`),
+  ADD KEY `exerciceId` (`exerciceId`);
 
 --
 -- Indexes for table `categorie_prestation`
@@ -731,6 +934,7 @@ ALTER TABLE `code_famille`
 --
 ALTER TABLE `decompte`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Numero_decompte` (`Numero_decompte`),
   ADD KEY `FKDecompte535288` (`PoliceID`),
   ADD KEY `FKDecompte531461` (`PrestationID`),
   ADD KEY `FKDecompte695655` (`ExerciceID`),
@@ -739,6 +943,12 @@ ALTER TABLE `decompte`
   ADD KEY `FKDecompte817740` (`zonegeoID`),
   ADD KEY `FKDecompte188861` (`BpcID`),
   ADD KEY `FKDecompte972695` (`RejetID`);
+
+--
+-- Indexes for table `decompte_prestation`
+--
+ALTER TABLE `decompte_prestation`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `etablissement`
@@ -760,7 +970,23 @@ ALTER TABLE `extrait_bpc`
   ADD KEY `FKextrait_bp403580` (`BpcID`),
   ADD KEY `FKextrait_bp215194` (`AssureID`),
   ADD KEY `FKextrait_bp581484` (`Medecin_conseilID`),
-  ADD KEY `FKextrait_bp316742` (`PrestationID`);
+  ADD KEY `Centre_santeID` (`Centre_santeID`),
+  ADD KEY `AffectionID` (`AffectionID`),
+  ADD KEY `PoliceID` (`PoliceID`);
+
+--
+-- Indexes for table `extrait_decompte`
+--
+ALTER TABLE `extrait_decompte`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `extrait_prestation`
+--
+ALTER TABLE `extrait_prestation`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `BpcID` (`PrestationID`),
+  ADD KEY `Extrait_bpcID` (`bpcID`);
 
 --
 -- Indexes for table `garanti`
@@ -789,7 +1015,9 @@ ALTER TABLE `medecin`
 -- Indexes for table `medecin_conseil`
 --
 ALTER TABLE `medecin_conseil`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Telephone` (`Telephone`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Indexes for table `police`
@@ -844,6 +1072,12 @@ ALTER TABLE `type_employe`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `zonegeo`
 --
 ALTER TABLE `zonegeo`
@@ -857,17 +1091,17 @@ ALTER TABLE `zonegeo`
 -- AUTO_INCREMENT for table `affection`
 --
 ALTER TABLE `affection`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `assure`
 --
 ALTER TABLE `assure`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `bareme_prestation`
 --
 ALTER TABLE `bareme_prestation`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `bonus_malus`
 --
@@ -877,7 +1111,12 @@ ALTER TABLE `bonus_malus`
 -- AUTO_INCREMENT for table `bpc`
 --
 ALTER TABLE `bpc`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `categorie_assures`
+--
+ALTER TABLE `categorie_assures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categorie_prestation`
 --
@@ -887,7 +1126,7 @@ ALTER TABLE `categorie_prestation`
 -- AUTO_INCREMENT for table `centre_sante`
 --
 ALTER TABLE `centre_sante`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `code_famille`
 --
@@ -899,20 +1138,35 @@ ALTER TABLE `code_famille`
 ALTER TABLE `decompte`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `decompte_prestation`
+--
+ALTER TABLE `decompte_prestation`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
 -- AUTO_INCREMENT for table `etablissement`
 --
 ALTER TABLE `etablissement`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `exercice`
 --
 ALTER TABLE `exercice`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `extrait_bpc`
 --
 ALTER TABLE `extrait_bpc`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `extrait_decompte`
+--
+ALTER TABLE `extrait_decompte`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `extrait_prestation`
+--
+ALTER TABLE `extrait_prestation`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `garanti`
 --
@@ -922,7 +1176,7 @@ ALTER TABLE `garanti`
 -- AUTO_INCREMENT for table `incorporation`
 --
 ALTER TABLE `incorporation`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `medecin`
 --
@@ -932,12 +1186,12 @@ ALTER TABLE `medecin`
 -- AUTO_INCREMENT for table `medecin_conseil`
 --
 ALTER TABLE `medecin_conseil`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `police`
 --
 ALTER TABLE `police`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `prestation`
 --
@@ -957,17 +1211,22 @@ ALTER TABLE `remboursements`
 -- AUTO_INCREMENT for table `souscripteur`
 --
 ALTER TABLE `souscripteur`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `succursale`
 --
 ALTER TABLE `succursale`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `type_employe`
 --
 ALTER TABLE `type_employe`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `zonegeo`
 --
@@ -1008,7 +1267,19 @@ ALTER TABLE `bonus_malus`
 --
 ALTER TABLE `bpc`
   ADD CONSTRAINT `FKBpc29632` FOREIGN KEY (`ExerciceID`) REFERENCES `exercice` (`ID`),
-  ADD CONSTRAINT `FKBpc875653` FOREIGN KEY (`AssureID`) REFERENCES `assure` (`ID`);
+  ADD CONSTRAINT `FKBpc8755453` FOREIGN KEY (`Medecin_conseilID`) REFERENCES `medecin_conseil` (`ID`),
+  ADD CONSTRAINT `FKBpc875634` FOREIGN KEY (`Centre_santeID`) REFERENCES `centre_sante` (`ID`),
+  ADD CONSTRAINT `FKBpc875653` FOREIGN KEY (`AssureID`) REFERENCES `assure` (`ID`),
+  ADD CONSTRAINT `FKBpc9855` FOREIGN KEY (`AffectionID`) REFERENCES `affection` (`ID`),
+  ADD CONSTRAINT `FKBpc985523` FOREIGN KEY (`PoliceID`) REFERENCES `police` (`ID`);
+
+--
+-- Constraints for table `categorie_assures`
+--
+ALTER TABLE `categorie_assures`
+  ADD CONSTRAINT `categorie_assures_ibfk_1` FOREIGN KEY (`policeId`) REFERENCES `police` (`ID`),
+  ADD CONSTRAINT `categorie_assures_ibfk_2` FOREIGN KEY (`typeEmployeId`) REFERENCES `type_employe` (`ID`),
+  ADD CONSTRAINT `categorie_assures_ibfk_3` FOREIGN KEY (`exerciceId`) REFERENCES `exercice` (`ID`);
 
 --
 -- Constraints for table `decompte`
@@ -1028,9 +1299,18 @@ ALTER TABLE `decompte`
 --
 ALTER TABLE `extrait_bpc`
   ADD CONSTRAINT `FKextrait_bp215194` FOREIGN KEY (`AssureID`) REFERENCES `assure` (`ID`),
-  ADD CONSTRAINT `FKextrait_bp316742` FOREIGN KEY (`PrestationID`) REFERENCES `prestation` (`ID`),
   ADD CONSTRAINT `FKextrait_bp403580` FOREIGN KEY (`BpcID`) REFERENCES `bpc` (`ID`),
-  ADD CONSTRAINT `FKextrait_bp581484` FOREIGN KEY (`Medecin_conseilID`) REFERENCES `medecin_conseil` (`ID`);
+  ADD CONSTRAINT `FKextrait_bp564325` FOREIGN KEY (`PoliceID`) REFERENCES `police` (`ID`),
+  ADD CONSTRAINT `FKextrait_bp581484` FOREIGN KEY (`Medecin_conseilID`) REFERENCES `medecin_conseil` (`ID`),
+  ADD CONSTRAINT `FKextrait_bp786367` FOREIGN KEY (`Centre_santeID`) REFERENCES `centre_sante` (`ID`),
+  ADD CONSTRAINT `FKextrait_bp986367` FOREIGN KEY (`AffectionID`) REFERENCES `affection` (`ID`);
+
+--
+-- Constraints for table `extrait_prestation`
+--
+ALTER TABLE `extrait_prestation`
+  ADD CONSTRAINT `FKextrait_pres43215` FOREIGN KEY (`bpcID`) REFERENCES `bpc` (`ID`),
+  ADD CONSTRAINT `FKextrait_pres56737` FOREIGN KEY (`PrestationID`) REFERENCES `prestation` (`ID`);
 
 --
 -- Constraints for table `incorporation`
@@ -1047,7 +1327,6 @@ ALTER TABLE `incorporation`
 --
 ALTER TABLE `police`
   ADD CONSTRAINT `FKPolice621241` FOREIGN KEY (`EtablissementID`) REFERENCES `etablissement` (`ID`),
-  ADD CONSTRAINT `FKPolice691439` FOREIGN KEY (`SuccursaleID`) REFERENCES `succursale` (`ID`),
   ADD CONSTRAINT `FKPolice842145` FOREIGN KEY (`ExerciceID`) REFERENCES `exercice` (`ID`);
 
 --

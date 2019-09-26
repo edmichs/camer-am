@@ -46,12 +46,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Bons de prise en charge
+            Liste D&eacute;comptes
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Liste Bons de prise en charge</li>
+            <li class="active">Liste D&eacute;comptes</li>
         </ol>
     </section>
 
@@ -63,8 +63,8 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des Bons de prise en charge</h3><br>
-                        <a href="{{route('add_bpc_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouveau bpc</a>
+                        <h3 class="box-title">Liste des D&eacute;comptes</h3><br>
+                        <a href="{{route('add_decompte_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouveau D&eacute;compte</a>
                         @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
@@ -74,21 +74,21 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                         <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
-                                <th>Exercice</th>
+                                <!--th>Nï¿½</th-->
+                                <th>Numero D&eacute;compte</th>
                                 <th>Nom Assur&eacute;</th>
                                 <th >Matricule</th>
                                 <th >Numero Police</th>
-                                <th>Date de Naissance/th>
-                                <th>Lieu de naissance</th>
-                                <th>Date effet police</th>
-                                <th>Date Ech&eacute;ance police</th>
-                                <th>Formation sanitaire</th>
-                                <th>Plafond Remboursement</th>
-                                <th>Taux couverture</th>
+                                <th>Date  D&eacute;claration</th>
+                                <th>Survenu le :</th>
+                                <th>Numero Facture</th>
+                                <th>Montant Facture (en XFA)</th>
+                                <th>Nombre de pi&egrave;ces</th>
+                                <th>Taux Remboursement (en %)</th>
                                 <th width="12%">Options</th>
                             </tr>
                             </thead>
@@ -96,41 +96,40 @@
 
                             @foreach($decomptes as $decompte)
                                 <tr>
-                                    <td>{{$decompte->exercice->Date_debut}}</td>
-                                    <td>$decompte->assure->Nom</td>
-                                    <td>$decompte->assure->Matricule</td>
-                                    <td>$decompte->police->Numero_police</td>
-                                    <td>$decompte->assure->Datenaiss</td>
-                                    <td>$decompte->assure->Lieu_naiss</td>
-                                    <td>$decompte->police->Date_effet</td>
-                                    <td>$decompte->police->Date_echeance</td>
-                                    <td></td>
-                                    <td>$decompte->assure->Plafond</td>
-                                    <td>$decompte->assure->Taux_couverture</td>
-                                    <td>Action</td>
-                                </tr>
+                                    <td>{{$decompte->exercice()->exists() ? $decompte->Numero_decompte      : ""}}</td>
+                                    <td>{{$decompte->assure()->exists()   ? $decompte->assure->Nom           : ""}}</td>
+                                    <td>{{$decompte->assure()->exists()   ? $decompte->assure->Matricule     : ""}}</td>
+                                    <td>{{$decompte->police()->exists()   ? $decompte->police->Numero_police : ""}}</td>
+                                    <td>{{ date("d-m-Y", strtotime($decompte->Date_declaration))}}</td>
+                                    <td>{{ date("d-m-Y", strtotime($decompte->Date_surveillance))  }}</td>
+                                    <td>{{ $decompte->Numero_facture }}</td>
+                                    <td>{{ $decompte->Montant_facture }}</td>
+                                    <td>{{ $decompte->Nombre_piece }}</td>
+                                    <td>{{$decompte->assure()->exists()   ? $decompte->assure->Taux_couverture : ""}}</td>
+                                    <td>
+                                        <a href='{{url("decompte/show/{$decompte->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                            <i class=" fa fa-eye ">
+
+                                            </i></a>
+                                        <!--     <a href='{{url("bpc/update/{$decompte->ID}")}}' class="btn btn-warning"
+                                               title="Modifier">
+                                                <i class="fa fa-edit " style="margin-right: 0.5%;" >
+
+                                                </i>
+                                            </a>
+                                            <a href='{{url("bpc/delete/{$decompte->ID}")}}' class="btn btn-danger"
+                                               title="Supprimer">
+                                                <i class=" fa fa-trash " >
+
+                                                </i></a> -->
+
+                                    </td>                                </tr>
                             @endforeach
 
                             </tbody>
-                            <tfoot>
-                            <tr>
 
-                                <!--th>N°</th-->
-                                <th>Exercice</th>
-                                <th>Nom Assur&eacute;</th>
-                                <th >Matricule</th>
-                                <th >Numero Police</th>
-                                <th>Date de Naissance/th>
-                                <th>Lieu de naissance</th>
-                                <th>Date effet police</th>
-                                <th>Date Ech&eacute;ance police</th>
-                                <th>Formation sanitaire</th>
-                                <th>Plafond Remboursement</th>
-                                <th>Taux couverture</th>
-                                <th width="12%">Options</th>
-                            </tr>
-                            </tfoot>
                         </table>
+                         </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -149,11 +148,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>
@@ -176,7 +175,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">

@@ -14,15 +14,15 @@
 
             <form id="form" class="login-form" action="{{ route('login') }}" method="POST">
                 {{ csrf_field() }}
-                <input type="text" placeholder="Matricule" name="Matricule" />
-                @if ($errors->has('mat'))
+                <input type="text" placeholder="Identifiant" name="identifiant" />
+                @if ($errors->has('identifiant'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('mat') }}</strong>
+                        <strong>{{ $errors->first('identifiant') }}</strong>
                     </span>
                 @endif
-                <input type="password" placeholder="Mot de passe" name="Password" />
-                @if(session()->has('mdp'))
-                    <div class="row alert-warning dissmissable" style="padding: 1%;"> <center>{{ session('mdp') }}</center> </div>
+                <input type="password" placeholder="Mot de passe" name="password" />
+                @if(session()->has('password'))
+                    <div class="row alert-warning dissmissable" style="padding: 1%;"> <center>{{ session('password') }}</center> </div>
                 @endif
 
                 <button type="submit">Se connecter</button>

@@ -26,7 +26,7 @@ class CategoriePrestation extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'Libelle'
+		'Libelle','code'
 	];
 
 	public function prestations()

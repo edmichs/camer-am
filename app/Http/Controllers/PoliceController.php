@@ -106,4 +106,10 @@ class PoliceController extends Controller
         }
         return redirect()->back()->with(['message' => 'delete police Failed']);
     }
+
+    public function printAll()
+    {
+        $polices = PoliceRepository::getAll();
+        return view('Print.police',compact('polices'));
+    }
 }

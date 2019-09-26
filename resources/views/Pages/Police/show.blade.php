@@ -59,7 +59,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Details sur la police</h3> <br>
+
                         <a href="{{url('police/list')}}" class="btn btn-primary"><i class="fa fa-angle-double-left"></i>  Retour a la liste</a>
                     </div>
                     <!-- /.box-header -->

@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Centres de sant&eacute;
+            Liste
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -63,7 +63,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des Centres de sant&eacute;</h3><br>
+
                         <a href="{{route('add_prestataire_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouveau Centre de sant&eacute;</a>
                         @if(session('message'))
                             <div class="row">
@@ -74,10 +74,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                    <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Code</th>
                                 <th>Nom Centre</th>
                                 <th width="12%">Adresse</th>
@@ -135,6 +136,7 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -149,11 +151,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>
@@ -176,7 +178,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">

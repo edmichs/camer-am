@@ -8,7 +8,7 @@
 
         <section class="content-header">
             <h1>
-                Ajout de Souscripteur/Souscripteur
+                Ajout Souscripteur
                 <!--small>Preview</small-->
             </h1>
             <ol class="breadcrumb">
@@ -27,9 +27,6 @@
 
                     <div class="col-md-12">
                         <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Formulaire d'ajout</h3>
-                            </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="col-md-12">
@@ -46,7 +43,7 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label>Quelle est le type de compagnie (statut): <span>*</span></label>
+                                            <label>Type Souscripteur : <span>*</span></label>
                                             <select name="statut" id="statut" class="form-control" required>
                                                 <option value="Societe">Soci&eacute;t&eacute;</option>
                                                 <option value="Association">Association</option>
@@ -87,7 +84,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                        <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                     </div>
                                 </div>
 

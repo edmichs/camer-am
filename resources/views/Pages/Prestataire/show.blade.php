@@ -59,7 +59,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Details sur le centre de  sant&eacute;</h3> <br>
+                        <h3 class="box-title">Details</h3> <br>
                         <a href="{{url('centre-sante/list')}}" class="btn btn-primary"><i class="fa fa-angle-double-left"></i>  Retour a la liste</a>
                     </div>
                     <!-- /.box-header -->

@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="ExerciceID">Exrecice</label>
                         <select name="ExerciceID" id="ExerciceID" class="form-control">
-                            <option value="{{$exercice->ID}}">{{date("d/M/Y", strtotime($exercice->Date_debut))}} - {{date("d/M/Y", strtotime($exercice->Date_fin))}}</option>
+                            <option value="{{$exercice->ID}}">{{date("Y", strtotime($exercice->Date_debut))}}</option>
                         </select>
                     </div>
                 </div>

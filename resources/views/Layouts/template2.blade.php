@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <title>Admin | SOGECAR</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -100,13 +102,7 @@
       @yield('content')
       </div>
       <!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <center>
-          <strong>
-            Copyright &copy; Assurance Maladie <small></small>
-          </strong>
-        </center>
-      </footer>
+
 
       <div class="control-sidebar-bg"></div>
     </div>
@@ -182,70 +178,6 @@
         $('#modal-danger').hide();
       });
 
-      $('#profile-modif').click(function(e){
-        var formObj = $('#profile-form');
-        var formURL = formObj.attr('action');
-        var formData = new FormData();
-        formData.append('_token', '{{ csrf_token() }}');
-        formData.append('edit_profile', 'ok');
-
-        $.ajax({
-          url : formURL,
-          type : 'POST',
-          data : formData,
-          processData: false,
-          contentType: false,
-          success:function(data){
-            if (data == 0) {
-              message("<h4> Echec de l'opération !</h4>", 'alert-danger pull-lg-right');
-            }else{
-              $('#modal-danger .modal-body').html(data);
-              $('#modal-danger').show();
-            }
-          },
-          error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-            /*console.log(JSON.stringify(jqXHR));
-            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);*/
-            message("<h4> Echec de l'opération ! </h4>", 'alert-danger pull-lg-right');
-          }
-        });
-
-        e.preventDefault();
-        return false;
-      });
-
-      $('#profile-form').submit(function(e){
-        var formObj = $('#profile-form');
-        var formURL = formObj.attr('action');
-        var formData = new FormData($('#profile-form')[0]);
-        formData.append('_token', '{{ csrf_token() }}');
-        formData.append('profile', 'ok');
-
-        $.ajax({
-          url : formURL,
-          type : 'POST',
-          data : formData,
-          processData: false,
-          contentType: false,
-          success:function(data){
-            if (data == 0) {
-              message("<h4> Echec de l'opération ! </h4>", 'alert-danger pull-lg-right');
-            }else{
-              $('#modal-danger').css('display', 'none');
-              document.location.href = '/accueil';
-              //$('#modal-danger .modal-body').html(data);
-            }
-          },
-          error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-            console.log(JSON.stringify(jqXHR));
-            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-            //message("<h4> Echec de l'opération ! </h4>", 'alert-danger pull-lg-right');
-          }
-        });
-
-        e.preventDefault();
-        return false; 
-      });
 
       function message(data, val){
         $('#msg').hide();
@@ -257,9 +189,84 @@
       };
 
       $(function () {
-        $('#example1').DataTable();
-        $('#example2').DataTable();
-        $('#example3').DataTable();
+        $('#example1').DataTable({
+          "language" : {
+                "decimal":        "",
+                "emptyTable":     "Pas de donn&eacute; disponible pour cette table",
+                "info":           "Affichage _START_ de _END_ &agrave; _TOTAL_ entr&eacute;es",
+                "infoEmpty":      "Affichage 0 de 0 &agrave; 0 entr&eacute;es",
+                "infoFiltered":   "(tri&eacute; sur les _MAX_ donn&eacute;es totales)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Voir _MENU_ Entr&racute;es",
+                "loadingRecords": "Chargement...",
+                "processing":     "En cours...",
+                "search":         "Recherche:",
+                "zeroRecords":    "Aucun resultat trouv&eacute;",
+                "paginate": {
+                "first":      "Permier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Precedent"
+                },
+                "aria": {
+                "sortAscending":  ": activ&eacute; le tri des colonnes ascendant",
+                "sortDescending": ": activ&eacute; le tri des colonnes descendant"
+                }
+              }
+        });
+        $('#example2').DataTable({
+          "language" : {
+            "decimal":        "",
+            "emptyTable":     "Pas de donn&eacute; disponible pour cette table",
+            "info":           "Affichage _START_ de _END_ &agrave; _TOTAL_ entr&eacute;es",
+            "infoEmpty":      "Affichage 0 de 0 &agrave; 0 entr&eacute;es",
+            "infoFiltered":   "(tri&eacute; sur les _MAX_ donn&eacute;es totales)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Voir _MENU_ Entr&racute;es",
+            "loadingRecords": "Chargement...",
+            "processing":     "En cours...",
+            "search":         "Recherche:",
+            "zeroRecords":    "Aucun resultat trouv&eacute;",
+            "paginate": {
+              "first":      "Permier",
+              "last":       "Dernier",
+              "next":       "Suivant",
+              "previous":   "Precedent"
+            },
+            "aria": {
+              "sortAscending":  ": activ&eacute; le tri des colonnes ascendant",
+              "sortDescending": ": activ&eacute; le tri des colonnes descendant"
+            }
+          }
+        });
+        $('#example3').DataTable({
+          "language" : {
+            "decimal":        "",
+            "emptyTable":     "Pas de donn&eacute; disponible pour cette table",
+            "info":           "Affichage _START_ de _END_ &agrave; _TOTAL_ entr&eacute;es",
+            "infoEmpty":      "Affichage 0 de 0 &agrave; 0 entr&eacute;es",
+            "infoFiltered":   "(tri&eacute; sur les _MAX_ donn&eacute;es totales)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Voir _MENU_ Entr&racute;es",
+            "loadingRecords": "Chargement...",
+            "processing":     "En cours...",
+            "search":         "Recherche:",
+            "zeroRecords":    "Aucun resultat trouv&eacute;",
+            "paginate": {
+              "first":      "Permier",
+              "last":       "Dernier",
+              "next":       "Suivant",
+              "previous":   "Precedent"
+            },
+            "aria": {
+              "sortAscending":  ": activ&eacute; le tri des colonnes ascendant",
+              "sortDescending": ": activ&eacute; le tri des colonnes descendant"
+            }
+          }
+        });
         //$('.dataTables_filter').css('float', 'right');
 
         //Initialize Select2 Elements
@@ -323,5 +330,7 @@
       });
     </script>
     <script src="{{asset('libs/select2/js/select2.min.js')}}"></script>
+
+  @yield('script')
   </body>
 </html>

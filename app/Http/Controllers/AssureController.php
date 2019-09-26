@@ -14,6 +14,7 @@ use App\Repositories\SurccusaleRepository;
 use App\Repositories\TypeRepository;
 use App\Repositories\UploadRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AssureController extends Controller
 {
@@ -52,6 +53,15 @@ class AssureController extends Controller
      */
     public function store(Request $request)
     {
+
+        if($request->ajax()){
+            if($request->has('changedSuccursale')){
+                $array = array();
+                $police = PoliceRepository::getBySuccursale($request->input('SuccursaleID'),$request->input('ExerciceID'));
+                array_push($array,$police);
+                return $array;
+            }
+        }
         UploadRepository::upload($request);
         if(AssureRepository::store($request)){
             return redirect(route('list_assure_path'));
@@ -144,5 +154,18 @@ class AssureController extends Controller
 //        dd(compact('souscripteurs', 'exercice', 'pdf'));
 
         return $pdf->stream();
+    }
+
+    public function printAll()
+    {
+        $assures = AssureRepository::getAll();
+        return view('Print.assure', compact('assures'));
+    }
+
+    public function printByExercice()
+    {
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $assures = AssureRepository::getByExercice($exercice->ID);
+        return view('Print.assure', compact('assures'));
     }
 }

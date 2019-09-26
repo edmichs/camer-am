@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Souscripteurs/Soci&eacute;t&eacute;s
+            Liste
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -63,8 +63,9 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des souscripteur</h3><br>
-                        <a href="{{route('add_souscripteur_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouveau Souscripteur</a>
+                        <a href="{{route('add_souscripteur_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouveau Souscripteur</a>
+                        <a href="{{route('souscripteur_print_all')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer la liste</a>
+                      <!--  <a href="{{route('souscripteur_list_download_pdf')}}" class="btn btn-success"><i class="fa fa-plus"></i>Telechargement direct pdf</a> -->
                         @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
@@ -74,94 +75,96 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped dataTable">
-                            <thead>
-                            <tr>
-                                <!--th>N°</th-->
-                                <th>Nom</th>
-                                <th width="12%">Code Soci&eacute;t&eacute;</th>
-                                <th>Activit&eacute;</th>
-                                <th>Adresse</th>
-                                <th>Telephone</th>
-                                <th>Ville</th>
-                                <th>Pays</th>
-                                <th width="12%">Options</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($souscripteurs as $souscripteur)
+                      <div class="table-responsive">
+                            <table id="example1" class="table table-bordered table-striped dataTable">
+                                <thead>
                                 <tr>
-                                    <!--td>{{ $loop->iteration }}</td-->
-                                    <td>{{ $souscripteur->nom }}</td>
-                                    <td>{{ $souscripteur->raison_social}}</td>
-                                    <td>{{ $souscripteur->activite }}</td>
-                                    <td>{{ $souscripteur->adresse }}</td>
-                                    <td>{{ $souscripteur->telephone}}</td>
-                                    <td>{{ $souscripteur->ville }}</td>
-                                    <td>{{ $souscripteur->pays }}</td>
-                                    <td >
-                                            <a href='{{url("souscripteur/show/{$souscripteur->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
-                                                <i class=" fa fa-eye ">
-
-                                                </i></a>
-                                            <a href="{{url("souscripteur/new/{$souscripteur->ID}")}}" title="Nouvelle surccusale" class="btn btn-info"><i class="fa fa-plus " >
-
-                                                </i></a>
-                                        <a href='{{url("souscripteur/update/{$souscripteur->ID}")}}' class="btn btn-warning edit"
-                                           id="editButton" title="Modifier">
-                                            <i class="fa fa-edit " style="margin-right: 0.5%;" >
-
-                                            </i>
-                                        </a>
-                                        <a href="{{url("souscripteur/delete/{$souscripteur->ID}")}}" class="btn btn-danger"
-                                            data-placement="bottom" title="Supprimer">
-                                        <i class=" fa fa-trash " >
-
-                                        </i></a>
-
-                                    </td>
+                                    <!--th>Nï¿½</th-->
+                                    <th>Nom</th>
+                                    <th width="12%">Code Soci&eacute;t&eacute;</th>
+                                    <th>Activit&eacute;</th>
+                                    <th>Adresse</th>
+                                    <th>Telephone</th>
+                                    <th>Ville</th>
+                                    <th>Pays</th>
+                                    <th width="12%">Options</th>
                                 </tr>
-                                <div class="modal fade in" id="deleteModal" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <form id="form-suppr" method="POST" action="">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">x</span></button>
-                                                    <h4 class="modal-title">Suppression...</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p> Souhaitez-vous supprimer cet &eacute;l&eacute;ment ? </p>
-                                                    {{ csrf_field() }}
-                                                    <input type="text" name="" id="" value="{{$souscripteur->ID}}">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fermer</button>
-                                                    <button type="submit" class="btn btn-primary">Valider</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </form>
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
+                                </thead>
+                                <tbody>
+                                @foreach($souscripteurs as $souscripteur)
+                                    <tr>
+                                        <!--td>{{ $loop->iteration }}</td-->
+                                        <td>{{ $souscripteur->nom }}</td>
+                                        <td>{{ $souscripteur->raison_social}}</td>
+                                        <td>{{ $souscripteur->activite }}</td>
+                                        <td>{{ $souscripteur->adresse }}</td>
+                                        <td>{{ $souscripteur->telephone}}</td>
+                                        <td>{{ $souscripteur->ville }}</td>
+                                        <td>{{ $souscripteur->pays }}</td>
+                                        <td >
+                                                <a href='{{url("souscripteur/show/{$souscripteur->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                                    <i class=" fa fa-eye ">
 
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <!--th>N°</th-->
-                                <th>Nom</th>
-                                <th>Code Soci&eacute;t&eacute;</th>
-                                <th>Activit&eacute;</th>
-                                <th>Adresse</th>
-                                <th>Telephone</th>
-                                <th>Ville</th>
-                                <th>Pays</th>
-                                <th >Options</th>
-                            </tr>
-                            </tfoot>
-                        </table>
+                                                    </i></a>
+                                                <a href="{{url("souscripteur/new/{$souscripteur->ID}")}}" title="Nouvelle surccusale" class="btn btn-info"><i class="fa fa-plus " >
+
+                                                    </i></a>
+                                            <a href='{{url("souscripteur/update/{$souscripteur->ID}")}}' class="btn btn-warning edit"
+                                            id="editButton" title="Modifier">
+                                                <i class="fa fa-edit " style="margin-right: 0.5%;" >
+
+                                                </i>
+                                            </a>
+                                            <a href="{{url("souscripteur/delete/{$souscripteur->ID}")}}" class="btn btn-danger"
+                                                data-placement="bottom" title="Supprimer">
+                                            <i class=" fa fa-trash " >
+
+                                            </i></a>
+
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade in" id="deleteModal" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <form id="form-suppr" method="POST" action="">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">x</span></button>
+                                                        <h4 class="modal-title">Suppression...</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p> Souhaitez-vous supprimer cet &eacute;l&eacute;ment ? </p>
+                                                        {{ csrf_field() }}
+                                                        <input type="text" name="" id="" value="{{$souscripteur->ID}}">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fermer</button>
+                                                        <button type="submit" class="btn btn-primary">Valider</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </form>
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <!--th>Nï¿½</th-->
+                                    <th>Nom</th>
+                                    <th>Code Soci&eacute;t&eacute;</th>
+                                    <th>Activit&eacute;</th>
+                                    <th>Adresse</th>
+                                    <th>Telephone</th>
+                                    <th>Ville</th>
+                                    <th>Pays</th>
+                                    <th >Options</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -183,7 +186,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Nouvelle Surccusale...</h4>
                     </div>
                     <div class="modal-body">

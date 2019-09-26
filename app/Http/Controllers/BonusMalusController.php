@@ -17,7 +17,7 @@ class BonusMalusController extends Controller
     public function index()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-        $bonus = BonusRepository::getAll();
+        $bonus = BonusRepository::getByExercice($exercice->ID);
         return view('Pages.Bonus.all',compact('bonus','exercice'));
     }
 

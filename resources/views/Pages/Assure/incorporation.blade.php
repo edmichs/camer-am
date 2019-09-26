@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           Inorporation en cours
+           Incorporation en cours
                     <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -66,15 +66,55 @@
 
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{route('add_incorpore_path')}}" method="post" role="form"
+                        <form action="{{route('add_incorpore_path')}}" method="post" id="form" role="form"
                               enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
+                            <script type="text/javascript">
+
+                                            function valSuccursale() {
+                                                d = document.getElementById("SuccursaleID").value;
+                                            //   alert(d);
+                                                console.log(d);
+                                                console.log(document.getElementById("ExerciceID").value);
+                                                if (d == " ") {
+                                                    alert("veuillez selectionner une succursale");
+                                                } else {
+                                                    var formObj = $("#form");
+                                                    var formURL = formObj.attr("action");
+                                                    var formData = new FormData($("#form")[0]);
+                                                    formData.append('changedSuccursale', 'ok');
+
+                                                    $.ajax({
+                                                        url: formURL,
+                                                        type: 'POST',
+                                                        data: formData,
+                                                        contentType: false,
+                                                        processData: false,
+                                                        success: function (data) {
+                                                        //   alert(data);
+                                                            console.log(data);
+                                                            $("#PoliceID").val(data[0].Numero_police);
+
+                                                        // console.log(data[0].Date_echeance);
+                                                        //   message('<h4> Police ajout&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
+                                                        },
+                                                        error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                                                            console.log(JSON.stringify(jqXHR));
+                                                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                                                            message("<h4>  la police pour cette surccusale n\'existe pas pour cette exercice ! </h4>", 'alert-danger pull-lg-right');
+                                                        }
+                                                    });
+                                                }
+
+                                            }
+                                            ;
+                                </script>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="SuccursaleID">Souscripteur/Surccusale</label>
-                                        <select name="SuccursaleID" id="SuccursaleID" class="form-control">
-                                            <option value=" ">--select succursale --</option>
+                                        <select name="SuccursaleID" id="SuccursaleID" onchange="valSuccursale()" class="form-control">
+                                            <option value=" ">--selectionner succursale --</option>
                                             @foreach($surccusales as $surccusale)
                                                 <option value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
                                             @endforeach
@@ -83,18 +123,19 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="ExerciceID">Exrecice</label>
+                                        <label for="ExerciceID">Exercice</label>
                                         <select name="ExerciceID" id="ExerciceID" class="form-control">
-                                            <option value="{{$exercice->ID}}">{{date("d/M/Y", strtotime($exercice->Date_debut))}} - {{date("d/M/Y", strtotime($exercice->Date_fin))}}</option>
+                                            <option value="{{$exercice->ID}}">{{date("Y", strtotime($exercice->Date_debut))}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Code_familleID">Code Famille</label>
-                                        <select name="Code_familleID" id="Code_familleID" class="form-control">
+                                        <label for="Type_EmployeID">Code famille</label>
+                                        <select class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="Code_familleID" name="Code_familleID">
+                                            <option value=" ">-- selectionner code famille --</option>
                                             @foreach($familles as $famille)
-                                                <option value="{{$famille->ID}}">{{$famille->Code}}</option>
+                                                <option data-subtext="{{$famille->Libelle}}" value="{{$famille->ID}}">{{$famille->Code}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -109,9 +150,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Nom">Nom</label>
+                                        <label for="Nom">Nom Complet</label>
                                         <input type="text" name="Nom" id="Nom" class="form-control"
-                                               placeholder="Enter Complete name" id="">
+                                               placeholder="Entrer nom complet" id="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -140,23 +181,14 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Type d'employ&eacute;</label>
                                         <select class="form-control" id="Type_EmployeID" name="Type_EmployeID">
-                                            <option value=" ">--selectioner Type d&apos;employe--</option>
+                                            <option value=" ">--selectionner Type d&apos;employe--</option>
                                             @foreach($typeemployes as $type)
                                                 <option value="{{$type->ID}}">{{$type->Libelle}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="PoliceID">Numero Police</label>
-                                        <select name="PoliceID" class="form-control" id="PoliceID">
-                                            @foreach($polices as $police)
-                                                <option value="{{$police->ID}}">{{$police->Numero_police}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="Fct_employe">Fonction de l'employ&eacute;</label>
@@ -172,8 +204,44 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Date_incorporation">Date Incorporation</label>
+                                                <input type="date" class="form-control" id="Date_incorporation"
+                                                       name="Date_incorporation">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Observation">Observation</label>
+                                            <textarea type="text" class="form-control" id="Observation"
+                                                      name="Observation" placeholder="Observation"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Taux_couverture">Taux Couverture</label>
+                                                <input type="tel" class="form-control" id="Taux_couverture"
+                                                       name="Taux_couverture"  placeholder="0">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Encour_conso">En cours de consommation</label>
+                                                <input type="tel" class="form-control" id="Encour_conso"
+                                                       placeholder="0" name="Encour_conso">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Solde">solde</label>
+                                                <input type="tel" class="form-control" id="Solde" name="Solde" placeholder="0">
+                                            </div>
+                                        </div>
+                                <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Avatar" class="Avatar">Avatar</label>
+                                        <label for="Avatar" class="Avatar">Photo</label>
                                         <input type="file" class="form-control avatar" id="Avatar" name="Avatar">
                                     </div>
                                 </div>
@@ -197,7 +265,8 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped dataTable">
+                        <div class="table-responsive">
+                        <table id="example1" class="table table-bordered  table-striped dataTable">
                                 <thead>
                                 <tr>
                                     <th>Filiale</th>
@@ -218,7 +287,7 @@
                                 @foreach($incorporates as $incorporate)
                                     <tr class="button">
                                         <td>{{$incorporate->succursale->Nom}}</td>
-                                        <td>{{date("d/M/Y", strtotime($incorporate->exercice->Date_debut))}} - {{date("d/M/Y", strtotime($incorporate->exercice->Date_fin))}}</td>
+                                        <td>{{date("Y", strtotime($incorporate->exercice->Date_debut))}} </td>
                                         <td>{{$incorporate->Matricule}}</td>
                                         <td>{{$incorporate->code_famille->Code}}</td>
                                             <td>{{$incorporate->type_employe->Libelle}}</td>
@@ -261,12 +330,13 @@
                                 </tbody>
 
                             </table>
+                        </div>
+                     
 
                     </div>
 
                 </div>
                 <!-- /.box-body -->
-                <a href="{{url('souscripteur/list')}}" class="btn btn-primary"><i class="fa fa-angle-double-left"></i>  Retour a la liste</a>
 
             </div>
 
@@ -284,7 +354,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">

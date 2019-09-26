@@ -10,12 +10,30 @@ namespace App\Repositories;
 
 
 use App\Models\Prestation;
+use Illuminate\Http\Request;
 
 class PrestationRepository
 {
     public static function getAll()
     {
         return Prestation::all();
+    }
+
+    public static function store(Request $request)
+    {
+        return Prestation::create($request->all());
+    }
+    public static function find($id)
+    {
+        return Prestation::find($id);
+    }
+    public static function update(Request $request)
+    {
+        return Prestation::find($request->input('ID'))->update($request->all());
+    }
+    public static function delete($id)
+    {
+        return Prestation::find($id)->delete();
     }
 
 }

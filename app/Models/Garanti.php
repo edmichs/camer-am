@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Code
  * @property string $Description
  * 
- * @property \Illuminate\Database\Eloquent\Collection $decomptes
  *
  * @package App\Models
  */
@@ -28,11 +27,25 @@ class Garanti extends Model
 
 	protected $fillable = [
 		'Code',
-		'Description'
+		'Description',
+		'categorie_garanti_id',
+		'isDefaultChecked'
 	];
 
-	public function decomptes()
+	public function categorie_garanti()
 	{
-		return $this->hasMany(\App\Models\Decompte::class, 'GarantiID');
+		return $this->belongsTo(\App\Models\CategorieGaranti::class, 'categorie_garanti_id');
+	}
+	public function automobile()
+	{
+		return $this->hasMany(\App\Models\Automobile::class, 'garanti_id');
+	}
+	public function tarif()
+	{
+		return $this->hasMany(\App\Models\Tarif::class,'garanti_id');
+	}
+	public function garanti_automobile()
+	{
+		return $this->hasMany(\App\Models\GarantiAutomobile::class,'garanti_id');
 	}
 }

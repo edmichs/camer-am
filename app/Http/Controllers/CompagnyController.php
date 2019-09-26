@@ -102,4 +102,10 @@ class CompagnyController extends Controller
         }
         return redirect()->back()->with(['message'=>'delete compagny failed']);
     }
+
+    public function printAll()
+    {
+        $compagnies = CompagnyRepository::getAll();
+        return view('Print.compagny', compact('compagnies'));
+    }
 }

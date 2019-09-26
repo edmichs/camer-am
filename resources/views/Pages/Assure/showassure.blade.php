@@ -85,18 +85,22 @@
                                         <div class="profile-img">
                                                 @if($assure->Avatar)
                                                 <img src="/img/{{$assure->Avatar}}" width="250px" height="250px" class="img-responsive" alt="{{$assure->Avatar}}"/>
+
                                                 @else
                                                 <img src="/img/default.png" width="250px" height="250px" class="img-responsive" alt="{{$assure->Avatar}}"/>
                                             @endif
                                                 <br>
 
                                         </div>
+                                        <div class="row">
+                                            <a class="btn btn-info" target="_blank" href="{{ route('assure.print', $assure) }}"><i class="fa fa-print"></i> Imprimer</a>
+                                        </div>
                                         <!-- Profile Image -->
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="name-wrapper col-md-6 form-inline">
+                                        <div class="name-wrapper col-md-6 form-inline" hidden>
                                             <label for="Nom">Exercice : </label>
-                                            <input type="text" class="form-control" value="{{date("d/M/Y", strtotime($assure->exercice->Date_debut))}} - {{date("d/M/Y", strtotime($assure->exercice->Date_fin))}}" disabled>
+                                            <input type="text" class="form-control" value="{{date("Y", strtotime($assure->exercice->Date_debut))}}" disabled>
                                         </div>
                                         <div class="name-wrapper col-md-6 form-inline">
                                             <label for="Nom">Filiale :</label>
@@ -113,19 +117,16 @@
                                         </div>
                                         <div class="name-wrapper col-md-6 form-inline">
                                             <label for="Fonction">R&eacute;f&eacute;rence / Matricule :</label>
-                                            <input type="text" value="{{$assure->Matricule}}" class="form-control" disabled>
+                                            <input type="text" value="{{$assure->Matricule}}-{{$assure->code_famille()->exists() ? $assure->code_famille->Code : ""}}" class="form-control" disabled>
                                         </div>
                                         <div class="name-wrapper col-md-6 form-inline">
                                             <label for="Fonction">Observation :</label>
                                             <input type="text" value="{{$assure->Observation}}" class="form-control" disabled>
                                         </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Code Famille :</label>
-                                            <input type="text" value="{{$assure->code_famille->Code}}" class="form-control" disabled>
-                                        </div>
+
                                         <div class="name-wrapper col-md-6 form-inline">
                                             <label for="Fonction">Date de Naissance :</label>
-                                            <input type="text" value="{{$assure->Datenaiss}}" class="form-control" disabled>
+                                            <input type="text" value="{{date("d/m/Y", strtotime($assure->Datenaiss))}}" class="form-control" disabled>
                                         </div>
                                         <div class="name-wrapper col-md-6 form-inline">
                                             <label for="Fonction">Lieu de naissance :</label>
@@ -155,32 +156,32 @@
                                                             <div class="col-md-4">
                                                                 <address>
                                                                     <strong>Numero police</strong><br>
-                                                                    {{$assure->police->Numero_police}}
+                                                                    {{$assure->police()->exists() ? $assure->police->Numero_police : ''}}
 
                                                                 </address>
                                                             </div> <div class="col-md-4">
                                                                 <address>
                                                                     <strong>Plafond</strong><br>
-                                                                    {{$assure->Plafond}} XFA
+                                                                    {{$assure->Plafond ? $assure->Plafond : 0 }} XFA
 
                                                                 </address>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <address>
                                                                     <strong>Taux de couverture</strong><br>
-                                                                    {{$assure->Taux_couverture}} %
+                                                                    {{$assure->Taux_couverture ? $assure->Taux_couverture : 0}} %
                                                                 </address>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <address>
                                                                     <strong>En cours consommation</strong><br>
-                                                                    {{$assure->Encour_conso}} XFA
+                                                                    {{$assure->Encour_conso ? $assure->Encour_conso : 0}} XFA
                                                                 </address>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <address>
                                                                     <strong>Solde</strong><br>
-                                                                    {{$assure->Solde}} XFA
+                                                                    {{$assure->Solde ? $assure->Solde : 0}} XFA
                                                                 </address>
                                                             </div>
 

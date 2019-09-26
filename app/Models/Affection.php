@@ -52,5 +52,8 @@ class Affection extends Model
     {
         return $this->hasMany(\App\Models\Bpc::class, 'AffectionID');
     }
-    
+    public function decomptes()
+    {
+        return $this->hasMany(\App\Models\Decompte::class, 'AffectionID');
+    }
 }

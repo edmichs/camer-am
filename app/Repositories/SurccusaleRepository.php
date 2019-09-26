@@ -53,5 +53,21 @@ class SurccusaleRepository
         return Succursale::whereId($id)->delete();
     }
 
+    public static function create($souscripteur)
+    {
+        return Succursale::create([
+            'Nom' => $souscripteur->nom,
+            'Statut' => $souscripteur->statut,
+            'Activite' => $souscripteur->activite,
+            'Adresse' => $souscripteur->adresse,
+            'Ville' => $souscripteur->ville,
+            'Pays' => $souscripteur->pays,
+            'Telephone' => $souscripteur->telephone,
+            'Email' => $souscripteur->email,
+            'nombre_total_assure' => $souscripteur->nombre_total_assure     ,
+            'SouscripteurID' => $souscripteur->ID
+        ]);
+    }
+
 
 }

@@ -73,63 +73,66 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped dataTable">
-                            <thead>
-                            <tr>
-                                <th>Exercice</th>
-                                <th>Nom Assur&eacute;</th>
-                                <th >Matricule</th>
-                                <th >Numero Police</th>
-                                <th>Date de Naissance/th>
-                                <th>Lieu de naissance</th>
-                                <th>Date effet police</th>
-                                <th>Date Ech&eacute;ance police</th>
-                                <th>Formation sanitaire</th>
-                                <th>Plafond Remboursement</th>
-                                <th>Taux couverture</th>
-
-
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach($decomptes as $decompte)
+                        <div class="table-responsive">
+                            <table id="example1" class="table table-bordered table-striped dataTable">
+                                <thead>
                                 <tr>
-                                    <td>{{$decompte->exercice->Date_debut}}</td>
-                                    <td>$decompte->assure->Nom</td>
-                                    <td>$decompte->assure->Matricule</td>
-                                    <td>$decompte->police->Numero_police</td>
-                                    <td>$decompte->assure->Datenaiss</td>
-                                    <td>$decompte->assure->Lieu_naiss</td>
-                                    <td>$decompte->police->Date_effet</td>
-                                    <td>$decompte->police->Date_echeance</td>
-                                    <td></td>
-                                    <td>$decompte->assure->Plafond</td>
-                                    <td>$decompte->assure->Taux_couverture</td>
+                                    <th>Exercice</th>
+                                    <th>Nom Assur&eacute;</th>
+                                    <th >Matricule</th>
+                                    <th >Numero Police</th>
+                                    <th>Date de Naissance/th>
+                                    <th>Lieu de naissance</th>
+                                    <th>Date effet police</th>
+                                    <th>Date Ech&eacute;ance police</th>
+                                    <th>Formation sanitaire</th>
+                                    <th>Plafond Remboursement</th>
+                                    <th>Taux couverture</th>
+
 
                                 </tr>
-                            @endforeach
+                                </thead>
+                                <tbody>
 
-                            </tbody>
-                            <tfoot>
-                            <tr>
+                                @foreach($decomptes as $decompte)
+                                    <tr>
+                                        <td>{{$decompte->exercice->Date_debut}}</td>
+                                        <td>$decompte->assure->Nom</td>
+                                        <td>$decompte->assure->Matricule</td>
+                                        <td>$decompte->police->Numero_police</td>
+                                        <td>$decompte->assure->Datenaiss</td>
+                                        <td>$decompte->assure->Lieu_naiss</td>
+                                        <td>$decompte->police->Date_effet</td>
+                                        <td>$decompte->police->Date_echeance</td>
+                                        <td></td>
+                                        <td>$decompte->assure->Plafond</td>
+                                        <td>$decompte->assure->Taux_couverture</td>
 
-                                <!--th>N°</th-->
-                                <th>Exercice</th>
-                                <th>Nom Assur&eacute;</th>
-                                <th >Matricule</th>
-                                <th >Numero Police</th>
-                                <th>Date de Naissance/th>
-                                <th>Lieu de naissance</th>
-                                <th>Date effet police</th>
-                                <th>Date Ech&eacute;ance police</th>
-                                <th>Formation sanitaire</th>
-                                <th>Plafond Remboursement</th>
-                                <th>Taux couverture</th>
-                                <th width="12%">Options</th>
-                            </tr>
-                            </tfoot>
-                        </table>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+
+                                    <!--th>Nï¿½</th-->
+                                    <th>Exercice</th>
+                                    <th>Nom Assur&eacute;</th>
+                                    <th >Matricule</th>
+                                    <th >Numero Police</th>
+                                    <th>Date de Naissance/th>
+                                    <th>Lieu de naissance</th>
+                                    <th>Date effet police</th>
+                                    <th>Date Ech&eacute;ance police</th>
+                                    <th>Formation sanitaire</th>
+                                    <th>Plafond Remboursement</th>
+                                    <th>Taux couverture</th>
+                                    <th width="12%">Options</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                      
                     </div>
                 </div>
                 <!-- /.box-body -->

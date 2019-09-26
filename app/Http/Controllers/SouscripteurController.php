@@ -9,6 +9,7 @@ use App\Repositories\SouscripteurRepository;
 use App\Repositories\SurccusaleRepository;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\App;
 
 
 class SouscripteurController extends Controller
@@ -36,7 +37,6 @@ class SouscripteurController extends Controller
         $exercice = ExerciceRepository::getExerciceEnCours();
         $souscripteurs = Souscripteur::all();
 
-        dd(compact('souscripteurs', 'exercice'));
         $pdf = App::make('dompdf.wrapper');
 
         $pdf->loadView('Pages.Souscripteur.printall', compact('souscripteurs','exercice') );
@@ -86,7 +86,7 @@ class SouscripteurController extends Controller
         DB::beginTransaction();
         try{
             $souscripteur = SouscripteurRepository::store($request);
-
+            /*
             Succursale::create([
                     'SouscripteurID'=>$souscripteur->ID,
                     'Statut'=>$souscripteur->statut,
@@ -99,7 +99,7 @@ class SouscripteurController extends Controller
                     'Telephone'=>$souscripteur->telephone,
                     'Nom_contact'=>$souscripteur->nom_contact
 
-                ]);
+                ]);*/
             DB::commit();
                 return redirect(route('souscripteur_list_path'));
 
@@ -177,5 +177,11 @@ class SouscripteurController extends Controller
     {
         $souscripteur = SouscripteurRepository::show($id);
         return redirect(route('add_surccusale_path'))->with(['souscripteur' => $souscripteur]);
+    }
+
+    public function printAll()
+    {
+        $souscripteurs = Souscripteur::all();
+        return view('Print.souscripteur',compact('souscripteurs'));
     }
 }

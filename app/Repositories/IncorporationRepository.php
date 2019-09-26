@@ -38,8 +38,14 @@ class IncorporationRepository
             'Nationalite' => $request->input('Nationalite'),
             'Avatar' => $request->input('Avatar'),
             'Observation' => $request->input('Observation'),
-            'PoliceID' => $request->input('PoliceID')
-        ]);
+            'PoliceID' => $request->input('PoliceID'),
+            'Taux_couverture' => $request->input('Taux_couverture'),
+            'Plafond' => $request->input('Plafond'),
+            'Encour_conso' => $request->input('Encour_conso'),
+            'Solde' => $request->input('Solde'),
+            'Date_incorporation' => $request->input('Date_incorporation'),
+            'Montant_prime' => $request->input('Montant_prime')
+        ]); 
     }
 
     public static function show($id)
@@ -73,6 +79,10 @@ class IncorporationRepository
     }
 
     public static function getByExercice($exerciceID)
+    {
+        return Incorporation::whereExerciceid($exerciceID)->get();
+    }
+    public static function getByLastExercice($exerciceID)
     {
         return Incorporation::whereExerciceid($exerciceID)->get();
     }

@@ -53,8 +53,7 @@ class Police extends Model
 	protected $dates = [
 		'Date_souscription',
 		'Date_emission',
-		'Date_effet',
-		'Date_echeance'
+		'Date_effet'
 	];
 
 	protected $fillable = [
@@ -76,6 +75,10 @@ class Police extends Model
 	{
 		return $this->belongsTo(\App\Models\Etablissement::class, 'EtablissementID');
 	}
+	public function categorie_assure()
+	{
+		return $this->hasMany(\App\Models\CategorieAssure::class, 'policeId');
+	}
 
 	public function succursale()
 	{
@@ -90,6 +93,10 @@ class Police extends Model
 	public function assures()
 	{
 		return $this->hasMany(\App\Models\Assure::class, 'PoliceID');
+	}
+	public function automobile()
+	{
+		return $this->hasMany(\App\Models\Automobile::class, 'police_id');
 	}
 	public function incorporations()
 	{

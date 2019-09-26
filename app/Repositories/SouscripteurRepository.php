@@ -50,5 +50,20 @@ class SouscripteurRepository
         return Souscripteur::whereId($id)->delete();
     }
 
+    public static function create(Request $request)
+    {
+        return Souscripteur::create([
+           'nom' => $request->input('Nom'),
+           'statut' => "Particulier",
+           'activite' => $request->input('Profession'),
+           'adresse' => $request->input('bp'),
+           'ville' => $request->input('Ville'),
+           'pays' => $request->input('Pays'),
+           'raison_social' => $request->input('Matricule'),
+           'telephone' => $request->input('Telephone'),
+           'email' => $request->input('Email'),
+           'nombre_total_assure' => 1
+        ]);
+    }
 
 }

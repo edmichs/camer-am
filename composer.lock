@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "208e56648c7991f2e367c484a878f31c",
+    "content-hash": "c208707d2fb1605f4f3d885f72d4ee2f",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -708,6 +708,54 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jeremykenedy/laravel-phpinfo",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremykenedy/laravel-phpinfo.git",
+                "reference": "ca0b73c3415730b6ec771ce1f43848623df1b431"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremykenedy/laravel-phpinfo/zipball/ca0b73c3415730b6ec771ce1f43848623df1b431",
+                "reference": "ca0b73c3415730b6ec771ce1f43848623df1b431",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "jeremykenedy\\LaravelPhpInfo\\LaravelPhpInfoServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "jeremykenedy\\LaravelPhpInfo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Kenedy",
+                    "email": "jeremykenedy@gmail.com"
+                }
+            ],
+            "description": "phpinfo() in a pretty Laravel blade template",
+            "keywords": [
+                "Laravel php indo",
+                "Laravel phpinfo",
+                "phpinfo"
+            ],
+            "time": "2018-03-15T04:53:38+00:00"
         },
         {
             "name": "laravel/framework",

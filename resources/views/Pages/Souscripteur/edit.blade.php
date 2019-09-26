@@ -8,7 +8,7 @@
 
         <section class="content-header">
             <h1>
-                Modification de Souscripteur/Soci&eacute;t&eacute;
+                Modification
                 <!--small>Preview</small-->
             </h1>
             <ol class="breadcrumb">
@@ -83,7 +83,7 @@
 
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                        <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                     </div>
                                 </div>
 

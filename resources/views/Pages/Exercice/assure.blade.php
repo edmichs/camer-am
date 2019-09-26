@@ -63,7 +63,7 @@
                 <div class="box box-success">
                     <div class="box-header">
                         <h3 class="box-title">Liste des  assur&eacute;s de l'exercice {{date('Y', strtotime($exercice->Date_debut))}}</h3><br>
-                        <a href="{{url("exercice/show/{$exercice->ID}")}}" class="btn btn-info"><i class="fa fa-angle-double-left"></i>Retour</a>
+                        <a href="{{url("exercice/show/{$exercice->ID}")}}" class="btn btn-info"><i class="fa fa-angle-double-left"></i> Retour</a>
                         @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
@@ -73,12 +73,12 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
                                 <th>Filiale</th>
                                 <th>Reference/Matricule</th>
-                                <th>Code famille</th>
                                 <th>Type d&apos;employ&eacute;</th>
                                 <th>Nom</th>
                                 <th>Nationalite</th>
@@ -91,9 +91,8 @@
                             @foreach($assures as $assure)
                                 <tr>
                                     <td>{{$assure->succursale->Nom}}</td>
-                                    <td>{{$assure->Matricule}}</td>
-                                    <td>{{$assure->code_famille->Code}}</td>
-                                    <td>{{$assure->type_employe->Libelle}}</td>
+                                    <td>{{$assure->Matricule}}-{{$assure->code_famille()->exists() ? $assure->code_famille->Code : ''}}</td>
+                                    <td>{{$assure->type_employe()->exists() ? $assure->type_employe->Libelle : ''}}</td>
                                     <td>{{$assure->Nom}}</td>
                                     <td>{{$assure->Nationalite}}</td>
                                     <td>{{$assure->Taux_couverture}}</td>
@@ -101,19 +100,10 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Filiale</th>
-                                <th>Reference/Matricule</th>
-                                <th>Code famille</th>
-                                <th>Type d&apos;employ&eacute;</th>
-                                <th>Nom</th>
-                                <th>Nationalite</th>
-                                <th>Taux couverture</th>
-                                <th>Plafond</th>
-                            </tr>
-                            </tfoot>
+
                         </table>
+                        </div>
+                       
                     </div>
                 </div>
                 <!-- /.box-body -->

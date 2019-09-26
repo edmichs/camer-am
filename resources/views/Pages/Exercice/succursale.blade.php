@@ -73,10 +73,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                    <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Code Soci&eacute;t&eacute;</th>
                                 <th>Activit&eacute;</th>
@@ -102,7 +103,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Code Soci&eacute;t&eacute;</th>
                                 <th>Activit&eacute;</th>
@@ -113,6 +114,7 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->

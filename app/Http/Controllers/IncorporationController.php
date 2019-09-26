@@ -49,6 +49,15 @@ class IncorporationController extends Controller
     public function store(Request $request)
     {
 
+        if($request->ajax()){
+            if($request->has('changedSuccursale')){
+                $array = array();
+                $police = PoliceRepository::getBySuccursale($request->input('SuccursaleID'),$request->input('ExerciceID'));
+                array_push($array,$police);
+                return $array;
+            }
+        }
+
         if(IncorporationRepository::store($request)){
             return redirect()->back()->with(['message'=>'store successfull']);
         }

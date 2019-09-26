@@ -1,4 +1,14 @@
 @extends('Layouts.template2')
+
+
+@php
+$police = $bpc->police;
+$assure = $bpc->assure;
+$affection = $bpc->affection;
+$medecin_conseil = $bpc->medecin_conseil;
+@endphp
+
+
 @section('css')
     <style>
         .tooltip {
@@ -72,19 +82,19 @@
                                 <h3><u>POLICE</u></h3>
                                 <div class=" col-md-12">
                                     <div class="form-group col-md-6">
-                                        <label for="Numero_police">Num&eacute;ro Police : {{$bpc->police->Numero_police}}</label>
+                                        <label for="Numero_police">Num&eacute;ro Police : {{$police ? $police->Numero_police : ''}}</label>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="SuccursaleID">Police Maladie pour : <strong>{{$bpc->police->succursale->Nom}}</strong></label>
+                                        <label for="SuccursaleID">Police Maladie pour : <strong>{{$police ?($police->succursale()->exists() ? $police->succursale->Nom: "")  : ''}}</strong></label>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="SuccursaleID">Exercice : <strong>{{date("Y", strtotime($bpc->exercice->Date_debut))}}</strong></label>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="">Date Effet : <strong>{{date("d/m/Y", strtotime($bpc->police->Date_effet))}}</strong> </label>
+                                        <label for="">Date Effet : <strong>{{date("d/m/Y", strtotime($police ? $police->Date_effet : ''))}}</strong> </label>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="Date_echeance">Date Echeance : <strong>{{date("d/m/Y", strtotime($bpc->police->Date_echeance))}}</strong> </label>
+                                        <label for="Date_echeance">Date Echeance : <strong>{{date("d/m/Y", strtotime($police ? $police->Date_echeance : ''))}}</strong> </label>
 
                                     </div>
                                 </div>
@@ -93,29 +103,30 @@
                                 <h3><u>ASSURE</u></h3>
                                 <div class=" col-md-12">
                                     <div class="form-group col-md-12">
-                                        <label for="Numero_police">Nom & prenom : {{$bpc->assure->Nom}}</label>
+                                        <label for="Numero_police">Nom & prenom : {{$assure ? $assure->Nom : ""}}</label>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="SuccursaleID">Date Naissance : <strong>{{$bpc->assure->Datenaiss}}</strong></label>
+                                        <label for="SuccursaleID">Date Naissance : <strong>{{$assure ? $assure->Datenaiss : ''}}</strong></label>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="SuccursaleID">Lieu de naissance : <strong>{{$bpc->assure->Lieu_naiss}}</strong></label>
+                                        <label for="SuccursaleID">Lieu de naissance : <strong>{{$assure ? $assure->Lieu_naiss : ""}}</strong></label>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="">Affection : <strong>{{$bpc->affection->Description}}</strong> </label>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="Date_echeance">Hauteur couverture : <strong>{{$bpc->assure->Hauteur_couverture}}</strong> </label>
+                                        <label for="Date_echeance">Hauteur couverture : <strong>{{$assure ? $assure->Taux_couverture : ''}} %</strong> </label>
 
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="Date_echeance">Plafond Remboursement : <strong>{{$bpc->assure->Plafond_remboursement}}</strong> </label>
+                                        <label for="Date_echeance">Plafond Remboursement : <strong>{{$assure ? $assure->Plafond : ''}} XFA</strong> </label>
 
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="Date_echeance">En cours : <strong>{{$bpc->assure->Encour}}</strong> </label>
+                                        <label for="Date_echeance">En cours : <strong>{{$assure ? $assure->Encour_conso : ''}} XFA</strong> </label>
 
                                     </div>
+
                                     <div class="form-group col-md-6">
                                         <label for="Date_echeance">Date Sinistre : <strong>{{date("d/m/Y", strtotime($bpc->Date_sinistre))}}</strong> </label>
 
@@ -188,7 +199,7 @@
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <div class="form-group">
-                                       <a class="btn btn-info">Imprimer</a>
+                                        <a class="btn btn-info" href="{!! route('bpc.print', $bpc->ID) !!}" target="_blank">Imprission </a>
                                     </div>
                                 </div>
                             </div>

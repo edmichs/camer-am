@@ -7,7 +7,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Nouvel Police
+           Modification
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -25,9 +25,7 @@
 
                 <div class="col-md-12">
                     <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Nouvel Police</h3>
-                        </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-md-12">
@@ -36,24 +34,28 @@
                                     <div class="form-group col-md-6">
                                         <label for="ExerciceID">Exercice</label>
                                         <select name="ExerciceID" id="ExerciceID" class="form-control">
-                                            <option value="{{$exercice->ID}}">{{date("d/M/Y", strtotime($exercice->Date_debut))}} - {{date("d/M/Y", strtotime($exercice->Date_fin))}}</option>
+                                            <option value="{{$exercice->ID}}">{{date("Y", strtotime($exercice->Date_debut))}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
+                                    @php
+                                        $succursale = $police->SuccursaleID;
+                                        $compagnie = $police->EtablissementID;
+                                    @endphp
                                     <div class="form-group col-md-6">
                                         <label for="SurccusaleID">Souscripteur/Surccusale</label>
-                                        <select name="SuccursaleID" id="SuccursaleID" class="form-control">
+                                        <select name="SuccursaleID" id="SuccursaleID" class="selectpicker form-control" data-live-search="true" data-show-subtext="true">
                                             @foreach($surccusales as $surccusale)
-                                                <option value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
+                                                <option {{ ($succursale == $surccusale->ID ? 'selected' : '') }} value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="EtablissementID">Code Compagnie Assurance</label>
-                                        <select name="EtablissementID" id="EtablissementID" class="form-control">
+                                        <select name="EtablissementID" id="EtablissementID" class="selectpicker form-control" data-live-search="true" data-show-subtext="true">
                                             @foreach($compagnies as $compagnie)
-                                                <option value="{{$compagnie->ID}}">{{$compagnie->Nom}}</option>
+                                                <option {{ ($succursale == $surccusale->ID ? 'selected' : '') }}  value="{{$compagnie->ID}}">{{$compagnie->Nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -67,19 +69,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6">
                                         <label for="Date_souscription">Date  soucription</label>
-                                        <input type="text" class="form-control"  value="{{$police->Date_souscription}}" name="Date_souscription" id="Date_souscription">
+                                        <input type="text" class="form-control"  value="{{date('d-m-Y',strtotime($police->Date_souscription))}}" name="Date_souscription" id="Date_souscription">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Date_emission">Date  &eacute;mission</label>
-                                        <input type="text" class="form-control"  value="{{$police->Date_emission}}" name="Date_emission" id="Date_emission">
+                                        <input type="text" class="form-control"  value="{{date('d-m-Y',strtotime($police->Date_emission))}}" name="Date_emission" id="Date_emission">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Date_effet">Date  effet</label>
-                                        <input type="text" class="form-control" name="Date_effet"  value="{{$police->Date_effet}}" id="Date_effet">
+                                        <input type="text" class="form-control" name="Date_effet"  value="{{date('d-m-Y',strtotime($police->Date_effet))}}" id="Date_effet">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Date_echeance">Date  &eacute;ch&eacute;ance</label>
-                                        <input type="text" class="form-control" name="Date_echeance"  value="{{$police->Date_echeance}}" id="Date_echeance">
+                                        <input type="text" class="form-control" name="Date_echeance"  value="{{date('d-m-Y',strtotime($police->Date_echeance))}}" id="Date_echeance">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Prime_total">Prime totale</label>
@@ -104,7 +106,7 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

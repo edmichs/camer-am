@@ -29,7 +29,8 @@
                 </div>
                 <a href="{{url("exercice/succursale/{$id}")}}" class="small-box-footer">Voir la liste <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div> <div class="col-lg-2 col-xs-6">
+        </div>
+        <div class="col-lg-2 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">

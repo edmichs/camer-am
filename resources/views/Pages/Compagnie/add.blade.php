@@ -7,7 +7,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Ajout de nouvelle Compagnie
+            Ajout
             <!--small>Preview</small-->
 
         </h1>
@@ -70,7 +70,7 @@
 
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

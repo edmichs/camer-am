@@ -44,10 +44,11 @@ class DecompteController extends Controller
         $numeroDecompte = "DEC".$n.mt_rand(0,9999);
         $garanties = GarantiRepository::getAll();
         $affections = AffectionRepository::getAll();
-        $polices = PoliceRepository::getAll();
-        $assures = AssureRepository::getAll();
         $exercice = ExerciceRepository::getExerciceEnCours();
         $prestations = CategoriePrestationRepository::getAll();
+        $polices = PoliceRepository::getByExercice($exercice->ID);
+        $assures = AssureRepository::getByExercice($exercice->ID);
+
         $prestas = PrestationRepository::getAll();
         $zonegeos = ZoneGeoRepository::getAll();
 
@@ -104,7 +105,7 @@ class DecompteController extends Controller
         $valeur= '<table id="example1" class="table table-bordered table-striped dataTable">
                                         <thead>
                                         <tr>
-                                            <!--th>N°</th-->
+                                            <!--th>Nï¿½</th-->
                                             <th>Code Prestation</th>
                                             <th width="12%">Lib&eacute;ll&eacute; prestation</th>
                                             <th>Plafond</th>
@@ -131,6 +132,7 @@ class DecompteController extends Controller
                     $valeur.='<td><a data-toggle="modal"
                                             data-id='.$prestation->ID.'
                                             id="deleteButton"
+                                            class="deleteButton"
                                             data-target="#deleteModal"> <i onclick="supprimer('.$prestation->ID.')" class="btn btn-danger fa fa-trash"></i></a></td>
               </tr>';
                 }
@@ -148,7 +150,6 @@ class DecompteController extends Controller
                 return $prestation;
             }
         }
-
     }
 
     /**
@@ -159,7 +160,13 @@ class DecompteController extends Controller
      */
     public function show($id)
     {
-        //
+        $decompte = DecompteRepository::show($id);
+        $prestations = DecomptePrestationRepository::findByNumeroDecompte($decompte->Numero_decompte);
+        if($decompte){
+            return view('Pages.Decompte.show', compact('decompte','prestations'));
+        }
+        return redirect()->back()->with(['message' => "Decompte inexistant"]);
+
     }
 
     /**
@@ -194,7 +201,7 @@ class DecompteController extends Controller
     public function destroy($id)
     {
 
-    }
+    } 
     public function delete(Request $request)
     {
        if($request->ajax()){
@@ -206,5 +213,11 @@ class DecompteController extends Controller
                return $this->loadTablePrestation($prestation_decompte);
            }
        }
+    }
+
+    public function printer($id )
+    {
+        $decompte = DecompteRepository::show($id);
+        return view('Print.decompte',compact('decompte'));
     }
 }

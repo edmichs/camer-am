@@ -7,12 +7,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Ajout de Souscripteur/Souscripteur
+            Ajout Surccusale
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Nouveau Souscripteur</li>
+            <li class="active">Nouvelle Surccusale</li>
         </ol>
     </section>
 
@@ -26,9 +26,7 @@
 
                 <div class="col-md-12">
                     <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Formulaire d'ajout</h3>
-                        </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-md-12">
@@ -36,42 +34,34 @@
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6" >
                                         <label>Soci&eacute;t&eacute; m&egrave;re <span>*</span></label>
-                                        <select name="SouscripteurID"  class="form-control">
+                                        <select name="SouscripteurID"  class="selectpicker form-control" data-show-subtext="true" data-live-search="true">
                                             @foreach($souscripteurs as $souscripteur)
                                                 <option value="{{$souscripteur->ID}}">{{$souscripteur->nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="code_societe">Code de la soci&eacute;t&eacute; : <span>*</span></label>
-                                        <input id="Raison_social" type="text" name="Raison_social" class="form-control" required>
+                                        <label for="code_societe">Code de la succursale : <span>*</span></label>
+                                        <input id="Raison_social" placeholder="Ex: 1001" type="text" name="Raison_social" class="form-control" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="nom">Nom : <span>*</span></label>
-                                        <input id="Nom" type="text" name="Nom" class="form-control" required>
+                                        <label for="nom">Nom de la succursale : <span>*</span></label>
+                                        <input id="Nom" type="text" name="Nom" class="form-control" placeholder="Ex: Hysacam Edea" required>
                                     </div>
 
-                                    <div class="form-group col-md-6">
-                                        <label>Quelle est le type de compagnie (statut): <span>*</span></label>
-                                        <select name="Statut" id="Statut" class="form-control" required>
-                                            <option value="Societe">Soci&eacute;t&eacute;</option>
-                                            <option value="Association">Association</option>
-                                            <option value="Particulier">Particulier</option>
-                                        </select>
-                                    </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="Activite">Activit&eacute;</label>
-                                        <input type="text" id="Activite" name="Activite" class="form-control" required>
+                                        <label for="Activite">Activit&eacute; de la filiale</label>
+                                        <input type="text" id="Activite" placeholder="Ex: HYGIENE ET SALUBRITE" name="Activite" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="adresse">Adresse <span>*</span></label>
-                                        <input type="text" id="Adresse" name="Adresse" class="form-control" required>
+                                        <input type="text" id="Adresse" name="Adresse" placeholder="Ex: 2630 Rue Sanaga Edea" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Telephone">Telephone <span>*</span></label>
-                                        <input type="number" id="Telephone" name="Telephone" class="form-control" required>
+                                        <input type="number" id="Telephone" name="Telephone" class="form-control" placeholder="Ex: 2376********" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Nom_contact">Nom Contact <span>*</span></label>
@@ -82,11 +72,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6">
                                         <label for="Ville">Ville : <span>*</span></label>
-                                        <input type="text" name="Ville" id="Ville" class="form-control" required>
+                                        <input type="text" name="Ville" id="Ville" class="form-control" placeholder="Ex: Edea" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Pays">Pays : <span>*</span></label>
-                                        <input type="text" name="Pays" id="Pays" class="form-control" required>
+                                        <input type="text" name="Pays" id="Pays" class="form-control" placeholder="Ex: Cameroun" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Nombre_total_assure">Nombre Total Assur&eacute; : <span>*</span></label>
@@ -95,7 +85,7 @@
 
                                 </div>
                                <div class="form-group col-md-4">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

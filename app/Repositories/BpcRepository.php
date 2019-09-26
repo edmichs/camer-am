@@ -11,7 +11,7 @@ namespace App\Repositories;
 
 use App\Models\Bpc;
 use Illuminate\Http\Request;
-use PDF;
+use Barryvdh\DomPDF\PDF;
 
 class BpcRepository
 {

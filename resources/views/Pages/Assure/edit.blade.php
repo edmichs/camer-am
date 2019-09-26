@@ -100,28 +100,14 @@
                         <textarea type="text" class="form-control" id="Observation" value="{{$assure->Observation}}" name="Observation" placeholder="Observation"></textarea>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="PoliceID">Numero Police</label>
-                        <select name="PoliceID" class="form-control" id="PoliceID">
-                            @foreach($polices as $police)
-                                <option value="{{$police->ID}}">{{$police->Numero_police}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="Taux_couverture">Taux Couverture</label>
                         <input type="number" class="form-control" id="Taux_couverture" value="{{$assure->Taux_couverture}}" name="Taux_couverture" placeholder="Taux Couverture">
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="Plafond">Plafond</label>
-                        <input type="number" class="form-control" id="Plafond" value="{{$assure->Plafond}}" placeholder="Plafond" name="Plafond">
-                    </div>
-                </div>
+
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="Encour_conso">En cours de consommation</label>

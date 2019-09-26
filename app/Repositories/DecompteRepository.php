@@ -33,6 +33,7 @@ class DecompteRepository
 
     public static function store(Request $request)
     {
+
         return Decompte::create([
             'Numero_decompte' =>$request->input('Numero_decompte'),
             'GarantiID' =>$request->input('GarantiID'),
@@ -61,5 +62,10 @@ class DecompteRepository
     public static function getByExercice($exerciceID)
     {
         return Decompte::whereExerciceid($exerciceID)->get();
+    }
+
+    public static function show($id)
+    {
+        return Decompte::find($id);
     }
 }

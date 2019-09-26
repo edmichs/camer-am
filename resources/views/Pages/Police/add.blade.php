@@ -7,7 +7,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Nouvel Police
+            Ajout
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -26,9 +26,7 @@
 
                 <div class="col-md-12">
                     <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Nouvel Police</h3>
-                        </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="col-md-12">
@@ -44,7 +42,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6">
                                         <label for="SurccusaleID">Souscripteur/Surccusale</label>
-                                        <select name="SuccursaleID" id="SuccursaleID" class="form-control">
+                                        <select name="SuccursaleID" id="SuccursaleID" class="selectpicker form-control" data-show-subtext="true" data-live-search="true">
                                             @foreach($surccusales as $surccusale)
                                                 <option value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
                                             @endforeach
@@ -52,23 +50,25 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="EtablissementID">Code Compagnie Assurance</label>
-                                        <select name="EtablissementID" id="EtablissementID" class="form-control">
+                                        <select name="EtablissementID" id="EtablissementID" class="selectpicker form-control" data-show-subtext="true" data-live-search="true">
                                             @foreach($compagnies as $compagnie)
                                             <option value="{{$compagnie->ID}}">{{$compagnie->Nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="Description">Libelle/Description</label>
-                                        <input name="Description" id="Description" class="form-control" type="text" placeholder="Description">
-
-
-                                    </div><div class="form-group col-md-6">
                                         <label for="Numero_police">Numero Police</label>
                                         <input name="Numero_police" id="Numero_police" class="form-control" type="text" placeholder="Number Police">
 
 
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Description">Libelle/Description</label>
+                                        <input name="Description" id="Description" class="form-control" type="text" placeholder="Description">
+
+
+                                    </div>
+
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group col-md-6">
@@ -106,7 +106,7 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Enregistrer</button>
+                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
                                 </div>
                             </div>
 

@@ -32,6 +32,19 @@
             border-color: #00a65a !important;
         }
 
+        .no-js #loader { display: none;  }
+        #loading { display: block; position: absolute; left: 100px; top: 0; }
+        #loading {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(/img/load.gif) center no-repeat #fff;
+        }
+        #loading { display: none; }
+
     </style>
 
 @endsection
@@ -194,15 +207,17 @@
                                                             $("#Matricule").val(data[0].Matricule);
                                                             $("#Datenaiss").val(data[0].Datenaiss);
                                                             $("#Lieu_naiss").val(data[0].Lieu_naiss);
-                                                            $("#Plafond").val(data[0].Plafond);
+                                                            if(data[1] != null){
+                                                                $("#Plafond").val(data[1].plafond);
+                                                            }
                                                             $("#Taux_couverture").val(data[0].Taux_couverture);
                                                             $("#Encour").val(data[0].Encour_conso);
 
                                                             message('<h4> Assur&eacute; ajout&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
                                                         },
                                                         error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
-                                                            /*console.log(JSON.stringify(jqXHR));
-                                                             console.log("AJAX error: " + textStatus + ' : ' + errorThrown);*/
+                                                            console.log(JSON.stringify(jqXHR));
+                                                             console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                                                             message("<h4> Echec de l'op&eacute;ration ! </h4>", 'alert-danger pull-lg-right');
                                                         }
                                                     });
@@ -453,21 +468,30 @@
                                 <div class="form-group col-md-12">
 
 
-                                    <div class="col-md-4">
-                                        <a class="btn btn-success form-control" type="button" id="print" name="action">Imprimer
+                                    <div class="col-md-6">
+                                        <a class="btn btn-success form-control" target="_blank" href="{{route('print_bpc_path')}}"  >Imprimer
                                             BPC
                                             vierge</a>
                                     </div>
-                                    <div class="col-md-4">
-                                        <button class="btn btn-info form-control" type="submit" name="action">
-                                            Enregistrer sans Imprimer
+                                    <div class="col-md-6">
+                                        <button class="btn btn-info form-control" title="  NB: V&eacute;rifier bien les informations entr&eacute;es car aucune modification ne sera permise"  type="submit" name="action">
+                                            Soumettre
                                         </button>
                                     </div>
-                                    <div class="col-md-4">
-                                        <a class="btn btn-primary form-control" type="submit" name="action">Enregistrer
-                                            et Imprimer</a>
+
+                                    <div id="loading">
+                                        <!-- You can add gif image here
+                                        for this demo we are just using text -->
+                                        procesuss en cours ...
                                     </div>
                                     <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $(document).ajaxStart(function () {
+                                                $("#loading").show();
+                                            }).ajaxStop(function () {
+                                                $("#loading").hide();
+                                            });
+                                        });
                                         $("#print").on('click', function () {
                                             var formObj = $("#form");
                                             var formURL = formObj.attr("action");
@@ -482,7 +506,7 @@
                                                 processData: false,
                                                 success: function (data) {
                                                     //alert(data);
-
+                                                    $(".se-pre-con").hide();
                                                     console.log(data);
                                                     //  $("#Tel_medecin").val(data[0].Telephone);
                                                     //  $("#email_medecin").val(data[0].Email);
@@ -490,6 +514,7 @@
                                                     message('<h4> BPC imprim&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
                                                 },
                                                 error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                                                    $(".se-pre-con").hide();
                                                     console.log(JSON.stringify(jqXHR));
                                                     console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                                                     message("<h4> Echec de l'op&eacute;ration ! </h4>", 'alert-danger pull-lg-right');
@@ -508,7 +533,7 @@
 
                             </div>
                         </div>
-
+                    </div>
 
                 </form>
             </div>

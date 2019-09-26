@@ -30,6 +30,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $encour_conso
  * @property float $solde
  * @property int $etablissement_id
+ * @property int $RemboursementsID
+ * @property int $PoliceID
+ * @property int $SuccursaleID
+ * @property int $Code_familleID
+ * @property int $Type_EmployeID
+ * @property int $ExerciceID
+ * @property float $Solde
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
@@ -82,7 +89,8 @@ class Incorporation extends Model
 		'Nationalite',
 		'Date_incorporation',
 		'Discriminator',
-		'AssureID'
+		'AssureID',
+		'Montant_prime'
 	];
 	public function code_famille()
 	{

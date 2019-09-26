@@ -92,10 +92,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Date Debut</th>
                                 <th width="12%">Date Fin</th>
                                 <th>Date Cloture</th>
@@ -134,7 +135,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th>Raison Sociale</th>
                                 <th>Activit&eacute;</th>
@@ -144,6 +145,8 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
+                       
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -189,7 +192,7 @@
                             alert(data);
 
 
-                            message('<h4> Exercice clotur&eacute; avec succès ! </h4>', 'alert-success pull-lg-right');
+                            message('<h4> Exercice clotur&eacute; avec succï¿½s ! </h4>', 'alert-success pull-lg-right');
 
 
                         },

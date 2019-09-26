@@ -74,9 +74,7 @@ class AssureRepository
            'Nationalite' => $request->input('Nationalite'),
            'Avatar' => $request->file('Avatar')->getClientOriginalName(),
            'Observation' => $request->input('Observation'),
-           'PoliceID' => $request->input('PoliceID'),
            'Taux_couverture' => $request->input('Taux_couverture'),
-           'Plafond' => $request->input('Plafond'),
            'Encour_conso' => $request->input('Encour_conso'),
            'Solde' => $request->input('Solde')
        ]);
@@ -129,5 +127,31 @@ class AssureRepository
     public static function getByExercice($exerciceID)
     {
         return Assure::whereExerciceid($exerciceID)->get();
+    }
+    public static function getByLastExercice($exerciceID)
+    {
+        return Assure::whereExerciceid($exerciceID)->get();
+    }
+
+    public static function create(Request $request,$police_id,$succursale_id, $exercice_id)
+    {
+        return Assure::create([
+           'Nom' => $request->input('assure'),
+           'Code_familleID' => 1,
+           'PoliceID' => $police_id,
+           'SuccursaleID' => $succursale_id,
+           'ExerciceID' => $exercice_id,
+           'Matricule' => $request->input('Matricule'),
+           'Fct_employe' => $request->input('Profession'),
+           'Situa_marital' => $request->input('Situa_marital'),
+           'Datenaiss' => $request->input('Datenaiss'),
+           'numero_permis' => $request->input('numero_permis'),
+           'numero_passport' => $request->input('numero_passport'),
+           'adresse' => $request->input('bp'),
+           'telephone' => $request->input('Telephone'),
+           'email' => $request->input('Email'),
+
+
+        ]);
     }
 }

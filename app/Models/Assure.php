@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Assure
- * 
+ *  
  * @property int $ID
  * @property int $RemboursementsID
  * @property int $PoliceID
@@ -135,7 +135,10 @@ class Assure extends Model
 	{
 		return $this->hasMany(\App\Models\BonusMalus::class, 'AssureID');
 	}
-
+	public function automobile()
+	{
+		return $this->hasMany(\App\Models\Automobile::class, 'assure_id');
+	}
 	public function bpcs()
 	{
 		return $this->hasMany(\App\Models\Bpc::class, 'AssureID');

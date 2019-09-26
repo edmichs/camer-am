@@ -57,6 +57,10 @@ class Exercice extends Model
 	{
 		return $this->hasMany(\App\Models\Assure::class, 'ExerciceID');
 	}
+	public function categorie_assure()
+	{
+		return $this->hasMany(\App\Models\CategorieAssure::class, 'exerciceId');
+	}
 	public function incorporations()
 	{
 		return $this->hasMany(\App\Models\Incorporation::class, 'ExerciceID');

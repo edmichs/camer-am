@@ -43,4 +43,8 @@ class TypeEmploye extends Model
 	{
 		return $this->hasMany(\App\Models\BaremePrestation::class, 'Type_EmployeID');
 	}
+	public function categorie_assure()
+	{
+		return $this->hasMany(\App\Models\CategorieAssure::class, 'typeEmployeId');
+	}
 }

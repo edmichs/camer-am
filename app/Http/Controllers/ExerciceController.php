@@ -55,7 +55,7 @@ class ExerciceController extends Controller
                 DB::beginTransaction();
                 try{
                     $newExercice = ExerciceRepository::store($request);
-                   /* foreach(AssureRepository::getAll() as $assure){
+                    foreach(AssureRepository::getByLastExercice($newExercice->ID - 1) as $assure){
                         $ass = new Assure();
                         $ass->Nom = $assure->Nom;
                         $ass->Datenaiss = $assure->Datenaiss;
@@ -80,7 +80,7 @@ class ExerciceController extends Controller
                         $ass->save();
 
                     }
-                    foreach(PoliceRepository::getAll() as $police){
+                    foreach(PoliceRepository::getByLastExercice($newExercice->ID - 1) as $police){
                         $pol = new Police();
                         $pol->ExerciceID = $newExercice->ID;
                         $pol->SuccursaleID = $police->SuccursaleID;
@@ -97,7 +97,7 @@ class ExerciceController extends Controller
                         $pol->save();
                     }
 
-                    foreach(IncorporationRepository::getAll() as $incorporate){
+                    foreach(IncorporationRepository::getByLastExercice($newExercice->ID - 1) as $incorporate){
                         $incor = new Incorporation();
                         $incor->PoliceID = $incorporate->PoliceID;
                         $incor->SuccursaleID = $incorporate->SuccursaleID;
@@ -115,7 +115,7 @@ class ExerciceController extends Controller
                         $incor->Nationalite = $incorporate->Nationalite;
                         $incor->Date_incorporation = $incorporate->Date_incorporation;
                         $incor->save();
-                    }*/
+                    }
                     DB::commit();
                     return $newExercice;
                 }catch (\Exception $e){

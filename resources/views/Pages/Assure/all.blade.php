@@ -46,7 +46,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Liste des Assur&eacute;s
+            Liste
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
@@ -63,9 +63,10 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Liste des assur&eacute;s</h3><br>
-                        <a href="{{route('add_assure_path')}}" class="btn btn-info"><i class="fa fa-plus"></i>Nouvel Assur&eacute;</a>
-                        @if(session('message'))
+                        <a href="{{route('add_assure_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvel Assur&eacute;</a>
+                        <a href="{{route('print_assure_path_exercice')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
+
+                    @if(session('message'))
                             <div class="row">
                                 <div class="alert alert-warning">{{session('message')}}</div>
                             </div>
@@ -74,35 +75,43 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <th>Filiale</th>
-                                <th>Reference/Matricule</th>
-                                <th>Code famille</th>
-                                <th>Type d&apos;employ&eacute;</th>
                                 <th>Nom</th>
+                                <th>Filiale</th>
+                                <th>Numero police</th>
+                                <th>Reference/Matricule</th>
+                                <th>Type d&apos;employ&eacute;</th>
                                 <th>Nationalite</th>
                                 <th>Taux couverture</th>
                                 <th>Plafond</th>
+                                <th>Montant Prime</th>
+                                <th>En cours consommation</th>
+                                <th>Solde</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($assures as $assure)
+                                @php
+                                    $police = \App\Repositories\PoliceRepository::getBySuccursale($assure->succursale->ID,$assure->exercice->ID);
+                                    $categorie_assure = \App\Models\CategorieAssure::wherePoliceid($police->ID)->whereTypeemployeid($assure->TypeEmployeId)->whereExerciceid($assure->ExerciceID)->first();
+
+                                @endphp
                                 <tr>
-                                    <td>{{$assure->succursale->Nom}}</td>
-                                    <td>{{$assure->Matricule}}</td>
-                                    <td>{{$assure->code_famille->Code}}</td>
-                                    @if($assure->Type_EmployeID)
-                                    <td>{{$assure->type_employe->Libelle}}</td>
-                                    @else
-                                        <td></td>
-                                    @endif
                                     <td>{{$assure->Nom}}</td>
+                                    <td>{{$assure->succursale()->exists() ? $assure->succursale->Nom : ''}}</td>
+                                    <td>{{$police->Numero_police}}</td>
+                                    <td>{{$assure->Matricule}}-{{$assure->code_famille()->exists() ? $assure->code_famille->Code : ''}}</td>
+                                    <td>{{$assure->type_employe()->exists() ? $assure->type_employe->Libelle : ''}}</td>
                                     <td>{{$assure->Nationalite}}</td>
                                     <td>{{$assure->Taux_couverture}}</td>
-                                    <td>{{$assure->Plafond}}</td>
+                                    <td>{{$categorie_assure ? $categorie_assure->plafond : ''}}</td>
+                                    <td>{{$categorie_assure ? $categorie_assure->montant_prime : '' }}</td>
+                                    <td>{{$assure->Encour_conso}}</td>
+                                    <td>{{$assure->Solde}}</td>
                                     <td >
                                         <a href='{{url("assure/show/{$assure->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
                                             <i class=" fa fa-eye ">
@@ -141,6 +150,8 @@
                             </tr>
                             </tfoot>
                         </table>
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -159,7 +170,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
@@ -186,7 +197,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Modification...</h4>
                     </div>
                     <div class="modal-body">
@@ -267,7 +278,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Nouvelle Surccusale...</h4>
                     </div>
                     <div class="modal-body">

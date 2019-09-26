@@ -45,4 +45,6 @@ class CompagnyRepository
         return Etablissement::find($id)->delete();
     }
 
+
+
 }

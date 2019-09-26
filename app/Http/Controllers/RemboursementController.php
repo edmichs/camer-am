@@ -31,7 +31,7 @@ class RemboursementController extends Controller
     public function create()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-        $polices = PoliceRepository::getAll();
+        $polices = PoliceRepository::getByExercice($exercice->ID);
         return view('Pages.Remboursement.add',compact('exercice','polices'));
     }
 
