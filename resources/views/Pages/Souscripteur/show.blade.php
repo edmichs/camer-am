@@ -129,7 +129,7 @@
                         <table id="example1" class="table table-bordered table-striped dataTable">
                             <thead>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th width="12%">Raison Sociale</th>
                                 <th>Activit&eacute;</th>
@@ -152,17 +152,17 @@
                                     <td>{{ $surccusale->Ville }}</td>
                                     <td>{{ $surccusale->Pays }}</td>
                                     <td >
-                                        <a href='{{url("surccusale/show/{$succursale->ID}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                        <a href="{{url("surccusale/show/{$surccusale->ID}")}}" class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
                                             <i class=" fa fa-eye ">
 
                                             </i></a>
-                                        <a href="{{url("surccusale/update/{$succursale->ID}")}}" class="btn btn-warning"
+                                        <a href="{{url("surccusale/update/{$surccusale->ID}")}}" class="btn btn-warning"
                                            title="Modifier">
                                             <i class="fa fa-edit " style="margin-right: 0.5%;" >
 
                                             </i>
                                         </a>
-                                        <a href="{{url("surccusale/delete/{$succursale->ID}")}}" class="btn btn-danger"
+                                        <a href="{{url("surccusale/delete/{$surccusale->ID}")}}" class="btn btn-danger"
                                            title="Supprimer">
                                             <i class=" fa fa-trash " >
 
@@ -173,7 +173,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <!--th>N°</th-->
+                                <!--th>Nï¿½</th-->
                                 <th>Nom</th>
                                 <th>Raison Sociale</th>
                                 <th>Activit&eacute;</th>
@@ -202,11 +202,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
+                            <span aria-hidden="true">ï¿½</span></button>
                         <h4 class="modal-title">Suppression...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet élément ? </p>
+                        <p> Souhaitez-vous supprimer cet ï¿½lï¿½ment ? </p>
                         {{ csrf_field() }}
                         <input type="hidden" name="suppr">
                     </div>

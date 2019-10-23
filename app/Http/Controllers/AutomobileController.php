@@ -81,15 +81,16 @@ class AutomobileController extends Controller
             }
             if ($request->has('changeCheckbox')) {
                 $array = array();
-                $garanti = Garanti::find($request->input('id'));
-                array_push($array, $garanti);
-                return $array;
+                $tarif = Tarif::with('garanti')->whereDuree($request->input('duree'))->wherePuissanceId($request->input('puissance'))->whereCategorieTarifId($request->input('categorie'))->whereGarantiId($request->input('id'))->get();
+               // $garanti = Garanti::find($request->input('id'));
+                array_push($array, $tarif);
+                return $tarif;
 
             }
 
         }
-    //    DB::beginTransaction();
-     //  try{
+        DB::beginTransaction();
+       try{
             $exercice = ExerciceRepository::getExerciceEnCours();
             $souscripteur = SouscripteurRepository::create($request);
             $surccusale = SurccusaleRepository::create($souscripteur);
@@ -98,8 +99,8 @@ class AutomobileController extends Controller
 
              $assure = AssureRepository::create($request,$police->ID,$surccusale->ID,$exercice->ID);
             $carte_grise = CarteGriseRepository::store($request);
-            $automobile = AutomobileRepository::create($request,$souscripteur->ID,$police->ID,$exercice->ID,$carte_grise->id);
-
+            $automobile = AutomobileRepository::create($request,$souscripteur->ID,$police->ID,$exercice->ID,$carte_grise->id,$assure->ID);
+            
             foreach($request->input('checkbox') as $checkbox){
                     $tarif = Tarif::wherePrimeNette($request->input('nette'.$checkbox))->wherePttc($request->input('totale'.$checkbox))->whereGarantiId($checkbox)->first();
                     if($tarif){
@@ -112,12 +113,12 @@ class AutomobileController extends Controller
                     }
 
             }
-         //  DB::commit();
+           DB::commit();
             return redirect(route('auto_list_path'));
-      /* }catch(\Exception $e){
+       }catch(\Exception $e){
             DB::Rollback();
             return redirect()->back()->with(['message' => 'Erreur lors de l\'enregistrement']);
-        }*/
+        }
     }
 
     /**

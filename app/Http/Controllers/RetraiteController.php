@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\ExerciceRepository;
+use App\Models\Retraite;
+use App\Repositories\RetraiteRepository;
 
-class AccueilController extends Controller
+class RetraiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,9 @@ class AccueilController extends Controller
      */
     public function index()
     {
-        return redirect(route('accueil_path'));
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $retraites = RetraiteRepository::getByExercices($exercice->ID);
+        return view("Pages.Categories.Retraite.all", compact("exercice","retraites"));
     }
 
     /**
@@ -23,7 +28,8 @@ class AccueilController extends Controller
      */
     public function create()
     {
-        //
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        return view("Pages.Categories.Retraite.add", compact("exercice"));
     }
 
     /**

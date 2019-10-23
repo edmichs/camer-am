@@ -17,14 +17,18 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+
+
     public function login(Request $request)
     {
+        
+       
         $this->validate($request,[
             'identifiant' => 'required',
             'password' => 'required',
         ]);
         $credentials  = $request->only('identifiant','password');
-        $user = Auth::attempt($credentials,false);
+        $user = Auth::attempt($credentials,true);
 
         if (!$user){
             return redirect()->back()->with(['error' => 'Identifiant/Password incorrect']);

@@ -12,7 +12,8 @@
             @endif
 
 
-            <form id="form" class="login-form" action="{{ route('login') }}" method="POST">
+            <form id="form" class="login-form" action="{{ route("login") }}" method="POST">
+              
                 {{ csrf_field() }}
                 <input type="text" placeholder="Identifiant" name="identifiant" />
                 @if ($errors->has('identifiant'))

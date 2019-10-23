@@ -51,7 +51,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Liste Proposition de Contrat d&apos;assurance automobile</li>
+            <li class="active">Liste Proposition de Contrat d&apos;assurance Maladie</li>
         </ol>
     </section>
 
@@ -63,8 +63,8 @@
                 <div class="col-md-12">
                     <div class="box box-success">
                         <div class="box-header">
-                            <a href="{{route('auto_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle Proposition d&apos;assurance automobile</a>
-                            <a href="{{route('auto_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
+                            <a href="{{route('maladie_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle proposition de Contrat d&apos;assurance maladie</a>
+                            <a href="{{route('maladie_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
 
                             @if(session('message'))
                                 <div class="row">
@@ -85,44 +85,22 @@
                                         <th>Police</th>
                                         <th>Date Effet</th>
                                         <th>Date Ech&eacute;ance</th>
-                                        <th>N&deg; immatriculation</th>
-                                        <th>N&deg; serie</th>
-                                        <th>Genre</th>
-                                        <th>Energie</th>
-                                        <th>Puissance</th>
-                                        <th>Prime nette Total</th>
-                                        <th>Garanti</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($autos as $auto)
+                                    @foreach($maladies as $maladie)
                                         <tr>
-                                            <td>{{$auto->id}}</td>
-                                            <td>{{$auto->assure()->exists()? $auto->assure->Nom : ""}}</td>
-                                            <td>{{$auto->assure()->exists()? $auto->assure->Nom : ""}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Numero_police : ''}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Date_effet : ''}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Date_echeance : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->immatriculation : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->numero_serie : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->genre : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->energie : ''}}</td>
-                                            <td></td>
-                                            @php
-                                                $garantis = \App\Models\GarantiAutomobile::whereAutomobileId($auto->id)->get();
-                                            @endphp
-                                            <td>@foreach($garantis as $garanti)
-                                                    {{count($garanti->tarifs->prime_nette)}}
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($garantis as $garanti)
-                                                    <h5>{{$garanti->garanti->Description}}</h5>
-                                                @endforeach
-                                            </td>
+                                            <td>{{$maladie->id}}</td>
+                                            <td>{{$maladie->assure()->exists()? $maladie->assure->Nom : ""}}</td>
+                                            <td>{{$maladie->assure()->exists()? $maladie->assure->Nom : ""}}</td>
+                                            <td>{{$maladie->police()->exists()? $maladie->police->Numero_police : ''}}</td>
+                                            <td>{{$maladie->police()->exists()? $maladie->police->Date_effet : ''}}</td>
+                                            <td>{{$maladie->police()->exists()? $maladie->police->Date_echeance : ''}}</td>
+                                          
                                             <td >
-                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                                <a href='{{url("assure/show/{$maladie->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
                                                     <i class=" fa fa-eye ">
 
                                                     </i></a>
@@ -130,19 +108,7 @@
                                         </tr>
                                     @endforeach
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Filiale</th>
-                                        <th>Reference/Matricule</th>
-                                        <th>Code famille</th>
-                                        <th>Type d&apos;employ&eacute;</th>
-                                        <th>Nom</th>
-                                        <th>Nationalite</th>
-                                        <th>Taux couverture</th>
-                                        <th>Plafond</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
+                                   
                                 </table>
                             </div>
 

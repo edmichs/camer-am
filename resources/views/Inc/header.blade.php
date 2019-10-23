@@ -38,7 +38,15 @@
                                 <a href="#" id="profile-modif" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ route('dec_path') }}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Se deconnecter
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
                         </li>
                     </ul>

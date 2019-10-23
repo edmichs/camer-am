@@ -263,9 +263,6 @@
                                                                 </div>
                                                             </div>
                                                             <script>
-
-
-
                                                                 function handleCheckDefault(){
                                                                     // $("#id").val(id);
                                                                    // alert(id);
@@ -276,19 +273,16 @@
                                                                         var options = { year: 'numeric', month: 'numeric',day: 'numeric'};
                                                                         var effet =  document.getElementById("Date_effet").value;
                                                                         var date_effet = new Date(effet.toLocaleString());
-                                                                        console.log(date_effet);
+                                                                      //  console.log(date_effet);
                                                                         date_effet.setDate(date_effet.getDay() + parseInt(duree));
-                                                                        console.log(date_effet.toLocaleDateString("fr-FR",options));
+                                                                      //  console.log(date_effet.toLocaleDateString("fr-FR",options));
                                                                         $("#Date_echeance").val(date_effet.toLocaleDateString("fr-FR",options));
 
                                                                     }
                                                                     var totale = document.getElementById("totaux").value;
                                                                     var puissance = document.getElementById("puissance").value;
                                                                     var categorie = document.getElementById("categorie").value;
-                                                                    console.log(duree);
-                                                                    console.log(puissance);
-                                                                    console.log(categorie);
-                                                                    console.log("totale "+totale);
+                                                                
                                                                     $("#cat").val(categorie);
 
                                                                     if(duree != "" || puissance != "" || categorie != ""){
@@ -312,8 +306,8 @@
                                                                                         document.getElementById("."+data[i].garanti_id+".").removeAttribute("hidden");
                                                                                         $("#nette"+data[i].garanti_id).val(data[i].prime_nette);
                                                                                         $("#totale"+data[i].garanti_id).val(data[i].pttc);
-                                                                                        $("#totaux").val(parseInt( data[i].pttc));
-
+                                                                                        totale = parseInt(totale + data[i].pttc);
+                                                                                        $("#totaux").val(totale);
                                                                                     }
                                                                                //
 
@@ -324,7 +318,7 @@
                                                                                 // $("#Lieu_naiss").val(data[0].Lieu_naiss);
 
 
-                                                                                //message('<h4> Assur&eacute; ajout&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
+                                                                                 message('<h4> Assur&eacute; ajout&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
                                                                             },
                                                                             error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
                                                                                 console.log(JSON.stringify(jqXHR));
@@ -352,35 +346,35 @@
 
                                         <div class="form-group col-md-3">
 
-                                            <label for="Code_prestation">Nom Du proprietaire : </label>
+                                            <label for="nom">Nom Du proprietaire : </label>
                                             <input type="text" class="form-control" name="nom" required
                                                    placeholder="nom du proprio" id="nom">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Code_prestation">N° Immatriculation : </label>
+                                            <label for="immatriculation">N° Immatriculation : </label>
                                             <input type="text" class="form-control" name="immatriculation" required
                                                    placeholder="ex: CE 186 HI" id="immatriculation">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Code_prestation">Date expiration carte grise: </label>
+                                            <label for="date_delivre">Date expiration carte grise: </label>
                                             <input type="date" class="form-control" name="date_delivre" required
                                                    id="date_delivre">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Code_prestation">Date 1ere mise en circulation : </label>
+                                            <label for="date_first_circulation">Date 1ere mise en circulation : </label>
                                             <input type="date" class="form-control" name="date_first_circulation" required
-                                                   id="date_circulation">
+                                                   id="date_first_circulation">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Code_prestation">Marque : </label>
+                                            <label for="marque">Marque : </label>
                                             <input type="text" class="form-control" name="marque" id="marque" required
                                                    placeholder=" ex: Mercedes Benz">
 
@@ -394,19 +388,19 @@
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Carrosserie">Carrosserie : </label>
+                                            <label for="carrosserie">Carrosserie : </label>
                                             <input type="text" class="form-control" name="carrosserie" id="carrosserie"
                                                    placeholder="ex: CI">
 
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="type">N° de serie : </label>
+                                            <label for="numero_serie">N° de serie : </label>
                                             <input type="text" class="form-control" name="numero_serie"
                                                    id="numero_serie">
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Carrosserie">Energie : </label>
+                                            <label for="carrosserie">Energie : </label>
                                             <select name="energie" id="energie" required onchange="handleCheckDefault();" class="form-control">
                                                 <option value="essence">Essence</option>
                                                 <option value="diesel">Diesel</option>
@@ -439,7 +433,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="genre">Puissance R&eacute;elle (en cm3): </label>
+                                            <label for="puissance_reelle">Puissance R&eacute;elle (en cm3): </label>
                                             <input type="number" class="form-control" name="puissance_reelle"
                                                    id="puissance_reelle" placeholder="ex : 0">
 
@@ -453,22 +447,22 @@
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="nbre_place">Charge Utile : </label>
+                                            <label for="charge_utile">Charge Utile : </label>
                                             <input type="number" class="form-control" name="charge_utile"
                                                    id="charge_utile" placeholder="ex: 0">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="Carrosserie">P.T.A.C (en Kg): </label>
+                                            <label for="ptac">P.T.A.C (en Kg): </label>
                                             <input type="number" class="form-control" name="ptac"
                                                    id="ptac" placeholder="ex: 0">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="type">Poids Vide (en Kg): </label>
-                                            <input type="number" class="form-control" name="poid_vide" id="poid_vide"
+                                            <label for="poids_vide">Poids Vide (en Kg): </label>
+                                            <input type="number" class="form-control" name="poids_vide" id="poids_vide"
                                                    placeholder="ex : 1350">
 
                                         </div>
@@ -484,22 +478,22 @@
 
                                         <div class="form-group col-md-3">
 
-                                            <label for="type">Valeur a neuf (en XFA): </label>
+                                            <label for="valeur_neuf">Valeur a neuf (en XFA): </label>
                                             <input type="number" class="form-control" required name="valeur_neuf"
                                                    id="valeur_neuf" placeholder="ex : 15 000 000">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
-                                            <label for="type">Valeur venale (en XFA): </label>
-                                            <input type="number" class="form-control" name="valeur_neuf"
-                                                   id="valeur_neuf" placeholder="ex : 7 000 000">
+                                            <label for="valeur_venale">Valeur venale (en XFA): </label>
+                                            <input type="number" class="form-control" name="valeur_venale"
+                                                   id="valeur_venale" placeholder="ex : 7 000 000">
 
                                         </div>
 
                                         <div class="form-group col-md-3">
 
-                                            <label for="type">Garage Habituel : </label>
+                                            <label for="garage_habituel">Garage Habituel : </label>
                                             <input type="text" class="form-control" name="garage_habituel" id="garage_habituel"
                                                    placeholder="ex : Les Garagistes">
 
@@ -530,7 +524,7 @@
                                             </div>
                                             <div class="form-inline col-md-5">
                                                 <label for="tarif">Conducteur Habituelle :</label>
-                                                <input type="text" name="conducteur_habituel" id="conducteur_habituel" class="form-control">
+                                                <input type="text" name="conducteur_habituel"  id="conducteur_habituel" class="form-control">
                                                 <br>
                                                 <br>
                                             </div>
@@ -541,7 +535,7 @@
 
                                                 function handleChange(checkbox, id) {
                                                     $("#id").val(id);
-                                                    let totale = document.getElementById("totaux").value;
+                                                    var totale = document.getElementById("totaux").value;
 
                                                     // alert(id);
                                                     let formObj = $("#form");
@@ -559,8 +553,8 @@
                                                             // alert(data);
                                                            console.log(data);
 
-                                                            if(data != null || data != undefined){
-                                                                if( data[0].checkAll == 1){
+                                                            if(data != null || data != undefined ){
+                                                                if( data.length > 0 && data[0].checkAll == 1){
                                                                     console.log(data[0].checkAll);
                                                                     console.log($('input:checkbox'));
 
@@ -568,15 +562,15 @@
                                                                 }
                                                                 if(document.getElementById("checkbox"+id).checked === false){
                                                                     document.getElementById("."+id+".").style.visibility="hidden";
-                                                                //    $("#totaux").val(parseInt(totale) - parseInt( data[0].pttc));
+                                                                    $("#totaux").val(parseInt(totale) - parseInt( data[0].pttc));
 
                                                                 }else{
                                                                     document.getElementById("."+id+".").removeAttribute("hidden");
                                                                     document.getElementById("."+id+".").style.visibility="visible";
-                                                                 //   $("#totaux").val(parseInt(totale) + parseInt( data[0].pttc));
+                                                                    $("#totaux").val(parseInt(totale) + parseInt( data[0].pttc));
                                                                 }
-                                                            //    $("#nette"+data[0].garanti_id).val(data[0].prime_nette);
-                                                            //    $("#totale"+data[0].garanti_id).val(data[0].pttc);
+                                                                $("#nette"+data[0].garanti_id).val(data[0].prime_nette);
+                                                                $("#totale"+data[0].garanti_id).val(data[0].pttc);
 
                                                             }
 
@@ -624,7 +618,7 @@
                                                                                                    onchange="handleChange(this,'{{$garanti->ID}}');"
                                                                                                    name="checkbox[{{$garanti->ID}}]"
                                                                                                    @if ($garanti->isDefaultChecked)
-                                                                                                   checked disabled
+                                                                                                   checked 
                                                                                                    @endif
                                                                                                    id="checkbox{{$garanti->ID}}"
                                                                                                    value="{{$garanti->ID}}">
@@ -673,7 +667,7 @@
                                                     </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div >
+                                                <div hidden>
                                                     <input type="text" name="id" id="id" class="form-control" >
 
                                                 </div>

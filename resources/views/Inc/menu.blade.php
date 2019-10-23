@@ -30,25 +30,17 @@
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-building"></i> Automobile
-                        <span class="pull-right-container">
-                          <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="{{route('auto_add_path')}}"><i class="fa fa-plus"></i>Nouveau
-                                            Souscripteur</a></li>
-                                    <li>
-                                        <a href="{{route('auto_list_path')}}"><i class="fa fa-list"></i>Liste
-                                        </a>
-
-                                    </li>
-                                </ul>
+                            <li class="">
+                                <a href="{{ route('auto_list_path') }}"><i class="fa fa-building"></i> Automobile
                             </li>
                             <li class="">
-                                <a href="{{route('sauvegarde.bd')}}">
+                                 <a href="{{route('maladie_path')}}">
                                     <i class="fa fa-heart-o"></i> <span>Maladie</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Prevoyance Santé</span>
                                 </a>
                             </li>
                             <li class="">
@@ -66,6 +58,17 @@
                                     <i class="fa fa-users"></i> <span>Responsabilite</span>
                                 </a>
                             </li>
+                            <li class="">
+                                    <a href="{{ route('retraite_path') }}">
+                                        <i class="fa fa-users"></i> <span>Retraite</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Prevoyance Retraite</span>
+                                        </a>
+                                </li>
+                              
                             <li class="">
                                 <a href="#">
                                     <i class="fa fa-truck"></i> <span>Transport</span>
@@ -252,7 +255,16 @@
                         <ul class="treeview-menu">
                             <li><a href="{{route('add_police_path')}}">
                                     <i class="fa fa-plus"></i> <span>Nouvelle police</span>
-                                </a></li>
+                                </a>
+                            </li>
+                            <li><a href="{{route('add_police_path')}}">
+                                        <i class="fa fa-plus"></i> <span>Renouvellement</span>
+                                    </a>
+                            </li>
+                            <li><a href="{{route('add_police_path')}}">
+                                    <i class="fa fa-plus"></i> <span>Resilliation</span>
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{route('list_police_path')}}">
                                     <i class="fa fa-th"></i> <span>Liste</span>

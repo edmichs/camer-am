@@ -9,24 +9,24 @@
 namespace App\Repositories;
 
 
-use App\Models\Automobile;
+use App\Models\Retraite;
 use Illuminate\Http\Request;
 
-class AutomobileRepository
+class RetraiteRepository
 {
     public static function getAll()
     {
-        return Automobile::all();
+        return Retraite::all();
     }
 
     public static function store(Request $request)
     {
-       return Automobile::create($request->all());
+       return Retraite::create($request->all());
     }
 
     public static function create(Request $request, $souscripteur_id, $police_id, $exercice_id, $carte_grise_id, $assure_id)
     {
-        return Automobile::create([
+        return Retraite::create([
            'police_id' => $police_id,
             'souscripteur_id' => $souscripteur_id,
             'exercice_id' => $exercice_id,
@@ -39,6 +39,6 @@ class AutomobileRepository
 
     public static function getByExercices($exerciceID)
     {
-        return Automobile::whereExerciceId($exerciceID)->orderBy('id','desc')->get();
+        return Retraite::whereExerciceId($exerciceID)->orderBy('id','desc')->get();
     }
 }

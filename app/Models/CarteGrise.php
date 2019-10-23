@@ -72,7 +72,7 @@ class CarteGrise extends Model
         'chassis',
         'charge_utile',
         'date_delivre'
-    ];
+    ]; 
 
 
     public function automobile()

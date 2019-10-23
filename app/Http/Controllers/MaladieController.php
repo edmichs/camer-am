@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\ExerciceRepository;
+use App\Repositories\MaladieRepository;
+use App\Models\CentreSante;
+use App\Repositories\CentreSanteRepository;
+use App\Repositories\ZoneGeoRepository;
 
-class AccueilController extends Controller
+class MaladieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +18,10 @@ class AccueilController extends Controller
      */
     public function index()
     {
-        return redirect(route('accueil_path'));
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $maladies = MaladieRepository::getByExercices($exercice->ID);
+
+        return view("Pages.Categories.Maladie.all", compact("maladies","exercice"));
     }
 
     /**
@@ -23,7 +31,10 @@ class AccueilController extends Controller
      */
     public function create()
     {
-        //
+        $exercice = ExerciceRepository::getExerciceEnCours();
+        $zone = ZoneGeoRepository::getAll();
+        $centre_santes = CentreSanteRepository::getAll();
+        return view('Pages.Categories.Maladie.add', compact("zone","centre_santes","exercice"));
     }
 
     /**
