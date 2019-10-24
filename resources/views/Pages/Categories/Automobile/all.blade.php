@@ -68,8 +68,13 @@
 
                             @if(session('message'))
                                 <div class="row">
-                                    <div class="alert alert-warning">{{session('message')}}</div>
+                                    <div class="alert alert-info">{{session('message')}}</div>
                                 </div>
+                            @endif
+                            @if(session('error'))
+                            <div class="row">
+                                <div class="alert alert-danger">{{session('error')}}</div>
+                            </div>
                             @endif
 
                         </div>
@@ -81,14 +86,10 @@
                                     <tr>
                                         <th>N°</th>
                                         <th>Nom Souscrpteur</th>
-                                        <th>Nom Assur&eacute;</th>
                                         <th>Police</th>
                                         <th>Date Effet</th>
                                         <th>Date Ech&eacute;ance</th>
                                         <th>N&deg; immatriculation</th>
-                                        <th>N&deg; serie</th>
-                                        <th>Genre</th>
-                                        <th>Energie</th>
                                         <th>Puissance</th>
                                         <th>Prime nette Total</th>
                                         <th>Garanti</th>
@@ -100,14 +101,10 @@
                                         <tr>
                                             <td>{{$auto->id}}</td>
                                             <td>{{$auto->assure()->exists()? $auto->assure->Nom : ""}}</td>
-                                            <td>{{$auto->assure()->exists()? $auto->assure->Nom : ""}}</td>
                                             <td>{{$auto->police()->exists()? $auto->police->Numero_police : ''}}</td>
                                             <td>{{$auto->police()->exists()? $auto->police->Date_effet : ''}}</td>
                                             <td>{{$auto->police()->exists()? $auto->police->Date_echeance : ''}}</td>
                                             <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->immatriculation : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->numero_serie : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->genre : ''}}</td>
-                                            <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->energie : ''}}</td>
                                             <td></td>
                                             @php
                                                 $garantis = \App\Models\GarantiAutomobile::whereAutomobileId($auto->id)->get();
@@ -122,30 +119,47 @@
                                                 @endforeach
                                             </td>
                                             <td >
-                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-primary"   data-placement="top" title="Voir les d&eacute;tails">
                                                     <i class=" fa fa-eye ">
 
-                                                    </i></a>
+                                                    </i>
+                                                </a>
+                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-success"  data-placement="top" title="Etablir le contrat correspondant">
+                                                    <i class=" fa fa-pencil ">
+
+                                                    </i> 
+                                                </a>
+                                                 <a class="btn btn-danger "  data-id="{{$auto->id}}" data-toggle="modal" onclick="supprimer('{{$auto->id}}')" data-target="#deleteModal"  data-placement="top" title="Annuler la proposition">
+                                                    <i  class=" fa fa-trash-o ">
+
+                                                    </i> 
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>Filiale</th>
-                                        <th>Reference/Matricule</th>
-                                        <th>Code famille</th>
-                                        <th>Type d&apos;employ&eacute;</th>
-                                        <th>Nom</th>
-                                        <th>Nationalite</th>
-                                        <th>Taux couverture</th>
-                                        <th>Plafond</th>
+                                        <th>N°</th>
+                                        <th>Nom Souscrpteur</th>
+                                        <th>Police</th>
+                                        <th>Date Effet</th>
+                                        <th>Date Ech&eacute;ance</th>
+                                        <th>N&deg; immatriculation</th>
+                                        <th>Puissance</th>
+                                        <th>Prime nette Total</th>
+                                        <th>Garanti</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
                                 </table>
                             </div>
-
+                            <script >
+                                function supprimer(id) {
+                                   // console.log(id);
+                                    $(".modal-body #suppr").val(id);
+                                };
+                            </script>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -153,28 +167,28 @@
             </div>
         @else
             <div class="row">
-                <h1>Aucun exercice n'est ouvert, Veuillez Demarrer un nouvel exercice</h1>
+                <h1>Aucun exercice n&apos;est ouvert, Veuillez Demarrer un nouvel exercice</h1>
             </div>
         @endif
     </section>
 
     <div class="modal fade in" id="deleteModal" style="display: none;">
         <div class="modal-dialog">
-            <form id="form-suppr" method="POST" action="">
+            <form id="form-suppr" method="POST" action="{{ route('auto_cancel_path') }}">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">?</span></button>
-                        <h4 class="modal-title">Suppression...</h4>
+                            <span aria-hidden="true">X</span></button>
+                        <h4 class="modal-title">Annulation...</h4>
                     </div>
                     <div class="modal-body">
-                        <p> Souhaitez-vous supprimer cet &eacute;l&eacute;ment ? </p>
+                        <p> Voulez-vous vraiment annuler cette proposition ? </p>
                         {{ csrf_field() }}
-                        <input type="hidden" name="suppr">
+                        <input type="hidden" name="suppr" id="suppr">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary">Valider</button>
+                        <button type="submit" class="btn btn-danger">Annuler</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -377,6 +391,8 @@
             $(".modal-body #pays").val(pays);
             $(".modal-body #nom_contact").val(nom_contact);
         });
+
+        
 
     </script>
 @endsection()

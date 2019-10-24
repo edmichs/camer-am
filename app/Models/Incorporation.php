@@ -90,7 +90,11 @@ class Incorporation extends Model
 		'Date_incorporation',
 		'Discriminator',
 		'AssureID',
-		'Montant_prime'
+		'Montant_prime',
+		'numero_permis',
+		'titre',
+		'Telephone',
+		'Email',
 	];
 	public function code_famille()
 	{

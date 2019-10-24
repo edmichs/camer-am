@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\PrevoyanceSanteRepository;
 use App\Repositories\ExerciceRepository;
-use App\Repositories\PrevoyanceRetraiteRepository;
 
-class PrevoyanceRetraiteController extends Controller
+class PrevoyanceSanteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PrevoyanceRetraiteController extends Controller
     public function index()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-        $prevoyance_retraites = PrevoyanceRetraiteRepository::getByExercices($exercice->id);
-        return view("Pages.Categories.Prevoyance-retraite.all", compact("exercice","prevoyance_retraites"));
+        $prevoyance_santes = PrevoyanceSanteRepository::getByExercices($exercice->id);
+        return view("Pages.Categories.Prevoyance-sante.all", compact("exercice","prevoyance_santes"));
     }
 
     /**
@@ -28,7 +28,7 @@ class PrevoyanceRetraiteController extends Controller
     public function create()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-        return view("Pages.Categories.Prevoyance-retraite.add",compact("exercice"));
+        return view("Pages.Categories.Prevoyance-sante.add", compact("exercice"));
     }
 
     /**

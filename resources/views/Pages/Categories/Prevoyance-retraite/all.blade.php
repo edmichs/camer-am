@@ -51,7 +51,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Liste Proposition de Contrat d&apos;assurance Maladie</li>
+            <li class="active">Liste Proposition de Contrat d&apos;assurance Prevoyance retraite</li>
         </ol>
     </section>
 
@@ -63,8 +63,8 @@
                 <div class="col-md-12">
                     <div class="box box-success">
                         <div class="box-header">
-                            <a href="{{route('maladie_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle proposition de Contrat d&apos;assurance maladie</a>
-                            <a href="{{route('maladie_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
+                            <a href="{{route('prevoyance_retraite_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle proposition de Contrat d&apos;assurance Prevoyance Retraite</a>
+                            <a href="{{route('prevoyance_retraite_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
 
                             @if(session('message'))
                                 <div class="row">
@@ -90,17 +90,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($maladies as $maladie)
+                                    @foreach($prevoyance_retraites as $prevoyance_retraite)
                                         <tr>
-                                            <td>{{$maladie->id}}</td>
-                                            <td>{{$maladie->assure()->exists()? $maladie->assure->Nom : ""}}</td>
-                                            <td>{{$maladie->assure()->exists()? $maladie->assure->Nom : ""}}</td>
-                                            <td>{{$maladie->police()->exists()? $maladie->police->Numero_police : ''}}</td>
-                                            <td>{{$maladie->police()->exists()? $maladie->police->Date_effet : ''}}</td>
-                                            <td>{{$maladie->police()->exists()? $maladie->police->Date_echeance : ''}}</td>
+                                            <td>{{$prevoyance_retraite->id}}</td>
+                                            <td>{{$prevoyance_retraite->assure()->exists()? $prevoyance_retraite->assure->Nom : ""}}</td>
+                                            <td>{{$prevoyance_retraite->assure()->exists()? $prevoyance_retraite->assure->Nom : ""}}</td>
+                                            <td>{{$prevoyance_retraite->police()->exists()? $prevoyance_retraite->police->Numero_police : ''}}</td>
+                                            <td>{{$prevoyance_retraite->police()->exists()? $prevoyance_retraite->police->Date_effet : ''}}</td>
+                                            <td>{{$prevoyance_retraite->police()->exists()? $prevoyance_retraite->police->Date_echeance : ''}}</td>
                                           
                                             <td >
-                                                <a href='{{url("assure/show/{$maladie->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                                <a href='{{url("assure/show/{$prevoyance_retraite->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
                                                     <i class=" fa fa-eye ">
 
                                                     </i></a>
@@ -119,7 +119,7 @@
             </div>
         @else
             <div class="row">
-                <h1>Aucun exercice n'est ouvert, Veuillez Demarrer un nouvel exercice</h1>
+                <h1>Aucun exercice n&apos;est ouvert, Veuillez Demarrer un nouvel exercice</h1>
             </div>
         @endif
     </section>

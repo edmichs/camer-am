@@ -11,12 +11,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Proposition de contrat d&apos;assurance maladie
+            Proposition de contrat d&apos;assurance Prevoyance Retraite
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Contrat assurance maladie</li>
+            <li class="active">Contrat assurance Prevoyance Retraite</li>
         </ol>
         @if(session('message'))
             <div class="row">
@@ -26,7 +26,7 @@
     </section>
     <div class="row">
             <div class="col-md-12" style="padding: 2% 0 0 5%">
-                    <a href="{{ route('maladie_path') }}" class="btn btn-bitbucket"> Retour a la liste</a>
+                    <a href="{{ route('retraite_path') }}" class="btn btn-bitbucket"> Retour a la liste</a>
         
             </div>
     </div>
@@ -51,28 +51,33 @@
                                             <div class="col-md-12">
                                                 <div class="box box-success">
                                                     <div class="box-header">
-                                                        <h4>Information de la société</h4>
+                                                            <h2 class="text-center" style="font-weight: bold">Bulletin individuel d&apos;adhesion</h2>
                                                     </div>
                                                     <div class="box-body">
                                                         <div class="col-md-12">
+                                                            <h3 class="text-center"><u>Renseignements sur l&apos;assuré </u></h3>
                                                             <div class="col-md-12 ">
                                                                 <div class="form-group  col-md-6">
-                                                                    <label for="nom">Nom de la société : </label>
-                                                                    <input type="text" name="nom" id="nom" class="form-control">
+                                                                    <label for="titre">Titre : </label>
+                                                                    <select name="titre" id="titre" class="form-control">
+                                                                        <option value="M">M</option>
+                                                                        <option value="Mme">Mme</option>
+                                                                        <option value="Mlle">Mlle</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="nom_contact">Interlocuteur/Nom du contact
+                                                                    <label for="nom">Nom
                                                                         <span>*</span> :</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="nom_contact" id="nom_contact"
-                                                                           placeholder="Nom de l'interlocuteur" required>
+                                                                           name="nom" id="nom"
+                                                                           placeholder="Nom" required>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="adresse">Adresse <span>*</span>
+                                                                    <label for="nom_jeune_fille">nom de jeune fille 
                                                                         :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="Adresse" required onkeyup="autocompleteNom();" name="adresse"
-                                                                           id="adresse">
+                                                                           placeholder="nom de jeune fille" required onkeyup="autocompleteNom();" name="nom_jeune_fille"
+                                                                           id="nom_jeune_fille">
                                                                 </div>
                                                                 <script>
                                                                     function autocompleteNom(){
@@ -80,301 +85,281 @@
                                                                         $("#assure").val(document.getElementById("Nom").value);
                                                                     }
                                                                 </script>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Telephone">T&eacute;l&eacute;phone
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="prenom">Prénom
                                                                         <span>*</span> :</label>
-                                                                    <input type="tel" class="form-control"
-                                                                           placeholder="telephone" name="Telephone"
-                                                                           id="Telephone" required>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="prenom" name="prenom"
+                                                                           id="prenom" required>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="Email">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                           placeholder="email" name="Email" id="Email">
+                                                                    <label for="datenaiss">Date de naissance</label>
+                                                                    <input type="date" class="form-control"
+                                                                           placeholder="date" name="datenaiss" id="datenaiss">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="numero_permis">Activite
+                                                                    <label for="lieunaiss">Lieu
                                                                         :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ex : W14*****" name="numero_permis"
-                                                                           id="numero_permis">
+                                                                           placeholder="Lieu de naissance" name="lieunaiss"
+                                                                           id="lieunaiss">
                                                                 </div>
                                                                 
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="Ville">Ville* :</label>
+                                                                    <label for="Profession">Profession * :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ville" id="Ville" name="Ville" required>
+                                                                           placeholder="Profession" id="Profession" name="Profession" required>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="Pays">Pays</label>
+                                                                    <label for="adresse">Adresse</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="pays" id="Pays" name="Pays">
+                                                                           placeholder="Adresse" id="adresse" name="adresse">
                                                                 </div>
-                                                            <p style="font-weight: bold; font-size: 1em">Population à assurer</p>
-                                                            <div class="form-inline col-md-6" >
-                                                                <label for="nombre_adultes">Nombre d&apos;adultes : </label>
-                                                                <input type="number" class="form-control" name="adulte" id="adulte">
+                                                                
                                                             </div>
-                                                            <div class="form-inline col-md-6" >
-                                                                <label for="nombre_enfants">Nombre d&apos;enfants (-21 ans) : </label>
-                                                                <input type="number" class="form-control" name="enfant" id="enfant">
-                                                            </div>
-                                                            <br><br><br>
-                                                            </div>
-                                                           
-                                                        </div>
-                                                       
-                                                        <p class="text-left" style="margin-top: 5%">Les regrouper par catégorie socio-professionnelle (cadres, Agents de maitrise, Employés)</p>
-                                                        <table class="table table-responsive table-bordered">
-                                                            <thead>
-                                                                <th>Catégorie</th>
-                                                                <th>Cadres</th>
-                                                                <th>Agents de maitrise</th>
-                                                                <th>Employés</th>
-                                                                <th >Total</th>
-                                                                <th style="width: 25%">Taux de couverture</th>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                        <td>Employés</td>
-                                                                        <td><input type="number" name="employe_cadre" id="employe_cadre" class="form-control"></td>
-                                                                        <td><input type="number" name="employe_ag_maitrise" id="employe_ag_maitrise" class="form-control"></td>
-                                                                        <td><input type="number" name="employe" id="employe" class="form-control"></td>
-                                                                       <td><input type="number" name="employe_total" id="employe_total" class="form-control"></td>
-                                                                       <td>
-                                                                            <div class="form-group">
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="employe_taux_couverture" id="employe_taux_couverture1" value="100" >
-                                                                                    100%
-                                                                                   </label>
-                                                                                
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="employe_taux_couverture" id="employe_taux_couverture2" value="90" >
-                                                                                        90%
-                                                                                    </label>
-                                                                                
-                                                                               
-                                                                                     <label for="">
-                                                                                        <input type="radio" name="employe_taux_couverture" id="employe_taux_couverture3" value="80" >
-                                                                                        80%
-                                                                                    </label>
-                                                                                
-                                                                              
-                                                                                    <label for="">
-                                                                                            <input type="radio" name="employe_taux_couverture" id="employe_taux_couverture4" value="70" >
-                                                                                        70%
-                                                                                    </label>
-                                                                            </div>
-                                                                        
-                                                                        </td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>Conjoints</td>
-                                                                        <td><input type="number" name="conjoint_cadre" id="conjoint_cadre" class="form-control"></td>
-                                                                        <td><input type="number" name="conjoint_ag_maitrise" id="conjoint_ag_maitrise" class="form-control"></td>
-                                                                        <td><input type="number" name="conjoint" id="conjoint" class="form-control"></td>
-                                                                        
-                                                                       <td><input type="number" name="conjoint_total" id="conjoint_total" class="form-control"></td>
-                                                                       <td>
-                                                                            <div class="form-group">
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="conjoint_taux_couverture" id="conjoint_taux_couverture1" value="100" >
-                                                                                    100%
-                                                                                   </label>
-                                                                                
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="conjoint_taux_couverture" id="conjoint_taux_couverture2" value="90" >
-                                                                                        90%
-                                                                                    </label>
-                                                                                
-                                                                               
-                                                                                     <label for="">
-                                                                                        <input type="radio" name="conjoint_taux_couverture" id="conjoint_taux_couverture3" value="80" >
-                                                                                        80%
-                                                                                    </label>
-                                                                                
-                                                                              
-                                                                                    <label for="">
-                                                                                            <input type="radio" name="conjoint_taux_couverture" id="conjoint_taux_couverture4" value="70" >
-                                                                                        70%
-                                                                                    </label>
-                                                                               
-                                                                               
-                                                                            </div>
-                                                                        
-                                                                        </td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>Enfants</td>
-                                                                        <td><input type="number" name="enfant_cadre" id="enfant_cadre" class="form-control"></td>
-                                                                        <td><input type="number" name="enfant_ag_maitrise" id="enfant_ag_maitrise" class="form-control"></td>
-                                                                        <td><input type="number" name="enfant" id="enfant" class="form-control"></td>
-                                                                        
-                                                                       <td><input type="number" name="enfant_total" id="enfant_total" class="form-control"></td>
-                                                                       <td>
-                                                                            <div class="form-group">
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="enfant_taux_couverture" id="enfant_taux_couverture1" value="100" >
-                                                                                    100%
-                                                                                   </label>
-                                                                                
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="enfant_taux_couverture" id="enfant_taux_couverture2" value="90" >
-                                                                                        90%
-                                                                                    </label>
-                                                                                
-                                                                               
-                                                                                     <label for="">
-                                                                                        <input type="radio" name="enfant_taux_couverture" id="enfant_taux_couverture3" value="80" >
-                                                                                        80%
-                                                                                    </label>
-                                                                                
-                                                                              
-                                                                                    <label for="">
-                                                                                            <input type="radio" name="enfant_taux_couverture" id="enfant_taux_couverture4" value="70" >
-                                                                                        70%
-                                                                                    </label>
-                                                                               
-                                                                               
-                                                                            </div>
-                                                                        
-                                                                        </td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>Total</td>
-                                                                        <td><input type="number" name="total_cadre" id="total_cadre" class="form-control"></td>
-                                                                        <td><input type="number" name="total_ag_maitrise" id="total_ag_maitrise" class="form-control"></td>
-                                                                        <td><input type="number" name="total" id="total" class="form-control"></td>
-                                                                        
-                                                                       <td><input type="number" name="total_total" id="total_total" class="form-control"></td>
-                                                                       <td>
-                                                                            <div class="form-group">
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="total_taux_couverture" id="total_taux_couverture1" value="100" >
-                                                                                    100%
-                                                                                   </label>
-                                                                                
-                                                                               
-                                                                                    <label for="">
-                                                                                        <input type="radio" name="total_taux_couverture" id="total_taux_couverture2" value="90" >
-                                                                                        90%
-                                                                                    </label>
-                                                                                
-                                                                               
-                                                                                     <label for="">
-                                                                                        <input type="radio" name="total_taux_couverture" id="total_taux_couverture3" value="80" >
-                                                                                        80%
-                                                                                    </label>
-                                                                                
-                                                                              
-                                                                                    <label for="">
-                                                                                            <input type="radio" name="total_taux_couverture" id="total_taux_couverture4" value="70" >
-                                                                                        70%
-                                                                                    </label>
-                                                                               
-                                                                               
-                                                                            </div>
-                                                                        
-                                                                        </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-
-
-                                                    </div>
-                                                    <div class="form-inline" >
-                                                        <h5 style="font-weight: bold">Etendue territoriale : </h5>
-                                                        @foreach ($zone as $item)
-                                                        <div class="radio" style="padding: 2%">
+                                                            <h3 class="text-center"><u>Renseignements sur le souscripteur </u></h3>
+                                                            <div class="col-md-12 ">
+                                                                
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="nom">Nom
+                                                                        <span>*</span> :</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="nom_souscripteur" id="nom_souscripteur"
+                                                                           placeholder="Nom" required>
+                                                                </div>
                                                             
-                                                                <label for="">
-                                                                        <input type="radio" name="zone" id="{{ $item->ID }}" value="{{ $item->ID }}" >
-                                                                        {{ $item->Libelle }}
-                                                                   </label>
-                                                        </div>
-                                                        @endforeach     
-                                                    </div>
-                                                    <div class="form-inline" >
-                                                            <h5 style="font-weight: bold">Centre de soins : </h5>
-                                                            @foreach ($centre_santes as $item)
-                                                            <div class="radio" style="padding: 2%">
-                                                                
-                                                                    <label for="">
-                                                                            <input type="radio" name="centre" id="{{ $item->ID }}" value="{{ $item->ID }}" >
-                                                                            {{ $item->Nom }}
-                                                                       </label>
-                                                            </div>
-                                                            @endforeach     
-                                                    </div>
-                                                    <div class="form-inline" >
-                                                            <h5 style="font-weight: bold">Extensions des garanties  </h5>
-                                                            <div class="col-md-12">
-                                                                    <div class="radio" style="padding: 2%">
-                                                                            Evacuation sanitaire et assistance : 
-                                                                        <label for="">
-                                                                            <input type="radio" name="centre" id="oui" value="oui" >
-                                                                                   Oui
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="radio" style="padding: 2%">
-                                                                         <label for="">
-                                                                            <input type="radio" name="centre" id="non" value="non" >
-                                                                                   Non
-                                                                        </label>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                    <div class="radio" style="padding: 2%">
-                                                                            Avez-vous déja été assuré ?  
-                                                                        <label for="">
-                                                                            <input type="radio" name="already_assure"  value="oui" >
-                                                                                   Oui
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="radio" style="padding: 2%">
-                                                                         <label for="">
-                                                                            <input type="radio" name="already_assure"  value="non" >
-                                                                                   Non
-                                                                        </label>
-                                                                    </div>
-                                                            </div>
-                                                            <div style="padding-left : 5%">
-                                                                <div class="col-md-5">
-                                                                        <label for="">
-                                                                                Si oui, en quelle année ? <input type="number" name="already_assure_year" id="already_assure_year" class="form-control">
-                                                                            </label>
+                                                              
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="datenaiss">Date de naissance</label>
+                                                                    <input type="date" class="form-control"
+                                                                           placeholder="date" name="datenaiss" id="datenaiss">
                                                                 </div>
-                                                                <div class="col-md-7">
-                                                                        <label for="">
-                                                                                Auprès de quelle compagnie : <input type="text" name="already_assure_compagnie" id="already_assure_compagnie" class="form-control">
-                                                                             
-
-                                                                            </label>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="lieunaiss">Lieu
+                                                                        :</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="Lieu de naissance" name="lieunaiss"
+                                                                           id="lieunaiss">
                                                                 </div>
-                                                                <div class="col-md-12">
-                                                                    <label for="" >Montant de la prime payée : <input type="number" name="" id="" class="form-control"> FCFA</label>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                        <label for="" >Montant des Remboursements perçus : <input type="number" name="" id="" class="form-control"> FCFA</label>
-                                                                        <br><br>    
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="adresse">Adresse</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="Adresse" id="adresse" name="adresse">
                                                                 </div>
                                                                 
-                                                                
                                                             </div>
-                                                           
+                                                            <h3 class="text-center"><u>Modalités d&apos;adhesion</u></h3>
+                                                            <div class="col-md-12 ">
+                                                                <div class="form-group  col-md-6">
+                                                                    <label for="date_effet">Date effet : </label>
+                                                                    <input name="date_effet" type="date" id="date_effet" class="form-control" required>
+                                                                       
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="date_echeance">date_echeance
+                                                                        <span>*</span> :</label>
+                                                                    <input type="date" class="form-control"
+                                                                           name="date_echeance" id="date_echeance"
+                                                                           placeholder="date_echeance" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="date_adhesion">Date de l&apos;adhesion 
+                                                                        :</label>
+                                                                    <input type="date" class="form-control"
+                                                                           placeholder="nom de jeune fille" required onkeyup="autocompleteNom();" name="date_adhesion"
+                                                                           id="date_adhesion">
+                                                                </div>
+                                                               
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="age_retraite">Age prévu pour la retraite
+                                                                        <span>*</span> :</label>
+                                                                    <input type="number" class="form-control"
+                                                                            name="age_retraite"
+                                                                           id="age_retraite" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="date_adhesion">Durée de la garanti décès
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                           placeholder="nom de jeune fille" required  name="date_adhesion"
+                                                                           id="date_adhesion">
+                                                                </div>
+                                                               
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="age_retraite">Date d&apos;expiration garanti décès
+                                                                        <span>*</span> :</label>
+                                                                    <input type="date" class="form-control"
+                                                                            name="age_retraite"
+                                                                           id="" required>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="date_adhesion">Capital garanti en cas de décès
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                           placeholder="nom de jeune fille" required  name="date_adhesion"
+                                                                           id="date_adhesion">
+                                                                </div>
+                                                               
+                                                                <div class="form-group col-md-3">
+                                                                    <label for="age_retraite">Primes annuelles
+                                                                        <span>*</span> :</label>
+                                                                    <input type="number" class="form-control"
+                                                                            name="age_retraite"
+                                                                           id="" required>
+                                                                </div>
+                                                                <div class=" radio col-md-5" style="padding : 2%">
+                                                                    Garantie Décès Accidentel : 
+                                                                    <label for=""><input type="radio" name="garanti_deces" id="">Oui
+                                                                        </label>
+                                                                    <label for=""><input type="radio" name="garanti_deces" id=" ">Non</label>
+                                                                </div>
+                                                            </div>
+                                                      
+                                                            <h3 class="text-center"><u>Paiement des primes</u></h3>
+                                                            <div class="col-md-12 ">
+                                                                <div class="checkbox col-md-3">
+                                                                    <label ><input type="checkbox" name="prime_periodique" id="prime_periodique" >Primes Periodiques : </label>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="montant_prime">montant prime
+                                                                        <span>*</span> :</label>
+                                                                    <input type="number" class="form-control"
+                                                                           name="montant_prime" id="montant_prime"
+                                                                           placeholder="montant prime" required>
+                                                                </div>
+                                                            </div>
                                                             
+                                                            <div class="col-md-12">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Fractionnement</td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="fractionnement" id="fractionnement">Annuel</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="fractionnement" id="fractionnement">Semestriel</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="fractionnement" id="fractionnement">Trimestriel</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="fractionnement" id="fractionnement">Mensuel</label>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Mode de paiement</td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="mode_paiement" id="mode_paiement">Espèces</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="mode_paiement" id="mode_paiement">Banque</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="mode_paiement" id="mode_paiement">Salaire</label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="radio">
+                                                                                    <label for=""><input type="radio" name="mode_paiement" id="mode_paiement">Autres</label>
+                                                                                </div>                                                                                
+                                                                            </td>
+                                                                            </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <h3 class="text-center"><u>Options Au thermes</u></h3>
+                                                            <div class="col-md-12 ">
+                                                                <div class="form-group">
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class=" checkbox">
+                                                                                        <label ><input type="checkbox" name="prime_periodique" id="prime_periodique" >capital </label>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class=" checkbox">
+                                                                                        <label ><input type="checkbox" name="rente_certaine" id="rente_certaine"  >Rente Certaine </label>
+                                                                                  </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                <label >Durée de paiement : <input type="text" name="rente_certaine" id="rente_certaine" >
+                                                                                    </label>
+                                                                                </td>
+                                                                            </tr>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                        <div class="form-group">
+                                                                            <div class=" checkbox col-md-3">
+                                                                                <label ><input type="checkbox" name="rente_viagere" id="rente_viagere" >Rente Viagère </label>
+                                                                            </div>
+                                                                                <div class="radio col-md-9" >
+                                                                                    Reversibilité de la rente : 
+                                                                                    <label for="">
+                                                                                        <input type="radio" name="reversibilite_rente" class="radio" value="oui" >
+                                                                                            Oui
+                                                                                     </label>
+                                                                                     <label for="">
+                                                                                            <input type="radio" name="reversibilite_rente"  class="radio" value="non" >
+                                                                                          Non
+                                                                                        </label>
+                                                                                </div>
+                                                                              
+                                                                            
+                                                                                    
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                                <div class="col-md-3">
+                                                                                    <label >Taux : <input type="number" name="taux" id="taux" > </label>
+                                                                                </div>
+                                                                                    <div class="col-md-9" >
+                                                                                        <label for=""> Age du conjoint :
+                                                                                            <input type="number" name="reversibilite_rente" >
+                                                                                         </label>
+                                                                                </div>
+                                                                                <br><br><br>
+
+                                                                               
+                                                                        </div>
+                                                                
+                                                            </div>
+
+                                                            <h3 class="text-center"><u>Bénéficiaire en cas de deces</u></h3>
+                                                            <div class="col-md-12 ">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-12 ">
+                                                                        <label for="">En cas de vie : <input type="text" name="" id="" style="width: 100vh"></label>
+                                                                    </div>
+                                                                    <div class="col-md-12 ">
+                                                                        <label for="">En cas de décès : <input type="text" name="" id="" style="width: 100vh"></label>
+                                                                    </div>
+                                                               <label for=""> Mon conjoint, à défaut mes enfants par part égales, à defaut mes ascendants, à défaut mes ayants-droit légaux. 
+                                                                   si cette formule ne convient pas, indiquer ci dessous les beneficiaires désignés :</label> 
+                                                                   <textarea name="" id="" cols="120" rows="10"></textarea>
+                                                                 </div>
+                                                        
+                                                            </div>
+
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                            <label for="">Quels autres risques souhaiteriez vous assurer :</label>
-                                                            <input type="text" name="other" id="other" class="form-control"> 
-                                                        </div>
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                        

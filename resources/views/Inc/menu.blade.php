@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#">
+                                <a href="{{ route('prevoyance_sante_path') }}">
                                     <i class="fa fa-users"></i> <span>Prevoyance Santé</span>
                                 </a>
                             </li>
@@ -64,7 +64,7 @@
                                     </a>
                                 </li>
                                 <li class="">
-                                        <a href="#">
+                                        <a href="{{ route('prevoyance_retraite_path') }}">
                                             <i class="fa fa-users"></i> <span>Prevoyance Retraite</span>
                                         </a>
                                 </li>

@@ -40,89 +40,24 @@
                             <div class="box-body">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <div class="box box-success">
                                                     <div class="box-header">
-                                                        <h3>References du client</h3>
+                                                        <h3>Référence du Souscripteur</h3>
                                                     </div>
                                                     <div class="box-body">
                                                         <div class="col-md-12">
                                                             <div class="col-md-12">
-                                                                <div class="form-group col-md-6">
+                                                                <div class="form-group col-md-3">
                                                                     <label for="Titre">Titre : </label>
-                                                                    <select name="titre" id="titre">
-                                                                        <option value=""></option>
-                                                                        <option value="1">Monsieur</option>
-                                                                        <option value="2">Madame</option>
+                                                                    <select name="titre" id="titre" class="form-control">
+                                                                        <option value="M/Mme"></option>
+                                                                        <option value="M">Monsieur</option>
+                                                                        <option value="Mme">Madame</option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Matricule">Reference/Matricule
-                                                                        <span>*</span> :</label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="Matricule" id="Matricule"
-                                                                           placeholder="Reference" required>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Nom">Nom Complet <span>*</span>
-                                                                        :</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="nom complet" required onkeyup="autocompleteNom();" name="Nom"
-                                                                           id="Nom">
-                                                                </div>
-                                                                <script>
-                                                                    function autocompleteNom(){
-                                                                       // console.log(document.getElementById("Nom").value);
-                                                                        $("#assure").val(document.getElementById("Nom").value);
-                                                                    }
-                                                                </script>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Telephone">T&eacute;l&eacute;phone
-                                                                        <span>*</span> :</label>
-                                                                    <input type="tel" class="form-control"
-                                                                           placeholder="telephone" name="Telephone"
-                                                                           id="Telephone" required>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Email">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                           placeholder="email" name="Email" id="Email">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="numero_permis">N° Permis Conduire
-                                                                        :</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="ex : W14*****" name="numero_permis"
-                                                                           id="numero_permis">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="numero_passport">N° PassPort</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="ex : 11*********"
-                                                                           name="numero_passport" id="numero_passport">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Profession">Prof&eacute;ssion
-                                                                        : </label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="Profession" name="Profession"
-                                                                           id="Profession">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Matricule">B.P : </label>
-                                                                    <input type="text" class="form-control" id="bp"
-                                                                           name="bp"
-                                                                           placeholder="ex : Rue 4534 Quartier fouda">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Matricule">Fax : </label>
-                                                                    <input type="text" class="form-control" id="fax"
-                                                                           name="fax"
-                                                                           placeholder="">
-                                                                </div>
-
-                                                                <div class="form-group col-md-6">
+                                                                <div class="form-group col-md-3">
                                                                     <label for="Situa_marital">Statut
                                                                         matrimoniale</label>
                                                                     <select class="form-control" name="Situa_marital"
@@ -133,20 +68,62 @@
                                                                         <option value="2">C&eacute;libataire</option>
                                                                     </select>
                                                                 </div>
+                                                               
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="Nom">Nom Complet <span>*</span>
+                                                                        :</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="ex : Samuel Lee Jackson" required onkeyup="autocompleteNom();" name="Nom"
+                                                                           id="Nom">
+                                                                </div>
+                                                                <script>
+                                                                    function autocompleteNom(){
+                                                                       // console.log(document.getElementById("Nom").value);
+                                                                        $("#assure").val(document.getElementById("Nom").value);
+                                                                    }
+                                                                </script>
+                                                                
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="Email">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                           placeholder="ex : example@example.com" name="Email" id="Email">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="Telephone">T&eacute;l&eacute;phone
+                                                                        <span>*</span> :</label>
+                                                                    <input type="tel" class="form-control"
+                                                                           placeholder="ex : 699999999" name="Telephone"
+                                                                           id="Telephone" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="numero_permis">N° Permis Conduire
+                                                                        :</label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="ex : W14**********" name="numero_permis"
+                                                                           id="numero_permis">
+                                                                </div>
+                                                              
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="Fct_employe">Prof&eacute;ssion
+                                                                        : </label>
+                                                                    <input type="text" class="form-control"
+                                                                           placeholder="ex : chauffeur" name="Fct_employe"
+                                                                           id="Fct_employe">
+                                                                </div>
+                                                              
+
+                                                                
                                                                 <div class="form-group col-md-6">
                                                                     <label for="Datenaiss">Date Naissance</label>
                                                                     <input type="date" class="form-control"
                                                                            id="Datenaiss" name="Datenaiss">
                                                                 </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Ville">Ville* :</label>
+                                                               <div class="form-group col-md-6">
+                                                                    <label for="Lieu_naiss">Lieu de Naissance
+                                                                        :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ville" id="Ville" name="Ville" required>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Pays">Pays</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="pays" id="Pays" name="Pays">
+                                                                           placeholder="ex : Douala" name="Lieu_naiss"
+                                                                           id="Lieu_naiss" required>
                                                                 </div>
 
 
@@ -158,62 +135,23 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
 
                                             <div class="col-md-12">
                                                 <div class="box box-success">
                                                     <div class="box-header">
-                                                        <h3>Police</h3>
+                                                        <h3>Modalité d&apos;adhesion</h3>
                                                     </div>
                                                     <div class="box-body">
                                                         <div class="col-md-12">
-                                                            <div class="col-md-12">
 
-                                                                <div class="col-lg-6">
-                                                                    <div class="form-group">
-                                                                        <label for="Numero_police">Quittance N°</label>
-                                                                        <input type="text" class="form-control"
-                                                                               name="Numero_police" id="Numero_police"
-                                                                               placeholder="Numero de police" required>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="EtablissementID">Assureur Principale</label>
-                                                                    <select name="EtablissementID" id="EtablissementID" class="selectpicker form-control" data-show-subtext="true" data-live-search="true" >
-                                                                        @foreach($compagnies as $compagnie)
-                                                                            <option value="{{$compagnie->ID}}">{{$compagnie->Nom}}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Date_emission">Date &eacute;mission</label>
+                                                                    <label for="Date_emission">Date d&apos;adhesion</label>
                                                                     <input type="date" class="form-control"
                                                                            name="Date_emission" id="Date_emission" required>
                                                                 </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Assure">Assur&eacute;(e)</label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="assure" id="assure" required>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Nom">Mouvement :</label>
-                                                                    <select class="form-control" name="Mouvement"
-                                                                            id="Mouvement">
-                                                                        <option value="1">Nouvelle Affaire</option>
-                                                                        <option value="2">Renouvellement</option>
-                                                                        <option value="3">Suspension</option>
-                                                                        <option value="4">Resilliation</option>
-                                                                        <option value="5">Remise en Vigueur</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="Nom">Avenant N° : </label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="avenant" id="avenant">
-                                                                </div>
+                                                               
+                                                               
                                                                 <div class="form-group col-md-6">
                                                                     <label for="categorie">Categorie</label>
                                                                     <select class="selectpicker  form-control"
@@ -229,7 +167,7 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class=" form-group col-md-6">
-                                                                    <label for="Nom">Dur&eacute;e</label>
+                                                                    <label for="Nom">Dur&eacute;e de l&apos;adhesion</label>
                                                                     <select class="form-control" onchange="handleCheckDefault()" name="duree"
                                                                             id="duree">
                                                                         <option value="60">60 Jours</option>
@@ -261,8 +199,8 @@
                                                                     <input type="text" class="form-control" required
                                                                            name="Date_echeance" id="Date_echeance">
                                                                 </div>
-                                                            </div>
-                                                            <script>
+
+                                                                <script>
                                                                 function handleCheckDefault(){
                                                                     // $("#id").val(id);
                                                                    // alert(id);
@@ -348,14 +286,14 @@
 
                                             <label for="nom">Nom Du proprietaire : </label>
                                             <input type="text" class="form-control" name="nom" required
-                                                   placeholder="nom du proprio" id="nom">
+                                                   placeholder="ex : Samuel Lee Jackson" id="nom">
 
                                         </div>
                                         <div class="form-group col-md-3">
 
                                             <label for="immatriculation">N° Immatriculation : </label>
                                             <input type="text" class="form-control" name="immatriculation" required
-                                                   placeholder="ex: CE 186 HI" id="immatriculation">
+                                                   placeholder="ex : CE 186 HI" id="immatriculation">
 
                                         </div>
                                         <div class="form-group col-md-3">
@@ -376,7 +314,7 @@
 
                                             <label for="marque">Marque : </label>
                                             <input type="text" class="form-control" name="marque" id="marque" required
-                                                   placeholder=" ex: Mercedes Benz">
+                                                   placeholder=" ex : Mercedes Benz">
 
                                         </div>
                                         <div class="form-group col-md-3">
@@ -390,13 +328,13 @@
 
                                             <label for="carrosserie">Carrosserie : </label>
                                             <input type="text" class="form-control" name="carrosserie" id="carrosserie"
-                                                   placeholder="ex: CI">
+                                                   placeholder="ex : CI">
 
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="numero_serie">N° de serie : </label>
                                             <input type="text" class="form-control" name="numero_serie"
-                                                   id="numero_serie">
+                                                   id="numero_serie" placeholder="Numero de serie de la voiture ou Numero de chassis">
                                         </div>
                                         <div class="form-group col-md-3">
 
@@ -435,7 +373,7 @@
 
                                             <label for="puissance_reelle">Puissance R&eacute;elle (en cm3): </label>
                                             <input type="number" class="form-control" name="puissance_reelle"
-                                                   id="puissance_reelle" placeholder="ex : 0">
+                                                   id="puissance_reelle" placeholder="ex : 400">
 
                                         </div>
                                         <div class="form-group col-md-3">
@@ -456,7 +394,7 @@
 
                                             <label for="ptac">P.T.A.C (en Kg): </label>
                                             <input type="number" class="form-control" name="ptac"
-                                                   id="ptac" placeholder="ex: 0">
+                                                   id="ptac" placeholder="ex: 2850">
 
                                         </div>
                                         <div class="form-group col-md-3">
@@ -531,8 +469,6 @@
 
                                             <h4><u>Garanti</u></h4>
                                             <script>
-
-
                                                 function handleChange(checkbox, id) {
                                                     $("#id").val(id);
                                                     var totale = document.getElementById("totaux").value;
@@ -643,7 +579,6 @@
                                                                                                             type="text"
                                                                                                             name="totale{{$garanti->ID}}"
                                                                                                             placeholder="prime totale"
-
                                                                                                             >
                                                                                                 </div>
 
@@ -667,8 +602,8 @@
                                                     </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div hidden>
-                                                    <input type="text" name="id" id="id" class="form-control" >
+                                                <div >
+                                                    <input type="hidden" name="id" id="id" class="form-control" >
 
                                                 </div>
                                             </div>

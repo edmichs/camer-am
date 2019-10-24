@@ -23,8 +23,7 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use Illuminate\Support\Facades\App;
 use PDF;
-
-
+use App\Repositories\IncorporationRepository;
 
 class AutomobileController extends Controller
 {
@@ -92,14 +91,11 @@ class AutomobileController extends Controller
         DB::beginTransaction();
        try{
             $exercice = ExerciceRepository::getExerciceEnCours();
-            $souscripteur = SouscripteurRepository::create($request);
-            $surccusale = SurccusaleRepository::create($souscripteur);
 
-            $police = PoliceRepository::create($request, $exercice->ID,$surccusale->ID);
 
-             $assure = AssureRepository::create($request,$police->ID,$surccusale->ID,$exercice->ID);
+             $incorporation = IncorporationRepository::create($request);
             $carte_grise = CarteGriseRepository::store($request);
-            $automobile = AutomobileRepository::create($request,$souscripteur->ID,$police->ID,$exercice->ID,$carte_grise->id,$assure->ID);
+            $automobile = AutomobileRepository::create($request,$exercice->ID,$carte_grise->id,$incorporation->ID);
             
             foreach($request->input('checkbox') as $checkbox){
                     $tarif = Tarif::wherePrimeNette($request->input('nette'.$checkbox))->wherePttc($request->input('totale'.$checkbox))->whereGarantiId($checkbox)->first();
@@ -161,9 +157,18 @@ class AutomobileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            if (AutomobileRepository::cancel($request)) {
+                return redirect(route('auto_list_path'))->with(["message" => "Cette proposition a été annulé avec success"]);
+            }
+            return redirect()->back()->with(["error" => "Echec d'annulation, Veuillez reessayer svp"]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(["error" => "Echec d'annulation, Veuillez reessayer svp"]);
+        }
+       
+        
     }
 
     public function printer()

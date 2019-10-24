@@ -741,6 +741,12 @@ Route::get('proposiion/categorie/automobile/print',[
     'middleware' => 'auth'
 ]);
 
+Route::post('proposiion/categorie/automobile/cancel',[
+    'as' => 'auto_cancel_path',
+     'uses' => 'AutomobileController@destroy',
+     'middleware' => 'auth'
+ ]);
+
 /*
 // start utilisateur routes
 Route::get('/utilisateur', [
@@ -819,6 +825,52 @@ Route::get('/categories/retraite/print', [
     'as' => 'retraite_print_path',
     'middleware' => 'auth',
     'uses' => 'RetraiteController@index'
+]);
+//end retraire road
+
+/**
+ * 
+ * Prevoyance-retraite road
+ */
+
+
+Route::get('/categories/prevoyance-retraite/all', [
+    'as' => 'prevoyance_retraite_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceRetraiteController@index'
+]);
+Route::get('/categories/prevoyance-retraite/add', [
+    'as' => 'prevoyance_retraite_add_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceRetraiteController@create'
+]);
+Route::get('/categories/prevoyance-retraite/print', [
+    'as' => 'prevoyance_retraite_print_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceRetraiteController@index'
+]);
+
+//end prevoyance-retraite road
+
+/**
+ * Prevoyance Sante
+ */
+
+
+Route::get('/categories/prevoyance-sante/all', [
+    'as' => 'prevoyance_sante_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceSanteController@index'
+]);
+Route::get('/categories/prevoyance-sante/add', [
+    'as' => 'prevoyance_sante_add_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceSanteController@create'
+]);
+Route::get('/categories/prevoyance-sante/print', [
+    'as' => 'prevoyance_sante_print_path',
+    'middleware' => 'auth',
+    'uses' => 'PrevoyanceSanteController@index'
 ]);
 
 Route::post('/backup/db', [

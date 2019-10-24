@@ -35,6 +35,7 @@ class Automobile extends Model
         'carte_grise_id' => 'int',
         'exercice_id' => 'int',
         'assure_id' => 'int',
+        'statut' => 'int'
     ];
 
 
@@ -46,7 +47,8 @@ class Automobile extends Model
         'exercice_id',
         'assure_id',
         'conducteur_habituel',
-        'type'
+        'type',
+        'statut',
     ];
 
         public function police()

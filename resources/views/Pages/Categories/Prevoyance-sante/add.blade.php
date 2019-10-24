@@ -11,12 +11,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Proposition de contrat d&apos;assurance maladie
+            Proposition de contrat d&apos;assurance Prevoyance Retraite
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Contrat assurance maladie</li>
+            <li class="active">Contrat assurance Prevoyance Retraite</li>
         </ol>
         @if(session('message'))
             <div class="row">
@@ -115,7 +115,16 @@
                                                                     <input type="text" class="form-control"
                                                                            placeholder="Adresse" id="adresse" name="adresse">
                                                                 </div>
-                                                                
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="email">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                           placeholder="Email" id="email" name="email">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="tel">telephone</label>
+                                                                    <input type="tel" class="form-control"
+                                                                           placeholder="tel" id="telephone" name="tel">
+                                                                </div>
                                                             </div>
                                                            
                                                             <h3 class="text-center"><u>Modalités d&apos;adhesion</u></h3>
@@ -139,12 +148,7 @@
                                                                            placeholder="nom de jeune fille" required onkeyup="autocompleteNom();" name="date_adhesion"
                                                                            id="date_adhesion">
                                                                 </div>
-                                                                <script>
-                                                                    function autocompleteNom(){
-                                                                       // console.log(document.getElementById("Nom").value);
-                                                                        $("#assure").val(document.getElementById("Nom").value);
-                                                                    }
-                                                                </script>
+                                                               
                                                                 <div class="form-group col-md-6">
                                                                     <label for="age_retraite">Age prévu pour la retraite
                                                                         <span>*</span> :</label>
@@ -152,36 +156,52 @@
                                                                             name="age_retraite"
                                                                            id="age_retraite" required>
                                                                 </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="date_adhesion">Durée de la garanti décès
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                           placeholder="nom de jeune fille" required  name="date_adhesion"
+                                                                           id="date_adhesion">
+                                                                </div>
+                                                               
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="age_retraite">Date d&apos;expiration garanti décès
+                                                                        <span>*</span> :</label>
+                                                                    <input type="date" class="form-control"
+                                                                            name="age_retraite"
+                                                                           id="" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="date_adhesion">Capital garanti en cas de décès
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                           placeholder="nom de jeune fille" required  name="date_adhesion"
+                                                                           id="date_adhesion">
+                                                                </div>
+                                                               
+                                                               
+                                                                <div class=" radio col-md-5" style="padding : 2%">
+                                                                    Garantie Décès Accidentel : 
+                                                                    <label for=""><input type="radio" name="garanti_deces" id="">Oui
+                                                                        </label>
+                                                                    <label for=""><input type="radio" name="garanti_deces" id=" ">Non</label>
+                                                                </div>
                                                             </div>
                                                       
-                                                            <h3 class="text-center"><u>Paiement des primes</u></h3>
+                                                            <h3 class="text-center"><u>Paiement des cotisations</u></h3>
                                                             <div class="col-md-12 ">
                                                                 <div class="checkbox col-md-3">
                                                                     <label ><input type="checkbox" name="prime_periodique" id="prime_periodique" >Primes Periodiques : </label>
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="montant_prime">montant prime
-                                                                        <span>*</span> :</label>
+                                                                    <label for="montant_prime">montant cotisation
+                                                                        <span>*</span> :</label> 
                                                                     <input type="number" class="form-control"
                                                                            name="montant_prime" id="montant_prime"
                                                                            placeholder="montant prime" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12">
-                                                                <div class="checkbox col-md-3">
-                                                                        <label ><input type="checkbox" name="versement_libre" id="versement_libre" >Versement Libre : </label>
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                        <label for="montant_prime">montant du versement initial
-                                                                            <span>*</span> :</label>
-                                                                        <input type="number" class="form-control"
-                                                                               name="montant_prime" id="montant_prime"
-                                                                               placeholder="montant prime" required>
-                                                                </div>
-                                                                <div class="col-md-3" style="margin-top: 3%">
-                                                                    <label  for="">Minimum : 100 000 FCFA</label>
-                                                                </div>
-                                                            </div>
+                                                            
                                                             <div class="col-md-12">
                                                                 <table class="table">
                                                                     <tbody>
@@ -297,6 +317,12 @@
                                                             <h3 class="text-center"><u>Bénéficiaire en cas de deces</u></h3>
                                                             <div class="col-md-12 ">
                                                                 <div class="form-group">
+                                                                    <div class="col-md-12 ">
+                                                                        <label for="">En cas de vie : <input type="text" name="" id="" style="width: 100vh"></label>
+                                                                    </div>
+                                                                    <div class="col-md-12 ">
+                                                                        <label for="">En cas de décès : <input type="text" name="" id="" style="width: 100vh"></label>
+                                                                    </div>
                                                                <label for=""> Mon conjoint, à défaut mes enfants par part égales, à defaut mes ascendants, à défaut mes ayants-droit légaux. 
                                                                    si cette formule ne convient pas, indiquer ci dessous les beneficiaires désignés :</label> 
                                                                    <textarea name="" id="" cols="120" rows="10"></textarea>

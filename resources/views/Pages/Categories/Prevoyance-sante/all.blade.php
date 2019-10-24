@@ -51,7 +51,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Liste Proposition de Contrat d&apos;assurance Retraite</li>
+            <li class="active">Liste Proposition de Contrat d&apos;assurance Prevoyance Sante</li>
         </ol>
     </section>
 
@@ -63,8 +63,8 @@
                 <div class="col-md-12">
                     <div class="box box-success">
                         <div class="box-header">
-                            <a href="{{route('retraite_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle proposition de Contrat d&apos;assurance retraite</a>
-                            <a href="{{route('retraite_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
+                            <a href="{{route('prevoyance_sante_add_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouvelle proposition de Contrat d&apos;assurance Prevoyance Sante</a>
+                            <a href="{{route('prevoyance_sante_print_path')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer</a>
 
                             @if(session('message'))
                                 <div class="row">
@@ -90,17 +90,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($retraites as $retraite)
+                                    @foreach($prevoyance_santes as $prevoyance_sante)
                                         <tr>
-                                            <td>{{$retraite->id}}</td>
-                                            <td>{{$retraite->assure()->exists()? $retraite->assure->Nom : ""}}</td>
-                                            <td>{{$retraite->assure()->exists()? $retraite->assure->Nom : ""}}</td>
-                                            <td>{{$retraite->police()->exists()? $retraite->police->Numero_police : ''}}</td>
-                                            <td>{{$retraite->police()->exists()? $retraite->police->Date_effet : ''}}</td>
-                                            <td>{{$retraite->police()->exists()? $retraite->police->Date_echeance : ''}}</td>
+                                            <td>{{$prevoyance_sante->id}}</td>
+                                            <td>{{$prevoyance_sante->assure()->exists()? $prevoyance_sante->assure->Nom : ""}}</td>
+                                            <td>{{$prevoyance_sante->assure()->exists()? $prevoyance_sante->assure->Nom : ""}}</td>
+                                            <td>{{$prevoyance_sante->police()->exists()? $prevoyance_sante->police->Numero_police : ''}}</td>
+                                            <td>{{$prevoyance_sante->police()->exists()? $prevoyance_sante->police->Date_effet : ''}}</td>
+                                            <td>{{$prevoyance_sante->police()->exists()? $prevoyance_sante->police->Date_echeance : ''}}</td>
                                           
                                             <td >
-                                                <a href='{{url("assure/show/{$retraite->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
+                                                <a href='{{url("assure/show/{$prevoyance_sante->id}")}}' class="btn btn-primary"  data-placement="top" title="Voir les d&eacute;tails">
                                                     <i class=" fa fa-eye ">
 
                                                     </i></a>
