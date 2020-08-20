@@ -20,7 +20,7 @@ class Maladie extends Model
 {
     protected $primaryKey = 'id';
     public $timestamps = false;
-
+    public $table = 'maladie';
     protected $casts = [
         'souscripteur_id' => 'int',
         'centre_sante_id' => 'int',

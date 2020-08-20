@@ -34,10 +34,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Succursale extends Model
 {
-	protected $table = 'succursale';
 	protected $primaryKey = 'ID';
-	public $timestamps = false;
-
+	protected $table = 'succursale';
 	protected $casts = [
 		'SouscripteurID' => 'int',
 		'Statut' => 'int',

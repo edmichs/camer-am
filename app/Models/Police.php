@@ -39,8 +39,7 @@ use Illuminate\Database\Eloquent\Model;
 class Police extends Model
 {
 	protected $primaryKey = 'ID';
-	public $timestamps = false;
-
+	protected $table = 'police';
 	protected $casts = [
 		'EtablissementID' => 'int',
 		'SuccursaleID' => 'int',

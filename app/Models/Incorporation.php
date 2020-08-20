@@ -44,10 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Incorporation extends Model
 {
-	public $incrementing = false;
 	protected $table = 'incorporation';
 	protected $primaryKey = 'ID';
-	public $timestamps = false;
 	protected $casts = [
 		'PoliceID' => 'int',
 		'SuccursaleID' => 'int',
@@ -60,7 +58,6 @@ class Incorporation extends Model
 		'Plafond' => 'float',
 		'Encour_conso' => 'float',
 		'Solde' => 'float',
-		'AssureID' => 'int'
 	];
 	protected $dates = [
 		'Datenaiss',
@@ -119,5 +116,9 @@ class Incorporation extends Model
 	public function type_employe()
 	{
 		return $this->belongsTo(\App\Models\TypeEmploye::class, 'Type_EmployeID');
+	}
+	public function automobile()
+	{
+		return $this->hasMany(\App\Models\Automobile::class, 'incorporation_id');
 	}
 }

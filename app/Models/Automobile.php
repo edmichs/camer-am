@@ -25,16 +25,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Automobile extends Model
 {
-    protected $table = 'automobile';
     protected $primaryKey = 'id';
-    public $timestamps = false;
-
+    protected $table = "automobile";
     protected $casts = [
         'police_id' => 'int',
         'souscripteur_id' => 'int',
         'carte_grise_id' => 'int',
         'exercice_id' => 'int',
-        'assure_id' => 'int',
+        'incorporation_id' => 'int',
         'statut' => 'int'
     ];
 
@@ -47,8 +45,16 @@ class Automobile extends Model
         'exercice_id',
         'assure_id',
         'conducteur_habituel',
+        'garage_habituel',
         'type',
         'statut',
+        'incorporation_id',
+        'date_effet',
+        'date_echeance',
+        'date_adhesion',
+        'duree_adhesion',
+        'numero',
+        'zone_id'
     ];
 
         public function police()
@@ -56,9 +62,9 @@ class Automobile extends Model
             return $this->belongsTo(\App\Models\Police::class, 'police_id');
         }
 
-        public function assure()
+        public function incorporation()
         {
-            return $this->belongsTo(\App\Models\Assure::class, 'assure_id');
+            return $this->belongsTo(\App\Models\Incorporation::class, 'incorporation_id');
         }
 
         public function carte_grise()

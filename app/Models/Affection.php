@@ -17,7 +17,7 @@ class Affection extends Model
 {
    // use SoftDeletes;
 
-    public $table = 'affection';
+    protected $table = 'affection';
     protected $primaryKey = 'ID';
 
     //protected $dates = ['deleted_at'];

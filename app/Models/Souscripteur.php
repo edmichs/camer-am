@@ -31,10 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Souscripteur extends Model
 {
-	protected $table = 'souscripteur';
 	protected $primaryKey = 'ID';
-	public $timestamps = false;
-
+	protected $table = 'souscripteur';
 	protected $casts = [
 		'nombre_total_assure' => 'int'
 	];

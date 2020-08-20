@@ -12,7 +12,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "jeremykenedy/laravel-phpinfo": "^1.2",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "spatie/laravel-permission": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

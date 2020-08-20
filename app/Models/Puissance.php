@@ -30,6 +30,6 @@ class Puissance extends Model
 
     public function carte_grise()
     {
-        return $this->hasMany(\App\Models\CarteGrise::class, 'puissance');
+        return $this->hasMany(\App\Models\CarteGrise::class, 'puissance_id');
     }
 }

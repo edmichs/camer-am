@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Models\Automobile;
 use Illuminate\Http\Request;
+use App\Models\GarantiAutomobile;
 
 class AutomobileRepository
 {
@@ -26,17 +27,21 @@ class AutomobileRepository
 
     public static function create(Request $request,  $exercice_id, $carte_grise_id, $incorporation_id)
     {
+       
         return Automobile::create([
             'exercice_id' => $exercice_id,
             'carte_grise_id' => $carte_grise_id,
             'conducteur_habituel' => $request->input('conducteur_habituel'),
+            'garage_habituel' => $request->input('garage_habituel'),
             'incorporation_id' => $incorporation_id,
             'type' => $request->input('type'),
-            'date_effet' => $request->input('date_effet'),
-            'date_echeance' => $request->input('date_echeance'),
-            'date_adhesion' => $request->input('date_adhesion'),
-            'duree_adhesion' => $request->input('duree_adhesion'),
+            'zone_id' => $request->input('zone_id'),
+            'date_effet' => $request->input('Date_effet'),
+            'date_echeance' => $request->input('Date_echeance'),
+            'date_adhesion' => $request->input('Date_emission'),
+            'duree_adhesion' => $request->input('duree'),
             'statut' => 1,
+            'numero' => $request->input('numero'),
         ]);
     }
 
@@ -51,4 +56,18 @@ class AutomobileRepository
         ]);
 
     }
+
+    public static function findById($id)
+    {
+        return Automobile::find($id);
+    }
+    public static function getAllGaranti($id)
+    {
+        return GarantiAutomobile::whereAutomobileId($id)->get();
+    }
+    public static function getCategorie($id)
+    {
+        return GarantiAutomobile::whereAutomobileId($id)->first();
+    }
+    
 }

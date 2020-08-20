@@ -31,10 +31,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Exercice extends Model
 {
-	protected $table = 'exercice';
 	protected $primaryKey = 'ID';
-	public $timestamps = false;
-
+	protected $table = "exercice";
 	protected $casts = [
 		'Cloture' => 'bool'
 	];

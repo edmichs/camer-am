@@ -5,7 +5,7 @@
     <div class="login-page">
         <div class="form">
 
-            <img src="{{ asset('img/logo.jpg') }}" class="col-md-4 img-responsive">
+            <img src="{{ asset('img/logo.jpg') }}" width="100%" height="100%" class="col-md-4 img-responsive">
 
             @if(session()->has('error'))
                 <div class="alert-danger dissmissable" style="padding: 1%;margin-bottom:5%;"> Login/password incorrect(s) !</div>

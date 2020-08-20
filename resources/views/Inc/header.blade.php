@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b style="color: white;">S</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg" style="font-family: 'Cambria';font-size: 1.4em;font-weight: bolder;"><b style="color: white;">Sogecar</b></span>
+        <span class="logo-lg" style="font-family: 'Cambria';font-size: 1.4em;font-weight: bolder;"><b style="color: white;">BIMA | Assurances</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

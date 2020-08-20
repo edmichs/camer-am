@@ -33,10 +33,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarteGrise extends Model
 {
-    protected $table = 'carte_grise';
     protected $primaryKey = 'id';
-    public $timestamps = false;
-
+    public $table = 'carte_grise';
     protected $casts = [
         'puissance' => 'int',
         'ptac' => 'int',
@@ -54,7 +52,7 @@ class CarteGrise extends Model
     protected $fillable = [
         'immatriculation',
         'marque',
-        'puissance',
+        'puissance_id',
         'type',
         'genre',
         'date_first_circulation',
@@ -82,6 +80,6 @@ class CarteGrise extends Model
 
     public function puissance()
     {
-        return $this->belongsTo(\App\Models\Puissance::class,'puissance');
+        return $this->belongsTo(\App\Models\Puissance::class,'puissance_id');
     }
 }

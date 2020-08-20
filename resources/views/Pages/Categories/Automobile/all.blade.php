@@ -85,8 +85,8 @@
                                     <thead>
                                     <tr>
                                         <th>N°</th>
+                                        <th>Numero</th>
                                         <th>Nom Souscrpteur</th>
-                                        <th>Police</th>
                                         <th>Date Effet</th>
                                         <th>Date Ech&eacute;ance</th>
                                         <th>N&deg; immatriculation</th>
@@ -100,31 +100,38 @@
                                     @foreach($autos as $auto)
                                         <tr>
                                             <td>{{$auto->id}}</td>
-                                            <td>{{$auto->assure()->exists()? $auto->assure->Nom : ""}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Numero_police : ''}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Date_effet : ''}}</td>
-                                            <td>{{$auto->police()->exists()? $auto->police->Date_echeance : ''}}</td>
+                                            <td>{{ $auto->numero }}</td>
+                                            <td>{{$auto->incorporation()->exists()? $auto->incorporation->Nom : ""}}</td>
+                                            <td>{{ $auto->date_effet ? $auto->date_effet : ''}}</td>
+                                            <td>{{  $auto->date_echeance }}</td>
                                             <td>{{$auto->carte_grise()->exists() ? $auto->carte_grise->immatriculation : ''}}</td>
-                                            <td></td>
+                                            <td>{{$auto->carte_grise()->exists() ? ($auto->carte_grise->puissance->min . " CV " . " - ". $auto->carte_grise->puissance->max . " CV ") : ""}}</td>
                                             @php
                                                 $garantis = \App\Models\GarantiAutomobile::whereAutomobileId($auto->id)->get();
+                                                $totale = 0;
                                             @endphp
                                             <td>@foreach($garantis as $garanti)
-                                                    {{count($garanti->tarifs->prime_nette)}}
+                                                   @php
+                                                       $totale += $garanti->tarifs->prime_nette;
+                                                   @endphp
                                                 @endforeach
+                                                {{ $totale }}
                                             </td>
-                                            <td>
+                                            <td><ol>
                                                 @foreach($garantis as $garanti)
-                                                    <h5>{{$garanti->garanti->Description}}</h5>
+                                                    
+                                                        <li>{{$garanti->garanti->Description}}</li>
+                                                    
                                                 @endforeach
+                                            </ol>
                                             </td>
                                             <td >
-                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-primary"   data-placement="top" title="Voir les d&eacute;tails">
+                                                <a href="{{ route('auto_show_path', ['title' => $auto->numero,'id'=>$auto->id]) }}" class="btn btn-primary"   data-placement="top" title="Voir les d&eacute;tails">
                                                     <i class=" fa fa-eye ">
 
                                                     </i>
                                                 </a>
-                                                <a href='{{url("assure/show/{$auto->id}")}}' class="btn btn-success"  data-placement="top" title="Etablir le contrat correspondant">
+                                                <a href="{{ route('auto_edit_path', ['title' => $auto->numero,'id'=>$auto->id]) }}" class="btn btn-success"  data-placement="top" title="Etablir le contrat correspondant">
                                                     <i class=" fa fa-pencil ">
 
                                                     </i> 
@@ -140,16 +147,16 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th>N°</th>
-                                        <th>Nom Souscrpteur</th>
-                                        <th>Police</th>
-                                        <th>Date Effet</th>
-                                        <th>Date Ech&eacute;ance</th>
-                                        <th>N&deg; immatriculation</th>
-                                        <th>Puissance</th>
-                                        <th>Prime nette Total</th>
-                                        <th>Garanti</th>
-                                        <th>Action</th>
+                                            <th>N°</th>
+                                            <th>Numero</th>
+                                            <th>Nom Souscrpteur</th>
+                                            <th>Date Effet</th>
+                                            <th>Date Ech&eacute;ance</th>
+                                            <th>N&deg; immatriculation</th>
+                                            <th>Puissance</th>
+                                            <th>Prime nette Total</th>
+                                            <th>Garanti</th>
+                                            <th>Action</th>
                                     </tr>
                                     </tfoot>
                                 </table>

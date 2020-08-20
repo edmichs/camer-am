@@ -11,12 +11,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Proposition de contrat Automobile
+           Modification de la Proposition de contrat Automobile N&deg; <strong>{{ $auto->numero }}</strong>
             <!--small>Preview</small-->
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Contrat Automobile</li>
+            <li class="active">Contrat Automobile N&deg; <strong>{{ $auto->numero }}</strong></li>
         </ol>
         @if(session('message'))
             <div class="row">
@@ -48,22 +48,20 @@
                                                     </div>
                                                     <div class="box-body">
                                                         <div class="col-md-12">
-                                                                <div class="col-md-4"></div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-inline ">
-                                                                        <label for="numero">N&deg; de proposition:</label>
-                                                                        <input type="text" class="form-control" name="numero" id="numero"
-                                                                               value="{{$numero}}">
-                                                                    </div>
-                                                                </div>
-                                                                <br><br><br>
+                                                                
                                                             <div class="col-md-12">
                                                                 <div class="form-group{{ $errors->has('titre') ? ' has-error' : '' }} col-md-3">
                                                                     <label for="Titre">Titre : </label>
                                                                     <select name="titre" id="titre" value="{{ old('titre') }}" class="form-control">
-                                                                        <option value="M/Mme"></option>
-                                                                        <option value="M">Monsieur</option>
-                                                                        <option value="Mme">Madame</option>
+                                                                        <option value="M/Mme" @if ($auto->incorporation->titre == "M/Mme")
+                                                                            selected
+                                                                        @endif></option>
+                                                                        <option value="M" @if ($auto->incorporation->titre == "M")
+                                                                                selected
+                                                                            @endif>Monsieur</option>
+                                                                        <option value="Mme" @if ($auto->incorporation->titre == "Mme")
+                                                                                selected
+                                                                            @endif>Madame</option>
                                                                     </select>
                                                                     @if ($errors->has('titre'))
                                                                            <span class="help-block">
@@ -78,8 +76,12 @@
                                                                             id="Situa_marital">
                                                                         <option value="">-- selectionner un statut --
                                                                         </option>
-                                                                        <option value="1">Mari&eacute;</option>
-                                                                        <option value="2">C&eacute;libataire</option>
+                                                                        <option value="1" @if ($auto->incorporation->Situa_marital == 1)
+                                                                                selected
+                                                                            @endif>Mari&eacute;</option>
+                                                                        <option value="2" @if ($auto->incorporation->Situa_marital == 2)
+                                                                                selected
+                                                                            @endif>C&eacute;libataire</option>
                                                                     </select>
                                                                     @if ($errors->has('Situa_marital'))
                                                                            <span class="help-block">
@@ -92,7 +94,7 @@
                                                                     <label for="Nom">Nom Complet <span>*</span>
                                                                         :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ex : Samuel Lee Jackson" value="{{ old('Nom') }}" required onkeyup="autocompleteNom();" name="Nom"
+                                                                           placeholder="ex : Samuel Lee Jackson" value="{{ isset($auto) ? $auto->incorporation->Nom : old('Nom') }}" required onkeyup="autocompleteNom();" name="Nom"
                                                                            id="Nom" autofocus>
                                                                         @if ($errors->has('Nom'))
                                                                            <span class="help-block">
@@ -104,7 +106,7 @@
                                                                 <div class="form-group{{ $errors->has('Email') ? ' has-error' : '' }} col-md-6">
                                                                     <label for="Email">Email</label>
                                                                     <input type="email" class="form-control"
-                                                                           placeholder="ex : example@example.com" name="Email" value="{{ old('Email') }}" id="Email">
+                                                                           placeholder="ex : example@example.com" name="Email" value="{{ isset($auto) ? $auto->incorporation->Email : old('Email') }}" id="Email">
                                                                         @if ($errors->has('Email'))
                                                                            <span class="help-block">
                                                                                <strong>{{ $errors->first('Email') }}</strong>
@@ -115,7 +117,7 @@
                                                                     <label for="Telephone">T&eacute;l&eacute;phone
                                                                         <span>*</span> :</label>
                                                                     <input type="tel" class="form-control"
-                                                                           placeholder="ex : 699999999" name="Telephone" value="{{ old('Telephone') }}" min="9" max="9"
+                                                                           placeholder="ex : 699999999" name="Telephone" value="{{ isset($auto) ? $auto->incorporation->Telephone : old('Telephone') }}" min="9" max="9"
                                                                            id="Telephone" required>
                                                                         @if ($errors->has('Telephone'))
                                                                            <span class="help-block">
@@ -127,7 +129,7 @@
                                                                     <label for="numero_permis">N° Permis Conduire
                                                                         :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ex : W14**********" value="{{ old('numero_permis') }}" name="numero_permis"
+                                                                           placeholder="ex : W14**********" value="{{ isset($auto) ? $auto->incorporation->numero_permis : old('numero_permis') }}" name="numero_permis"
                                                                            id="numero_permis">
                                                                            @if ($errors->has('numero_permis'))
                                                                            <span class="help-block">
@@ -140,7 +142,7 @@
                                                                     <label for="Fct_employe">Prof&eacute;ssion
                                                                         : </label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ex : chauffeur" name="Fct_employe" value="{{ old('Fct_employe') }}"
+                                                                           placeholder="ex : chauffeur" name="Fct_employe" value="{{ isset($auto) ? $auto->incorporation->Fct_employe : old('Fct_employe') }}"
                                                                            id="Fct_employe">
                                                                         @if ($errors->has('Fct_employe'))
                                                                            <span class="help-block">
@@ -153,8 +155,8 @@
                                                                 
                                                                 <div class="form-group{{ $errors->has('Datenaiss') ? ' has-error' : '' }} col-md-6">
                                                                     <label for="Datenaiss">Date Naissance</label>
-                                                                    <input type="date" class="form-control"
-                                                                           id="Datenaiss" name="Datenaiss" value="{{ old('Datenaiss') }}">
+                                                                    <input type="text" class="form-control"
+                                                                           id="Datenaiss" name="Datenaiss" value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->incorporation->Datenaiss)) : old('Datenaiss') }}">
                                                                         @if ($errors->has('Datenaiss'))
                                                                            <span class="help-block">
                                                                                <strong>{{ $errors->first('Datenaiss') }}</strong>
@@ -165,7 +167,7 @@
                                                                     <label for="Lieu_naiss">Lieu de Naissance
                                                                         :</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="ex : Douala" name="Lieu_naiss" value="{{ old('Lieu_naiss') }}"
+                                                                           placeholder="ex : Douala" name="Lieu_naiss" value="{{ isset($auto) ? $auto->incorporation->Lieu_naiss : old('Lieu_naiss') }}"
                                                                            id="Lieu_naiss" required>
                                                                         @if ($errors->has('Lieu_naiss'))
                                                                            <span class="help-block">
@@ -195,8 +197,8 @@
 
                                                                 <div class="form-group{{ $errors->has('Date_emission') ? ' has-error' : '' }} col-md-6">
                                                                     <label for="Date_emission">Date d&apos;adhesion</label>
-                                                                    <input type="date" class="form-control"
-                                                                           name="Date_emission" id="Date_emission" value="{{ old('Date_emission') }}" required>
+                                                                    <input type="text" class="form-control"
+                                                                           name="Date_emission" id="Date_emission" value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->date_adhesion)) : old('Date_emission') }}" required>
                                                                            @if ($errors->has('Date_emission'))
                                                                            <span class="help-block">
                                                                                <strong>{{ $errors->first('Date_emission') }}</strong>
@@ -211,9 +213,14 @@
                                                                             data-show-subtext="true" onchange="handleCheckDefault()"
                                                                             data-live-search="true" name="categorie"
                                                                             id="categorie">
+                                                                            @php
+                                                                                $garanti = \App\Repositories\AutomobileRepository::getCategorie($auto->id);
+                                                                            @endphp
                                                                         @foreach ($categorie_tarifs as $cat)
                                                                             <option value="{{$cat->numero}}"
-                                                                                    data-subtext="{{$cat->description}}">{{$cat->numero}}</option>
+                                                                                    data-subtext="{{$cat->description}}" @if ($cat->id == $garanti->tarifs->categorie_tarif_id)
+                                                                                        selected
+                                                                                    @endif>{{$cat->numero}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                     @if ($errors->has('categorie'))
@@ -226,10 +233,18 @@
                                                                     <label for="Nom">Dur&eacute;e de l&apos;adhesion</label>
                                                                     <select class="form-control" onchange="handleCheckDefault()" name="duree" value="{{ old('duree') }}"
                                                                             id="duree">
-                                                                        <option value="60">60 Jours</option>
-                                                                        <option value="120">120 Jours</option>
-                                                                        <option value="180">180 jours</option>
-                                                                        <option value="365">365 jours</option>
+                                                                        <option value="60" @if ( $garanti->tarifs->duree == 60)
+                                                                                selected
+                                                                            @endif>60 Jours</option>
+                                                                        <option value="120" @if ( $garanti->tarifs->duree == 120)
+                                                                                selected
+                                                                            @endif>120 Jours</option>
+                                                                        <option value="180" @if ( $garanti->tarifs->duree == 180)
+                                                                                selected
+                                                                            @endif>180 jours</option>
+                                                                        <option value="365" @if ( $garanti->tarifs->duree == 365)
+                                                                                selected
+                                                                            @endif>365 jours</option>
                                                                     </select>
                                                                     @if ($errors->has('duree'))
                                                                            <span class="help-block">
@@ -239,7 +254,7 @@
                                                                 </div>
                                                                 <div class="form-group{{ $errors->has('Date_effet') ? ' has-error' : '' }} col-md-6">
                                                                     <label for="Date_effet">Date effet</label>
-                                                                    <input type="date" class="form-control" required value="{{ old('Date_effet') }}"
+                                                                    <input type="text" class="form-control" required value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->date_effet)) : old('Date_effet') }}"
                                                                            name="Date_effet" id="Date_effet" onchange="caculEcheance();">
                                                                            @if ($errors->has('Date_effet'))
                                                                            <span class="help-block">
@@ -262,7 +277,7 @@
                                                                 </script>
                                                                 <div class="form-group{{ $errors->has('Date_echeance') ? ' has-error' : '' }} col-md-6">
                                                                     <label for="Date_echeance">Date &eacute;ch&eacute;ance</label>
-                                                                    <input type="text" class="form-control" required value="{{ old('Date_echeance') }}"
+                                                                    <input type="text" class="form-control" required value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->date_echeance)) : old('Date_echeance') }}"
                                                                            name="Date_echeance" id="Date_echeance">
                                                                            @if ($errors->has('Date_echeance'))
                                                                            <span class="help-block">
@@ -275,7 +290,7 @@
                                                                 function handleCheckDefault(){
                                                                     // $("#id").val(id);
                                                                    // alert(id);
-                                                                  //  console.log(id);
+                                                                    console.log(id);
                                                                     var duree = document.getElementById("duree").value;
 
                                                                     if(document.getElementById("Date_effet").value != ""){
@@ -356,7 +371,7 @@
                                         <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="nom">Nom Du proprietaire : </label>
-                                            <input type="text" class="form-control" name="nom" required value="{{ old('nom') }}"
+                                            <input type="text" class="form-control" name="nom" required value="{{ isset($auto) ? $auto->carte_grise->nom : old('nom') }}"
                                                    placeholder="ex : Samuel Lee Jackson" id="nom">
                                                    @if ($errors->has('nom'))
                                                         <span class="help-block">
@@ -368,7 +383,7 @@
                                         <div class="form-group{{ $errors->has('immatriculation') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="immatriculation">N° Immatriculation : </label>
-                                            <input type="text" class="form-control" name="immatriculation" required value="{{ old('immatriculation') }}"
+                                            <input type="text" class="form-control" name="immatriculation" required value="{{ isset($auto) ? $auto->carte_grise->immatriculation : old('immatriculation') }}"
                                                    placeholder="ex : CE 186 HI" id="immatriculation">
                                                    @if ($errors->has('immatriculation'))
                                                         <span class="help-block">
@@ -380,7 +395,7 @@
                                         <div class="form-group{{ $errors->has('date_delivre') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="date_delivre">Date Delivre carte grise: </label>
-                                            <input type="date" class="form-control" name="date_delivre" required value="{{ old('date_delivre') }}"
+                                            <input type="text" class="form-control" name="date_delivre" required value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->carte_grise->date_delivre)) : old('date_delivre') }}"
                                                    id="date_delivre">
                                                    @if ($errors->has('date_delivre'))
                                                         <span class="help-block">
@@ -392,7 +407,7 @@
                                         <div class="form-group{{ $errors->has('date_first_circulation') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="date_first_circulation">Date 1ere mise en circulation : </label>
-                                            <input type="date" class="form-control" name="date_first_circulation" required value="{{ old('date_first_circulation') }}"
+                                            <input type="text" class="form-control" name="date_first_circulation" required value="{{ isset($auto) ? date("d/m/Y",strtotime($auto->carte_grise->date_first_circulation)) : old('date_first_circulation') }}
                                                    id="date_first_circulation">
                                                    @if ($errors->has('date_first_circulation'))
                                                         <span class="help-block">
@@ -404,7 +419,7 @@
                                         <div class="form-group{{ $errors->has('marque') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="marque">Marque : </label>
-                                            <input type="text" class="form-control" name="marque" id="marque" required value="{{ old('marque') }}"
+                                            <input type="text" class="form-control" name="marque" id="marque" required value="{{ isset($auto) ? $auto->carte_grise->marque : old('marque') }}" 
                                                    placeholder=" ex : Mercedes Benz">
                                                    @if ($errors->has('marque'))
                                                    <span class="help-block">
@@ -416,7 +431,7 @@
                                         <div class="form-group{{ $errors->has('genre') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="genre">Genre : </label>
-                                            <input type="text" class="form-control" name="genre" id="genre" required value="{{ old('genre') }}"
+                                            <input type="text" class="form-control" name="genre" id="genre" required value="{{ isset($auto) ? $auto->carte_grise->genre : old('genre') }}" 
                                                    placeholder="ex : VP">
                                                    @if ($errors->has('genre'))
                                                    <span class="help-block">
@@ -428,7 +443,7 @@
                                         <div class="form-group{{ $errors->has('carrosserie') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="carrosserie">Carrosserie : </label>
-                                            <input type="text" class="form-control" name="carrosserie" id="carrosserie" value="{{ old('carrosserie') }}"
+                                            <input type="text" class="form-control" name="carrosserie" id="carrosserie" value="{{ isset($auto) ? $auto->carte_grise->carrosserie : old('carrosserie') }}"
                                                    placeholder="ex : CI">
                                                    @if ($errors->has('carrosserie'))
                                                    <span class="help-block">
@@ -439,7 +454,7 @@
                                         </div>
                                         <div class="form-group{{ $errors->has('numero_serie') ? ' has-error' : '' }} col-md-3">
                                             <label for="numero_serie">N° de serie : </label>
-                                            <input type="text" class="form-control" name="numero_serie" value="{{ old('numero_serie') }}"
+                                            <input type="text" class="form-control" name="numero_serie" value="{{ isset($auto) ? $auto->carte_grise->numero_serie : old('numero_serie') }}"
                                                    id="numero_serie" placeholder="Numero de serie de la voiture ou Numero de chassis">
                                                    @if ($errors->has('numero_serie'))
                                                    <span class="help-block">
@@ -451,8 +466,12 @@
 
                                             <label for="carrosserie">Energie : </label>
                                             <select name="energie" id="energie" value="{{ old('energie') }}" required onchange="handleCheckDefault();" class="form-control">
-                                                <option value="essence">Essence</option>
-                                                <option value="diesel">Diesel</option>
+                                                <option value="essence" @if ($auto->carte_grise->numero_serie == "essence")
+                                                    selected
+                                                @endif>Essence</option>
+                                                <option value="diesel" @if ($auto->carte_grise->numero_serie == "diesel")
+                                                        selected
+                                                    @endif>Diesel</option>
                                             </select>
                                             @if ($errors->has('energie'))
                                                    <span class="help-block">
@@ -475,7 +494,9 @@
                                                     @endphp
                                                     <optgroup label="{{$puiss == 1 ? "Essence" : "Diesel"}}">
                                                         @foreach($puissances as $puissance)
-                                                            <option value="{{$puissance->id}}"> {{$puissance->max == 1000 ? $puissance->min ." et +" : $puissance->min . ' &agrave; '. $puissance->max .' CV' }}</option>
+                                                            <option value="{{$puissance->id}}"@if ($puissance->id == $garanti->tarifs->puissance_id)
+                                                                    selected
+                                                                @endif> {{$puissance->max == 1000 ? $puissance->min ." et +" : $puissance->min . ' &agrave; '. $puissance->max .' CV' }}</option>
                                                         @endforeach
                                                     </optgroup>
 
@@ -488,7 +509,7 @@
                                         <div class="form-group{{ $errors->has('puissance_reelle') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="puissance_reelle">Puissance R&eacute;elle (en cm3): </label>
-                                            <input type="number" class="form-control" name="puissance_reelle" value="{{ old('puissance_reelle') }}"
+                                            <input type="number" class="form-control" name="puissance_reelle" value="{{ isset($auto) ? $auto->carte_grise->puissance_reelle : old('puissance_reelle') }}" 
                                                    id="puissance_reelle" placeholder="ex : 400">
                                                    @if ($errors->has('puissance_reelle'))
                                                    <span class="help-block">
@@ -501,7 +522,7 @@
                                         <div class="form-group{{ $errors->has('nbre_places') ? ' has-error' : '' }}  col-md-3">
 
                                             <label for="nbre_place">Nombre de place : </label>
-                                            <input type="number" class="form-control" name="nbre_places" id="nbre_places" value="{{ old('nbre_places') }}"
+                                            <input type="number" class="form-control" name="nbre_places" id="nbre_places" value="{{ isset($auto) ? $auto->carte_grise->nbre_places : old('nbre_places') }}" 
                                                    placeholder="ex: 5">
                                                    @if ($errors->has('nbre_places'))
                                                    <span class="help-block">
@@ -513,7 +534,7 @@
                                         <div class="form-group{{ $errors->has('charge_utile') ? ' has-error' : '' }}  col-md-3">
 
                                             <label for="charge_utile">Charge Utile : </label>
-                                            <input type="number" class="form-control" name="charge_utile" value="{{ old('charge_utile') }}"
+                                            <input type="number" class="form-control" name="charge_utile" value="{{ isset($auto) ? $auto->carte_grise->charge_utile : old('charge_utile') }}"  
                                                    id="charge_utile" placeholder="ex: 0">
                                                    @if ($errors->has('charge_utile'))
                                                    <span class="help-block">
@@ -525,7 +546,7 @@
                                         <div class="form-group{{ $errors->has('ptac') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="ptac">P.T.A.C (en Kg): </label>
-                                            <input type="number" class="form-control" name="ptac" value="{{ old('ptac') }}"
+                                            <input type="number" class="form-control" name="ptac" value="{{ isset($auto) ? $auto->carte_grise->ptac : old('ptac') }}"  
                                                    id="ptac" placeholder="ex: 2850">
                                                    @if ($errors->has('ptac'))
                                                    <span class="help-block">
@@ -537,7 +558,7 @@
                                         <div class="form-group{{ $errors->has('poids_vide') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="poids_vide">Poids Vide (en Kg): </label>
-                                            <input type="number" class="form-control" name="poids_vide" id="poids_vide" value="{{ old('poids_vide') }}"
+                                            <input type="number" class="form-control" name="poids_vide" id="poids_vide" value="{{ isset($auto) ? $auto->carte_grise->poids_vide : old('poids_vide') }}" 
                                                    placeholder="ex : 1350">
                                                    @if ($errors->has('poids_vide'))
                                                    <span class="help-block">
@@ -551,7 +572,7 @@
                                         <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="type">Type : </label>
-                                            <input type="text" class="form-control" name="type" id="type" value="{{ old('type') }}"
+                                            <input type="text" class="form-control" name="type" id="type" value="{{ isset($auto) ? $auto->carte_grise->type : old('type') }}"  
                                                    placeholder="ex : BJ14L3">
                                                    @if ($errors->has('type'))
                                                    <span class="help-block">
@@ -564,7 +585,7 @@
                                         <div class="form-group{{ $errors->has('valeur_neuf') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="valeur_neuf">Valeur a neuf (en XFA): </label>
-                                            <input type="number" class="form-control" required name="valeur_neuf" value="{{ old('valeur_neuf') }}"
+                                            <input type="number" class="form-control" required name="valeur_neuf" value="{{ isset($auto) ? $auto->carte_grise->valeur_neuf : old('valeur_neuf') }}" 
                                                    id="valeur_neuf" placeholder="ex : 15 000 000">
                                                    @if ($errors->has('valeur_neuf'))
                                                    <span class="help-block">
@@ -576,7 +597,7 @@
                                         <div class="form-group{{ $errors->has('valeur_venale') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="valeur_venale">Valeur venale (en XFA): </label>
-                                            <input type="number" class="form-control" name="valeur_venale" value="{{ old('valeur_venale') }}"
+                                            <input type="number" class="form-control" name="valeur_venale" value="{{ isset($auto) ? $auto->carte_grise->valeur_venale : old('valeur_venale') }}" 
                                                    id="valeur_venale" placeholder="ex : 7 000 000">
                                                    @if ($errors->has('valeur_venale'))
                                                    <span class="help-block">
@@ -589,7 +610,7 @@
                                         <div class="form-group{{ $errors->has('garage_habituel') ? ' has-error' : '' }} col-md-3">
 
                                             <label for="garage_habituel">Garage Habituel : </label>
-                                            <input type="text" class="form-control" name="garage_habituel" id="garage_habituel" value="{{ old('garage_habituel') }}"
+                                            <input type="text" class="form-control" name="garage_habituel" id="garage_habituel" value="{{ isset($auto) ? $auto->carte_grise->garage_habituel : old('garage_habituel') }}" 
                                                    placeholder="ex : Les Garagistes">
                                                    @if ($errors->has('garage_habituel'))
                                                    <span class="help-block">
@@ -604,7 +625,10 @@
                                             <label for="zone">Zone: </label>
                                             <select name="zone_id" id="zone" class="selectpicker form-control">
                                                 @foreach ($zones as $item)
-                                                <option value="{{ $item->id }}">{{ $item->code }}</option>
+                                                <option value="{{ $item->id }}" @if ($item->id == $auto->zone_id)
+                                                    selected
+                                                @endif>{{ $item->code }}</option>
+                                                
                                                 @endforeach
                                                 
                                             </select>
@@ -619,17 +643,15 @@
                                                     <option value="1">Normal</option>
                                                 </select>
                                             </div>
-                                            <div class="form-inline col-md-4">
-                                                <label for="tarif">Categorie : </label>
-                                                <input type="text" name="cat" id="cat" class="form-control" value="{{ old('cat') }}">
-                                            </div>
+                                          
                                             <div class="form-inline col-md-5">
                                                 <label for="tarif">Conducteur Habituelle :</label>
-                                                <input type="text" name="conducteur_habituel" value="{{ old('conducteur_habituel') }}"  id="conducteur_habituel" class="form-control">
+                                                <input type="text" name="conducteur_habituel" value="{{ isset($auto) ? $auto->conducteur_habituel : old('conducteur_habituel') }}"   id="conducteur_habituel" class="form-control">
                                                 <br>
                                                 <br>
                                             </div>
-
+                                        </div>
+                                        <div class="col-md-12">
                                             <h4><u>Garanti</u></h4>
                                             <script>
                                                 function handleChange(checkbox, id) {
@@ -694,82 +716,145 @@
                                                 }
                                             </script>
                                             <div class="col-md-12">
-
-                                                <table class="table table-striped">
-
-
+                                                <h5>Liste des garanties déja selectionnées: 
+                                                    </h5>
+                                                    @php
+                                                        $garanti_autos = \App\Models\GarantiAutomobile::whereAutomobileId($auto->id)->get();
+                                                    @endphp
+                                                <table class="table table-bordered" id="table">
                                                     <tbody>
-                                                    @foreach ($categorie_garanties as $categori_garanti)
+                                                        <thead>
+                                                            <th>Code</th>
+                                                            
+                                                            <th>Prime nette (en FCFA)</th>
+                                                            <th>Prime Totale (en FCFA)</th>
+                                                            <th></th>
+                                                        </thead>
+                                                        @foreach ($garanti_autos as $garanti_auto)
                                                         <tr>
-                                                            <td>{{$categori_garanti->libelle}}</td>
-                                                            <td>
-                                                                <table class="table table-striped">
-
-                                                                    @foreach (\App\Models\Garanti::where('categorie_garanti_id','=',$categori_garanti->id)->get() as $garanti)
-
-                                                                        <tr>
-                                                                            <td>{{$garanti->Description}}</td>
-                                                                            <td>
-                                                                                <table class="table table-striped">
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <input type="checkbox"
-                                                                                                   onchange="handleChange(this,'{{$garanti->ID}}');"
-                                                                                                   name="checkbox[{{$garanti->ID}}]"
-                                                                                                   @if ($garanti->isDefaultChecked)
-                                                                                                   checked 
-                                                                                                   @endif
-                                                                                                   id="checkbox{{$garanti->ID}}"
-                                                                                                   value="{{$garanti->ID}}">
-                                                                                        </td>
-
-                                                                                        <td>
-                                                                                            <div class="form-group" id=".{{$garanti->ID}}."  class=".{{$garanti->ID}}." hidden>
-                                                                                               <div class=" col-md-6 form-group">
-                                                                                                   <label for="nette{{$garanti->ID}}">Prime nette (en XFA) : </label>
-                                                                                                   <input class="form-control"
-                                                                                                           type="text"
-                                                                                                          id="nette{{$garanti->ID}}"
-                                                                                                          placeholder="Prime nette"
-                                                                                                           name="nette{{$garanti->ID}}"
-                                                                                                           >
-                                                                                               </div>
-                                                                                                <div class=" col-md-6 form-group">
-                                                                                                    <label for="totale{{$garanti->ID}}">Prime Totale (en XFA) : </label>
-                                                                                                    <input
-                                                                                                            id="totale{{$garanti->ID}}"
-                                                                                                            class="form-control"
-                                                                                                            type="text"
-                                                                                                            name="totale{{$garanti->ID}}"
-                                                                                                            placeholder="prime totale"
-                                                                                                            >
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                    </tr>
-                                                                                </table>
-
-
-                                                                        </tr>
-                                                                    @endforeach
-                                                                </table>
-                                                            </td>
-
+                                                            <td><input type="text" class="form-control" name="id[]" readonly value="{{ $garanti_auto->garanti->ID }}"></td>
+                                                       
+                                                            <td>{{ $garanti_auto->tarifs->prime_nette }}</td>
+                                                            <td>{{ $garanti_auto->tarifs->pttc }}</td>
+                                                            <td> <a onclick="supprimer('.{{ $garanti_auto->id }}', '.{{ $auto->id }}')" class="btn btn-danger" >
+                                                                <i class="fa fa-trash-o"></i></a> </td>
                                                         </tr>
-                                                    @endforeach
+                                                        @endforeach
+                                                       
+                                                       
                                                     </tbody>
-                                                    <tfoot style="font-size: 28px; font-weight: bold">
-                                                    <tr>
-                                                        <th ><strong>Total (En XFA)</strong></th>
-                                                        <th id=""><input type="text" id="totaux" style="text-align: center;font-weight: bold; font-size: 28px;" value="0" name="totaux" class="form-control" ></th>
-                                                    </tr>
-                                                    </tfoot>
                                                 </table>
-                                                <div >
-                                                    <input type="hidden" name="id" id="id" class="form-control" >
-
+                                              <h5>Ajouter d&apos; autre(s) garantie(s)</h5>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Garanti</label>
+                                                    <select name="gar" id="gar" class="selectpicker form-control" data-show-subtext="true" data-live-search="true">
+                                                        @foreach ($categorie_garanties as $item)
+                                                           @php
+                                                              $garantis = \App\Models\Garanti::whereCategorieGarantiId($item->id)->get();
+                                                          @endphp
+                                                        <optgroup label="{{ $item->libelle }}">
+                                                            @foreach ($garantis as $garanti)
+                                                            <option data-subtext="{{ $garanti->Description }}"  value="{{ $garanti->ID }}">{{ $garanti->ID }}</option>
+                                                            @endforeach
+                                                        </optgroup>
+                                                        @endforeach
+                                                        
+                                                    </select>
+                                                   
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                        
+                                                    <label for="">Prime nette</label>
+                                                    <input type="number" class="form-control" name="nette" id="nette">
+                                                </div>
+                                                <div class="col-md-3">
+                                                        <label for="">Prime totale</label>
+                                                        <input type="number" class="form-control" name="totale" id="totale">
+                                                </div>
+                                                <div class="col-md-3" style="margin-top: 2.5%">
+                                                    <a onclick="addRow()" class="btn btn-success">
+                                                        Ajouter
+                                                    </a>
                                                 </div>
                                             </div>
+                                            <script type="text/javascript">
+                                             
+                                               function deleteRow(){
+                                                    try{
+                                                        var table = document.getElementById("table");
+                                                        var rowcount = table.rows.lenght;
+                                                        for(var i = 0; i < rowcount; i++){
+                                                            var row = table.rows[i];
+                                                        table.deleteRow(i);
+                                                        rowcount--;
+                                                        i--;
+                                                        }
+                                                    }catch(e){
+                                                        alert(e);
+                                                    }
+                                                };
+                                               function supprimer(garanti_auto_id, auto_id){
+                                                    var garanti = garanti_auto_id;
+                                                    var auto = auto_id;
+                                                    $.ajax({
+                                                        
+                                                          url: ' {{ url('proposiion/categorie/automobile/destroy/garanti/{ garanti_auto_id }/{auto_id}') }}',
+                                                          type: 'GET',
+                                                          data: {garanti_auto_id: garanti_auto_id, auto_id:auto_id},
+                                                          success: function (data) {
+                                                              console.log(data);
+                                                            if(data != null ){
+
+                                                                deleteRow();
+                                                                message('<h4> Assur&eacute; ajout&eacute; avec succes ! </h4>', 'alert-success pull-lg-right');
+                                                            }
+                                                          error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                                                                console.log(jqXHR);
+                                                                console.log(textStatus);
+                                                                console.log(errorThrown);
+                                                                message("<h4> Echec de l'op&eacute;ration ! </h4>", 'alert-danger pull-lg-right');
+                                                            }
+                                                        });
+
+                                               };
+                                              
+                                                function addRow(){
+                                                    var gar = document.getElementById("gar").value;
+                                                    var nette = document.getElementById("nette").value;
+                                                    var totale = document.getElementById("totale").value;
+                                                    var table  = document.getElementById("table");
+                                                 
+                                                    var rowcount = table.rows.length;
+                                                    var row =  table.insertRow(rowcount);
+                                                    var cell1 = row.insertCell(0);
+                                                    var element1 = document.createElement("input");
+                                                    
+
+                                                    element1.type = "text"
+                                                    element1.name = "id[]"
+                                                    element1.value = gar;
+                                                    element1.setAttribute("readonly",true);
+                                                    element1.className = "form-control";
+                                                    cell1.appendChild(element1);
+
+                                                    var cell2 = row.insertCell(1);
+                                                   cell2.innerHTML = nette;
+                                                   var cell3 = row.insertCell(2);
+                                                   cell3.innerHTML = totale;
+
+                                                   var cell4 = row.insertCell(3);
+                                                   var element2 = document.createElement("a");
+                                                   
+                                                   element2.className = "btn btn-danger fa fa-trash-o"
+                                                   element2.href = "{{ route('auto_list_path') }}"
+                                                   element2.addEventListener("click",function(e){
+                                                       supprimer(gar, {{$auto->id}})
+                                                   });
+                                                   
+                                                   cell4.appendChild(element2);
+
+                                                }
+                                            </script>
 
                                         </div>
                                         <div class="col-md-12 text-center">

@@ -747,6 +747,23 @@ Route::post('proposiion/categorie/automobile/cancel',[
      'middleware' => 'auth'
  ]);
 
+ Route::get('proposiion/categorie/automobile/show/{title}/{id}',[
+    'as' => 'auto_show_path',
+     'uses' => 'AutomobileController@show',
+     'middleware' => 'auth'
+ ]);
+
+ Route::get('proposiion/categorie/automobile/edit/{title}/{id}',[
+    'as' => 'auto_edit_path',
+     'uses' => 'AutomobileController@edit',
+     'middleware' => 'auth'
+ ]);
+
+ Route::get('proposiion/categorie/automobile/destroy/garanti/{garantiId}/{id}',[
+    'as' => 'auto_destroy_garanti_path',
+     'uses' => 'AutomobileController@destroyGaranti',
+     'middleware' => 'auth'
+ ]);
 /*
 // start utilisateur routes
 Route::get('/utilisateur', [

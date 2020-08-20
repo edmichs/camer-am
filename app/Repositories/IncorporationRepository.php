@@ -86,10 +86,12 @@ class IncorporationRepository
     {
         return Incorporation::whereExerciceid($exerciceID)->get();
     }
-    public static function create(Request $request)
+    public static function create(Request $request,$exercice_id)
     {
         return Incorporation::create([
             "titre" => $request->input("titre"),
+            'Code_familleID' => 1,
+            'ExerciceID' => $exercice_id,
             "Nom" => $request->input("Nom"),
             "Situa_marital" => $request->input("Situa_marital"),
             "numero_permis" => $request->input("numero_permis"),
@@ -97,8 +99,7 @@ class IncorporationRepository
             "Email" => $request->input("Email"),
             "Datenaiss" => $request->input("Datenaiss"),
             "Fct_employe" => $request->input("Fct_employe"),
-            "Lieu_naiss" => $request->input("Datenaiss"),
-
+            "Lieu_naiss" => $request->input("`Lieu_naiss"),
         ]);
     }
 }

@@ -17,4 +17,5 @@ class GarantiRepository
     {
         return Garanti::all();
     }
+    
 }
