@@ -174,7 +174,7 @@
                                             <div class="form-group">
                                                 <label for="Observation">Observation</label>
                                             <textarea type="text" class="form-control" id="Observation"
-                                                      name="Observation" placeholder="Observation"></textarea>
+                                                      name="Observation" rows="5" placeholder="Observation"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -197,7 +197,8 @@
                                                        name="Taux_couverture"  placeholder="0">
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="Encour_conso">En cours de consommation</label>

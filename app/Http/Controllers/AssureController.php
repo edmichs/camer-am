@@ -26,7 +26,7 @@ class AssureController extends Controller
     public function index()
     {
         $exercice = ExerciceRepository::getExerciceEnCours();
-       $assures = AssureRepository::getByExercice($exercice->ID);
+        $assures = AssureRepository::getByExercice($exercice->ID);
         return view('Pages.Assure.all',compact('assures','exercice'));
     }
 

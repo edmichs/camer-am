@@ -82,13 +82,22 @@ class BpcController extends Controller
                 return $police;
             }
             if($request->has('changeNom')){
-                $array = array();
-                $assure = AssureRepository::show($request->input('Nom'));
-                $array1 = array();
-                $categorie_assure = CategorieAssure::whereTypeemployeid($assure->TypeEmployeID)->wherePoliceid($assure->PoliceID)->first();
-                array_push($array1,$categorie_assure);
-                array_push($array,$assure);
-                return array_merge($array,$array1);
+                DB::beginTransaction();
+                try {
+                    $array = array();
+                    $assure = AssureRepository::show($request->input('Nom'));
+                    $array1 = array();
+                    $categorie_assure = CategorieAssure::whereTypeemployeid($assure->TypeEmployeID)->wherePoliceid($assure->PoliceID)->first();
+                    array_push($array1,$categorie_assure);
+                    array_push($array,$assure);
+                    DB::commit();
+                    return array_merge($array,$array1);
+                } catch (\Exception $e) {
+                    $msg = "Assuré not found".$e->getMessage();
+                    DB::RollBack();
+                    return $msg;
+                }
+                
             }
             if($request->has('changeMedecin')){
                 $array = array();

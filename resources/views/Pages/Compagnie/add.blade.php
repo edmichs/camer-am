@@ -8,9 +8,8 @@
     <section class="content-header">
         <h1>
             Ajout
-            <!--small>Preview</small-->
-
         </h1>
+        
         <ol class="breadcrumb">
             <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li class="active">Nouvelle compagnie</li>
@@ -69,13 +68,20 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
+                                <div class="form-group col-md-4 text-center justify-content-center">
+                                    <div class="col-md-8">
+                                        <button class="btn btn-success form-control"  type="submit" name="action">Soumettre</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-warning "  type="reset" name="action">Annuler</button>
+                                    </div>
+
                                 </div>
                             </div>
 
                         </div>
                     </div>
+                    <button class="btn btn-info "  onClick="window.history.back();" type="button"  name="action"> <i class="fa fa-backward"></i> Retour</button>
 
                 </div>
 
@@ -87,6 +93,7 @@
 @endsection
 
 @section('js')
+    
     <script type="text/javascript">
         var checker = document.getElementById('surccusale');
         var sendbtn = document.getElementById('newSurccu');
@@ -113,16 +120,16 @@
          success: function(data){
          //alert(data);
          if (data == 0) {
-         message('<h4> Veuillez ajouter une équipe ! </h4>', 'alert-warning pull-lg-right');
+         message('<h4> Veuillez ajouter une ï¿½quipe ! </h4>', 'alert-warning pull-lg-right');
          }else{
-         message('<h4> Opération réussie ! </h4>', 'alert-success pull-lg-right');
+         message('<h4> Opï¿½ration rï¿½ussie ! </h4>', 'alert-success pull-lg-right');
          }
 
          },
          error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
          /*console.log(JSON.stringify(jqXHR));
          console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-         message("<h4> Echec de l'opération ! </h4>", 'alert-danger pull-lg-right');
+         message("<h4> Echec de l'opï¿½ration ! </h4>", 'alert-danger pull-lg-right');
          }
          });
 
@@ -130,4 +137,5 @@
          return false;
          });*/
     </script>
+   
 @endsection()

@@ -44,9 +44,26 @@ class PoliceController extends Controller
      */
     public function store(Request $request)
     {
-
+        dd($request->all());
+        $validatedData = $request->validate([
+            'Numero_police' => 'required|unique:police|max:255',
+            'SuccrursaleID' => 'required|integer',
+            'ExerciceID' => 'required|integer',
+            'Date_effet' => 'required|date',
+            'Date_echeance' => 'required|date|after:Date_effet',
+            'Date_souscription' => 'required|date|before_or_equal:Date_effet',
+            'Date_emission' => 'required|date',
+            'Prime_total' => 'required|integer',
+            'Accessoires'=>'required|integer',
+            'Plafond_garanti' => 'required|integer',
+            
+        ]);
+        if (!$validatedData) {
+            return redirect()->back()->withInput();
+        }
         if(PoliceRepository::store($request)){
-            return redirect(route('list_police_path'));
+
+            return redirect(route('list_police_path'))->with('success','police enregistré avec success');
         }
         return redirect()->back()->withInput();
     }

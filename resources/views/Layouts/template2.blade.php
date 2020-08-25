@@ -183,12 +183,33 @@
         $('#msg').hide();
         $('#msg').html(data);
         $('#msg').addClass(val);
-        $('#msg').fadeIn(1000, 'swing', function(){
-            $('#msg').fadeOut(1000);
+        $('#msg').fadeIn(5000, 'swing', function(){
+            $('#msg').fadeOut(5000);
         });
       };
 
       $(function () {
+        $('#assure-table').DataTable({
+          "language" : {
+                "decimal":        "",
+                "emptyTable":     "Pas de donn&eacute; disponible pour cette table",
+                "info":           "Affichage _START_ de _END_ &agrave; _TOTAL_ entr&eacute;es",
+                "infoEmpty":      "Affichage 0 de 0 &agrave; 0 entr&eacute;es",
+                "infoFiltered":   "(tri&eacute; sur les _MAX_ donn&eacute;es totales)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Voir _MENU_ Entr&racute;es",
+                "loadingRecords": "Chargement...",
+                "processing":     "En cours...",
+                "search":         "Recherche dans le tableau:",
+                "zeroRecords":    "Aucun resultat trouv&eacute;",
+                "aria": {
+                "sortAscending":  ": activ&eacute; le tri des colonnes ascendant",
+                "sortDescending": ": activ&eacute; le tri des colonnes descendant"
+                }
+              },
+              "searching": false
+        });
         $('#example1').DataTable({
           "language" : {
                 "decimal":        "",
@@ -330,7 +351,60 @@
       });
     </script>
     <script src="{{asset('libs/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('plugins/sweetalert/sweetalert2.all.js') }}"></script>
 
+    <script type="text/javascript">
+        function deleteincorporation(id) {
+            swal({
+                title: 'Suppression incorporé',
+                text: "Voulez-vous supprimé cet incorporé ? Cet opération est irreversible",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, supprimez',
+                cancelButtonText: 'Non, Annulez!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    event.preventDefault();
+                    let route  = "{{ url('incorporate/delete/') }}"+"/"+id;
+                    console.log(route);
+                    $.ajax({
+                      url: route,
+                      type: 'get',
+                      contentType: false,
+                      processData: false,
+                      success: function (data) {
+                          //alert(data);
+
+                          console.log(data);
+                          message('<h4> Incorporé supprimé avec succes ! </h4>', 'alert-success pull-lg-right');
+                          location.reload();
+                      },
+                      error: function (jqXHR, textStatus, errorThrown) { // What to do if we fail
+                          /*console.log(JSON.stringify(jqXHR));
+                           console.log("AJAX error: " + textStatus + ' : ' + errorThrown);*/
+                          message("<h4> Echec de l'op&eacute;ration ! </h4>", 'alert-danger pull-lg-right');
+                      }
+                  });
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === swal.DismissReason.cancel
+                ) {
+                    swal(
+                        'Annulez!!',
+                        'Vos données sont sauvées :)',
+                        'error'
+                    )
+                }
+            })
+        }
+
+    </script>
   @yield('script')
   </body>
 </html>

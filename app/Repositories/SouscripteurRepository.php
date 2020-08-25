@@ -66,4 +66,13 @@ class SouscripteurRepository
         ]);
     }
 
+     /**
+     * @param int $exercice_id
+     * @return Collection \App\Models\Succursale
+     */
+    public static function getByExercice($exercice_id)
+    {
+       return Souscripteur::whereExerciceId($exercice_id)->get();
+    }
+
 }

@@ -13,7 +13,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="{{ route('accueil_path') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li class="active">modifier Souscripteur</li>
+                <li class="active">modifier Groupe</li>
             </ol>
         </section>
 

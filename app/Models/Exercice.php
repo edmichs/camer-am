@@ -88,4 +88,13 @@ class Exercice extends Model
 	{
 		return $this->hasMany(\App\Models\Remboursement::class, 'ExerciceID');
 	}
+	
+	public function souscripteurs()
+	{
+		return $this->hasMany(\App\Models\Souscripteur::class, 'exercice_id');
+	}
+	public function succursales()
+	{
+		return $this->hasMany(\App\Models\Succursale::class, 'exercice_id');
+	}
 }

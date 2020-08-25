@@ -18,6 +18,14 @@ class SurccusaleRepository
     {
         return Succursale::all();
     }
+    /**
+     * @param int $exercice_id
+     * @return Collection \App\Models\Succursale
+     */
+    public static function getByExercice($exercice_id)
+    {
+       return Succursale::whereExerciceId($exercice_id)->get();
+    }
     public static function store(Request $request)
     {
         return Succursale::create($request->all());

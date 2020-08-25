@@ -60,8 +60,9 @@
         <!--Form Advance-->
         @if($exercice != null)
         <div class="row">
-
+           
             <div class="col-md-12">
+                <p class="text-muted" style:"text-decoration:underline;"> (*) : signifie que le champs est obligatoire</p>
                 <div class="box box-success">
 
                     <!-- /.box-header -->
@@ -112,8 +113,8 @@
                                 </script>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="SuccursaleID">Souscripteur/Surccusale</label>
-                                        <select name="SuccursaleID" id="SuccursaleID" onchange="valSuccursale()" class="form-control">
+                                        <label for="SuccursaleID">Souscripteur/Surccusale *</label>
+                                        <select name="SuccursaleID" id="SuccursaleID" onchange="valSuccursale()" class="form-control" required>
                                             <option value=" ">--selectionner succursale --</option>
                                             @foreach($surccusales as $surccusale)
                                                 <option value="{{$surccusale->ID}}">{{$surccusale->Nom}}</option>
@@ -123,16 +124,23 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="ExerciceID">Exercice</label>
-                                        <select name="ExerciceID" id="ExerciceID" class="form-control">
+                                        <label for="ExerciceID">Exercice *</label>
+                                        <select name="ExerciceID" id="ExerciceID" class="form-control" required>
                                             <option value="{{$exercice->ID}}">{{date("Y", strtotime($exercice->Date_debut))}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Type_EmployeID">Code famille</label>
-                                        <select class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="Code_familleID" name="Code_familleID">
+                                        <label for="Date_incorporation">Date Incorporation *</label>
+                                        <input type="date" class="form-control" id="Date_incorporation"
+                                               name="Date_incorporation" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="Type_EmployeID">Code famille *</label>
+                                        <select class="selectpicker form-control" required data-show-subtext="true" data-live-search="true" id="Code_familleID" name="Code_familleID">
                                             <option value=" ">-- selectionner code famille --</option>
                                             @foreach($familles as $famille)
                                                 <option data-subtext="{{$famille->Libelle}}" value="{{$famille->ID}}">{{$famille->Code}}</option>
@@ -150,9 +158,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Nom">Nom Complet</label>
+                                        <label for="Nom">Nom Complet *</label>
                                         <input type="text" name="Nom" id="Nom" class="form-control"
-                                               placeholder="Entrer nom complet" id="">
+                                               placeholder="Entrer nom complet" required id="">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -179,8 +187,8 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Type d'employ&eacute;</label>
-                                        <select class="form-control" id="Type_EmployeID" name="Type_EmployeID">
+                                        <label for="exampleInputPassword1">Type d'employ&eacute; *</label>
+                                        <select class="form-control" id="Type_EmployeID" name="Type_EmployeID" required>
                                             <option value=" ">--selectionner Type d&apos;employe--</option>
                                             @foreach($typeemployes as $type)
                                                 <option value="{{$type->ID}}">{{$type->Libelle}}</option>
@@ -198,33 +206,27 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="Nationalite">Nationalit&eacute;</label>
+                                        <label for="Nationalite">Nationalit&eacute; *</label>
                                         <input type="text" class="form-control" id="Nationalite" name="Nationalite"
-                                               placeholder="Nationalit&eacute;">
+                                               placeholder="Nationalit&eacute;" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="Date_incorporation">Date Incorporation</label>
-                                                <input type="date" class="form-control" id="Date_incorporation"
-                                                       name="Date_incorporation">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="Observation">Observation</label>
-                                            <textarea type="text" class="form-control" id="Observation"
-                                                      name="Observation" placeholder="Observation"></textarea>
-                                            </div>
-                                        </div>
+                        
+                                {{--  <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="Observation">Observation</label>
+                                    <textarea type="text" class="form-control" id="Observation"
+                                                name="Observation" placeholder="Observation"></textarea>
+                                    </div>
+                                </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="Taux_couverture">Taux Couverture</label>
-                                                <input type="tel" class="form-control" id="Taux_couverture"
-                                                       name="Taux_couverture"  placeholder="0">
-                                            </div>
-                                        </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="Taux_couverture">Taux Couverture</label>
+                                        <input type="tel" class="form-control" id="Taux_couverture"
+                                                name="Taux_couverture"  placeholder="0">
+                                    </div>
+                                </div>
 
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -238,7 +240,7 @@
                                                 <label for="Solde">solde</label>
                                                 <input type="tel" class="form-control" id="Solde" name="Solde" placeholder="0">
                                             </div>
-                                        </div>
+                                        </div>  --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="Avatar" class="Avatar">Photo</label>
@@ -271,10 +273,11 @@
                                 <tr>
                                     <th>Filiale</th>
                                     <th>Exercice</th>
+                                    <th>Date Incorporation</th>
+                                    <th>Nom</th>
                                     <th>Reference/Matricule</th>
                                     <th>Code famille</th>
                                     <th>type</th>
-                                    <th>Nom</th>
                                     <th>Date de naissance</th>
                                     <th>Lieu de naissance</th>
                                     <th>Nationalite</th>
@@ -288,11 +291,11 @@
                                     <tr class="button">
                                         <td>{{$incorporate->succursale->Nom}}</td>
                                         <td>{{date("Y", strtotime($incorporate->exercice->Date_debut))}} </td>
+                                        <td>{{$incorporate->Date_incorporation}}</td>
+                                        <td>{{$incorporate->Nom}}</td>
                                         <td>{{$incorporate->Matricule}}</td>
                                         <td>{{$incorporate->code_famille->Code}}</td>
                                             <td>{{$incorporate->type_employe->Libelle}}</td>
-                                        <td>{{$incorporate->Nom}}</td>
-
                                         <td>{{$incorporate->Datenaiss}}</td>
                                         <td>{{$incorporate->Lieu_naiss}}</td>
                                         <td>{{$incorporate->Nationalite}}</td>
@@ -316,7 +319,7 @@
                                                 </i>
                                             </a>
                                             <a  class="btn btn-danger"
-                                                href="{{url("incorporate/delete/{$incorporate->ID}")}}"
+                                                onclick="deleteincorporation({{ $incorporate->ID }})"
                                                 data-placement="bottom" title="Supprimer">
                                                 <i class=" fa fa-trash " >
 
@@ -343,7 +346,7 @@
         </div>
             @else
                 <div class="row">
-                     <h1>Aucun exercice n'est ouvert, Veuillez Demarrer un nouvel exercice</h1>
+                     <h1>Aucun exercice n&apos;est ouvert, Veuillez Demarrer un nouvel exercice</h1>
                 </div>
             @endif
     </section>
@@ -375,8 +378,5 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-
-
-    </script>
+   
 @endsection()

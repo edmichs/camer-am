@@ -51,6 +51,7 @@ class Souscripteur extends Model
 		'email',
 		'localisation_geo',
 		'nombre_total_assure',
+		'exercice_id'
 	];
 
 	public function succursales()
@@ -62,4 +63,10 @@ class Souscripteur extends Model
 	{
 		return $this->hasMany(\App\Models\Souscripteur::class, 'souscripteur_id');
 	}
+	
+	public function exercice()
+	{
+		return $this->belongsTo(App\Models\Exercice::class, 'exercice_id');
+	}
+	
 }

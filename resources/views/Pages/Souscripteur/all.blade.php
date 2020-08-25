@@ -63,7 +63,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <a href="{{route('add_souscripteur_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouveau Souscripteur</a>
+                        <a href="{{route('add_souscripteur_path')}}" class="btn btn-info"><i class="fa fa-plus"></i> Nouveau Groupe</a>
                         <a href="{{route('souscripteur_print_all')}}"  target="_blank"  class="btn btn-success"><i class="fa fa-print"></i> Imprimer la liste</a>
                       <!--  <a href="{{route('souscripteur_list_download_pdf')}}" class="btn btn-success"><i class="fa fa-plus"></i>Telechargement direct pdf</a> -->
                         @if(session('message'))

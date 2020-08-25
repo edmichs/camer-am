@@ -55,7 +55,8 @@ class Succursale extends Model
 		'Localisation_geo',
 		'Nombre_total_assure',
 		'Ville',
-		'Pays'
+		'Pays',
+		'exercice_id'
 	];
 
 	public function souscripteur()
@@ -75,5 +76,9 @@ class Succursale extends Model
 	public function police()
 	{
 		return $this->hasMany(\App\Models\Police::class, 'SuccursaleID');
+	}
+	public function exercice()
+	{
+		return $this->belongsTo(App\Models\Exercice::class, 'exercice_id');
 	}
 }

@@ -66,7 +66,7 @@
                 <div class="col-md-12">
                     <div class="box">
                         <h1 style="text-align: center">
-                            Liste des souscripteurs
+                            Liste des Groupes
                             <!--small>Preview</small-->
                         </h1>
                         <!-- /.box-header -->

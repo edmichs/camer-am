@@ -76,7 +76,11 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
-                        <table id="example1" class="table table-bordered table-striped dataTable">
+                        <table id="assure-table" class="table table-bordered table-striped dataTable">
+                           <div style=" width:50%; margin-left: auto; margin-right: auto">
+                               
+                            <input type="text" name="search" id="search" class="form-control" placeholder="recherchez par nom, matricule, filiale, numero police...">
+                           </div> 
                             <thead>
                             <tr>
                                 <th>Nom</th>
@@ -84,7 +88,6 @@
                                 <th>Numero police</th>
                                 <th>Reference/Matricule</th>
                                 <th>Type d&apos;employ&eacute;</th>
-                                <th>Nationalite</th>
                                 <th>Taux couverture</th>
                                 <th>Plafond</th>
                                 <th>Montant Prime</th>
@@ -106,7 +109,6 @@
                                     <td>{{$police->Numero_police}}</td>
                                     <td>{{$assure->Matricule}}-{{$assure->code_famille()->exists() ? $assure->code_famille->Code : ''}}</td>
                                     <td>{{$assure->type_employe()->exists() ? $assure->type_employe->Libelle : ''}}</td>
-                                    <td>{{$assure->Nationalite}}</td>
                                     <td>{{$assure->Taux_couverture}}</td>
                                     <td>{{$categorie_assure ? $categorie_assure->plafond : ''}}</td>
                                     <td>{{$categorie_assure ? $categorie_assure->montant_prime : '' }}</td>
@@ -149,7 +151,11 @@
                                 <th>Action</th>
                             </tr>
                             </tfoot>
+                            
                         </table>
+                        <div class="text-right">
+                            {{ $assures->links() }}
+                        </div>
                         </div>
                         
                     </div>

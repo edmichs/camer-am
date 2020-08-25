@@ -169,15 +169,16 @@
 
                         </ul>
                     </li>
+                    
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-building"></i> Souscripteur
+                        <a href="#"><i class="fa fa-building"></i> Groupes
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{route('add_souscripteur_path')}}"><i class="fa fa-plus"></i>Nouveau
-                                    Souscripteur</a></li>
+                                    Groupe</a></li>
                             <li>
                                 <a href="{{route('souscripteur_list_path')}}"><i class="fa fa-list"></i>Liste
                                 </a>
@@ -186,14 +187,14 @@
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-building-o"></i> Surccusale
+                        <a href="#"><i class="fa fa-building-o"></i> Souscripteur
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{route('add_surccusale_path')}}">
-                                    <i class="fa fa-plus"></i> <span>Nouvelle Surccusale</span>
+                                    <i class="fa fa-plus"></i> <span>Nouveau Souscripteur</span>
                                 </a></li>
                             <li>
                                 <a href="{{route('list_surccusale_path')}}">

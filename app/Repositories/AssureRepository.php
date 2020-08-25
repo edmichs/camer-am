@@ -126,6 +126,10 @@ class AssureRepository
 
     public static function getByExercice($exerciceID)
     {
+        return Assure::whereExerciceid($exerciceID)->paginate(3);
+    }
+    public static function getByExercices($exerciceID)
+    {
         return Assure::whereExerciceid($exerciceID)->get();
     }
     public static function getByLastExercice($exerciceID)

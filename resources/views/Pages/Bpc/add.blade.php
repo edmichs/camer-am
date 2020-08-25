@@ -93,7 +93,11 @@
                                                     var formURL = formObj.attr("action");
                                                     var formData = new FormData($("#form")[0]);
                                                     formData.append('changed', 'ok');
-
+                                                    $.ajaxSetup({
+                                                        headers: {
+                                                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                        }
+                                                      });
                                                     $.ajax({
                                                         url: formURL,
                                                         type: 'POST',
@@ -193,7 +197,11 @@
                                                     var formURL = formObj.attr("action");
                                                     var formData = new FormData($("#form")[0]);
                                                     formData.append('changeNom', 'ok');
-
+                                                    $.ajaxSetup({
+                                                        headers: {
+                                                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                        }
+                                                      });
                                                     $.ajax({
                                                         url: formURL,
                                                         type: 'POST',

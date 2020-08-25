@@ -84,92 +84,56 @@
                                     <div class="col-md-3">
                                         <div class="profile-img">
 
-                                            <img src="/img/{{$incorporate->Avatar}}" width="250px" height="250px" class="img-responsive" alt="{{$incorporate->Avatar}}"/>
+                                            <img src="/img/{{$incorporate->Avatar ? $incorporate->Avatar : "default.png"}}" width="200px" height="200px" class="img-responsive" alt="{{$incorporate->Avatar}}"/>
                                             <br>
 
                                         </div>
                                         <!-- Profile Image -->
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Nom">Exercice : </label>
-                                            <input type="text" class="form-control" value="{{date("d/M/Y", strtotime($incorporate->exercice->Date_debut))}} - {{date("d/M/Y", strtotime($incorporate->exercice->Date_fin))}}" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Nom">Filiale :</label>
-                                            <input type="text" class="form-control" value="{{$incorporate->succursale->Nom}}" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Nom">Nom :</label>
-                                            <input type="text" class="form-control" value="{{$incorporate->Nom}}" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Fonction :</label>
-                                            <input type="text" value="{{$incorporate->Fct_employe}}" class="form-control" disabled>
-
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">R&eacute;f&eacute;rence / Matricule :</label>
-                                            <input type="text" value="{{$incorporate->Matricule}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Observation :</label>
-                                            <input type="text" value="{{$incorporate->Observation}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Code Famille :</label>
-                                            <input type="text" value="{{$incorporate->code_famille->Code}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Date de Naissance :</label>
-                                            <input type="text" value="{{$incorporate->Datenaiss}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Lieu de naissance :</label>
-                                            <input type="text" value="{{$incorporate->Lieu_naiss}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Nationalit&eacute; :</label>
-                                            <input type="text" value="{{$incorporate->Nationalite}}" class="form-control" disabled>
-                                        </div>
-                                        <div class="name-wrapper col-md-6 form-inline">
-                                            <label for="Fonction">Situation Matrimonial :</label>
-                                            @if($incorporate->Situa_marital == 1)
-                                                <strong>Mari&eacute; <span></span> </strong>
-                                            @else
-                                                <strong>C&eacute;libataire</strong>
-                                            @endif
-                                            <br><br>
-                                        </div>
-
-                                        <section class="section-contact section-wrapper">
-                                            <div class="container">
-                                                <div class="row">
-
-
-                                                    <div class="col-md-9">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <address>
-                                                                    <strong>Numero police</strong><br>
-                                                                    {{$incorporate->police->Numero_police}}
-
-                                                                </address>
-                                                            </div>
-
-                                                        </div>
-                                                        <!--.row-->
-
-                                                    </div>
-                                                </div>
-                                                <!--.row-->
-
+                                            <div class="col-md-6">
+                                                <p  class="name-wrapper " >Exercice : <strong>{{date("Y", strtotime($incorporate->exercice->Date_debut))}}</strong> </p>
                                             </div>
-                                            <!--.container-fluid-->
-                                        </section>
-
-
-
+                                            <div class=" name-wrapper col-md-6 ">
+                                                <p >Filiale : <strong>{{$incorporate->succursale->Nom}}</strong> </p>
+                                            </div>
+                                            <div class=" col-md-6 ">
+                                                <p >Nom : <strong>{{$incorporate->Nom}}</strong> </p>
+                                            </div>
+                                            <div class=" col-md-6 ">
+                                                <p >Incorporé le : <strong>{{$incorporate->Date_incorporation}}</strong> </p>
+                                            </div>
+                                            <div class=" name-wrapper col-md-6 ">
+                                                <p >Fonction :  <strong>{{$incorporate->Fct_employe}}</strong></p>    
+                                            </div>
+                                            <div class=" name-wrapper col-md-6 ">
+                                                <p > R&eacute;f&eacute;rence / Matricule : <strong>{{$incorporate->Matricule}}</strong> </p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 ">
+                                                <p >Observation : <strong>{{$incorporate->Observation}}</strong>  </p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 ">
+                                                <p >Code Famille : <strong>{{$incorporate->code_famille->Code}}</strong></p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 ">
+                                                <p >Date de Naissance : <strong>{{$incorporate->Datenaiss}}</strong></p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 form-inline">
+                                                <p >Lieu de naissance : <strong>{{$incorporate->Lieu_naiss}}</strong></p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 form-inline">
+                                                <p >Nationalit&eacute; : <strong>{{$incorporate->Nationalite}}</strong></p>
+                                            </div>
+                                            <div class="name-wrapper col-md-6 form-inline">
+                                                <p for="Fonction">Situation Matrimonial : @if($incorporate->Situa_marital == 1)
+                                                    <strong>Mari&eacute; <span></span> </strong>
+                                                @else
+                                                    <strong>C&eacute;libataire</strong>
+                                                @endif</p>
+                                                
+                                                <br><br>
+                                            </div>
+                                        
                                     </div>
                                     <section class="content">
                                         <h1>Remplissez le formulaire suivant pour le convertir en Assur&eacute;</h1>
